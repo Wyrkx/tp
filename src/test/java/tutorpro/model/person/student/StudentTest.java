@@ -96,8 +96,9 @@ public class StudentTest {
 
     @Test
     public void getSubjects() {
-        Set<Subject> subjects = new HashSet<>(Arrays.asList(new Subject("Math"), new Subject("English")));
-        Student student = new StudentBuilder().withSubjects("Math", "English").build();
+        Set<Subject> subjects = new HashSet<>(Arrays.asList(new Subject("Math-b"),
+                new Subject("English-c-")));
+        Student student = new StudentBuilder().withSubjects("Math-b", "English-c-").build();
         Assertions.assertEquals(subjects, student.getSubjects());
     }
 }
