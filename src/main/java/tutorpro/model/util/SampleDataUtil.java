@@ -22,7 +22,7 @@ import tutorpro.model.tag.Tag;
 public class SampleDataUtil {
     private static final Level[] LEVELS = {new Level("P1"), new Level("S4"), new Level("J1"),
         new Level("UNI")};
-    private static final Subject subject = new Subject("Math");
+    private static final Subject subject = new Subject("Math-C");
     private static final Set<Subject> SUBJECTS = new HashSet<>();
     public static Student[] getSamplePersons() {
         SUBJECTS.add(subject);
@@ -52,22 +52,22 @@ public class SampleDataUtil {
         return new Student[] {
             new Student(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@example.com"),
                     new Address("Blk 30 Geylang Street 29, #06-40"),
-                    getTagSet(), new Level("P6"), getSubjectSet("Math")),
+                    getTagSet(), new Level("P6"), getSubjectSet("Math-C")),
             new Student(new Name("Bernice Yu"), new Phone("99272758"), new Email("berniceyu@example.com"),
                     new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"),
-                    getTagSet(), new Level("S2"), getSubjectSet("Math", "English")),
+                    getTagSet(), new Level("S2"), getSubjectSet("Math-B3", "English-B4")),
             new Student(new Name("Charlotte Oliveiro"), new Phone("93210283"), new Email("charlotte@example.com"),
                     new Address("Blk 11 Ang Mo Kio Street 74, #11-04"),
-                    getTagSet(), new Level("J1"), getSubjectSet("Physics")),
+                    getTagSet(), new Level("J1"), getSubjectSet("Physics-B")),
             new Student(new Name("David Li"), new Phone("91031282"), new Email("lidavid@example.com"),
                     new Address("Blk 436 Serangoon Gardens Street 26, #16-43"),
-                    getTagSet(), new Level("UNI"), getSubjectSet("Chemistry", "Biology")),
+                    getTagSet(), new Level("UNI"), getSubjectSet("Chemistry-B+", "Biology-B-")),
             new Student(new Name("Irfan Ibrahim"), new Phone("92492021"), new Email("irfan@example.com"),
                     new Address("Blk 47 Tampines Street 20, #17-35"),
-                    getTagSet(), new Level("K2"), getSubjectSet("Reading")),
+                    getTagSet(), new Level("K2"), getSubjectSet("Reading-A")),
             new Student(new Name("Roy Balakrishnan"), new Phone("92624417"), new Email("royb@example.com"),
                     new Address("Blk 45 Aljunied Street 85, #11-31"),
-                    getTagSet(), new Level("OTHER"), getSubjectSet("Interview"))
+                    getTagSet(), new Level("OTHER"), getSubjectSet("Interview-A"))
         };
     }
 

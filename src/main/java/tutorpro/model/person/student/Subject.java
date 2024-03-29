@@ -11,20 +11,32 @@ import tutorpro.commons.util.AppUtil;
 public class Subject {
 
     public static final String MESSAGE_CONSTRAINTS = "Subjects can take any values, and it should not be blank";
-    public static final String VALIDATION_REGEX = "[^\\s].*";
+    // Possible grades: A, B2, C+, D-
+    public static final String VALIDATION_REGEX = "\\w+(?: \\w+)*-\\S+"; //"[^\\s].*";
 
 
     private String value;
+    private String grade;
 
     /**
-     * Constructs a {@code Level}
+     * Constructs a {@code Subject}
      *
-     * @param subject A valid subject.
+     * @param subjectInput A valid subject.
      */
-    public Subject(String subject) {
-        requireNonNull(subject);
-        AppUtil.checkArgument(isValidSubject(subject), MESSAGE_CONSTRAINTS);
-        this.value = subject;
+    public Subject(String subjectInput) {
+        requireNonNull(subjectInput);
+        AppUtil.checkArgument(isValidSubject(subjectInput), MESSAGE_CONSTRAINTS);
+        String[] outputs = subjectInput.split("-");
+        this.value = outputs[0];
+        this.grade = outputs[1];
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public String getGrade() {
+        return grade;
     }
 
     @Override
@@ -35,16 +47,17 @@ public class Subject {
             return false;
         }
         Subject otherLevel = (Subject) other;
-        return value.equals(otherLevel.value);
+        return value.equals(otherLevel.value)
+                && grade.equals(otherLevel.grade);
     }
 
     @Override
     public String toString() {
-        return value;
+        return value + "-" + grade.toUpperCase();
     }
 
     /**
-     * Returns true if the given String is a valid Level.
+     * Returns true if the given String is a valid Subject.
      */
     public static boolean isValidSubject(String test) {
         return test.matches(VALIDATION_REGEX);
@@ -52,6 +65,6 @@ public class Subject {
 
     @Override
     public int hashCode() {
-        return value.hashCode();
+        return value.hashCode() + grade.hashCode();
     }
 }

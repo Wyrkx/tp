@@ -30,16 +30,16 @@ public class SubjectTest {
         assertFalse(Subject.isValidSubject(" ")); // spaces only
 
         // valid addresses
-        assertTrue(Subject.isValidSubject("Math"));
-        assertTrue(Subject.isValidSubject("-")); // one character
+        assertTrue(Subject.isValidSubject("Math-B"));
+        assertTrue(Subject.isValidSubject("b-c")); // one character
     }
 
     @Test
     public void equals() {
-        Subject subject = new Subject("Valid Subject");
+        Subject subject = new Subject("Valid Subject-A");
 
         // same values -> returns true
-        assertTrue(subject.equals(new Subject("Valid Subject")));
+        assertTrue(subject.equals(new Subject("Valid Subject-A")));
 
         // same object -> returns true
         assertTrue(subject.equals(subject));
@@ -51,15 +51,15 @@ public class SubjectTest {
         assertFalse(subject.equals(5.0f));
 
         // different values -> returns false
-        assertFalse(subject.equals(new Subject("Other Valid Subject")));
+        assertFalse(subject.equals(new Subject("Other Valid Subject-A")));
     }
 
     @Test
     public void testToString() {
-        Subject subject = new Subject("Valid Subject");
+        Subject subject = new Subject("Valid Subject-A");
 
         // same values -> returns true
-        assertTrue(subject.toString().equals(new Subject("Valid Subject").toString()));
+        assertTrue(subject.toString().equals(new Subject("Valid Subject-A").toString()));
 
         // same object -> returns true
         assertTrue(subject.toString().equals(subject.toString()));
@@ -71,6 +71,6 @@ public class SubjectTest {
         assertFalse(subject.toString().equals(5.0f));
 
         // different values -> returns false
-        assertFalse(subject.toString().equals(new Subject("Other Valid Subject").toString()));
+        assertFalse(subject.toString().equals(new Subject("Other Valid Subject-A").toString()));
     }
 }

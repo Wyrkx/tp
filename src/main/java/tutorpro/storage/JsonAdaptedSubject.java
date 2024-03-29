@@ -11,14 +11,15 @@ import tutorpro.model.person.student.Subject;
  */
 class JsonAdaptedSubject {
 
+
     private final String subjectName;
 
     /**
      * Constructs a {@code JsonAdaptedSubject} with the given {@code subjectName}.
      */
     @JsonCreator
-    public JsonAdaptedSubject(String subjectName) {
-        this.subjectName = subjectName;
+    public JsonAdaptedSubject(String subjectInput) {
+        this.subjectName = subjectInput;
     }
 
     /**
