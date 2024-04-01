@@ -33,9 +33,9 @@ public class CommandTestUtil {
     public static final String VALID_ADDRESS_BOB = "Block 123, Bobby Street 3";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
-    public static final String VALID_SUBJECT_MATH = "Math";
-    public static final String VALID_SUBJECT_SCIENCE = "Science";
-    public static final String VALID_SUBJECT_ENGLISH = "English";
+    public static final String VALID_SUBJECT_MATH = "Math-B";
+    public static final String VALID_SUBJECT_SCIENCE = "Science-A";
+    public static final String VALID_SUBJECT_ENGLISH = "English-C";
     public static final String VALID_LEVEL_P6 = "P6";
     public static final String VALID_LEVEL_UNI = "UNI";
 

@@ -48,8 +48,8 @@ public class EditCommand extends Command {
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
             + "[" + PREFIX_LEVEL + "EDU LEVEL] "
-            + "[" + PREFIX_SUBJECT + "SUBJECT(S)]... "
-            + "[" + PREFIX_TAG + "TAG]...\n"
+            + "[" + PREFIX_SUBJECT + "SUBJECT-grade ...] "
+            + "[" + PREFIX_TAG + "TAG ...]\n"
             + "Example: To edit education level of a student,\n"
             + COMMAND_WORD + " 1 "
             + PREFIX_LEVEL + " JC2 ";

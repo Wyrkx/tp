@@ -29,7 +29,7 @@ public class AddCommand extends Command {
             + PREFIX_EMAIL + "EMAIL "
             + PREFIX_ADDRESS + "ADDRESS "
             + PREFIX_LEVEL + "LVL "
-            + "[" + PREFIX_SUBJECT + "SUBJECT]... "
+            + "[" + PREFIX_SUBJECT + "SUBJECT-GRADE]... "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe "
@@ -37,8 +37,8 @@ public class AddCommand extends Command {
             + PREFIX_EMAIL + "johnd@example.com "
             + PREFIX_ADDRESS + "311, Clementi Ave 2, #02-25 "
             + PREFIX_LEVEL + "P5 "
-            + PREFIX_SUBJECT + "Math "
-            + PREFIX_SUBJECT + "English "
+            + PREFIX_SUBJECT + "Math-B "
+            + PREFIX_SUBJECT + "English-C "
             + PREFIX_TAG + "friends "
             + PREFIX_TAG + "owesMoney";
 
