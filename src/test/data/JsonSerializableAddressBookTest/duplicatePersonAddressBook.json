@@ -5,7 +5,7 @@
     "email" : "alexyeoh@example.com",
     "address" : "Blk 30 Geylang Street 29, #06-40",
     "level" : "P6",
-    "subjects" : [ "Math" ],
+    "subjects" : [ "Math-B" ],
     "tags" : [ "Student" ]
   }, {
     "name" : "Alex Yeoh",
@@ -13,7 +13,7 @@
     "email" : "alexyeoh@example.com",
     "address" : "Blk 30 Geylang Street 29, #06-40",
     "level" : "P6",
-    "subjects" : [ "Math" ],
+    "subjects" : [ "Math-B" ],
     "tags" : [ "Student" ]
   } ]
 }
