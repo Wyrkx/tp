@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import tutorpro.model.person.student.Parent;
 import tutorpro.testutil.Assert;
 import tutorpro.testutil.ParentBuilder;
 import tutorpro.testutil.StudentBuilder;

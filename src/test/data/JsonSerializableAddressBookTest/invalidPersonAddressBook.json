@@ -1,8 +1,11 @@
 {
-  "persons": [ {
-    "name": "Hans Muster",
-    "phone": "9482424",
-    "email": "invalid@email!3e",
-    "address": "4th street"
+  "students": [ {
+    "name" : "Alex Yeoh",
+    "phone" : "87438807",
+    "email" : "invalid@email!3e",
+    "address" : "Blk 30 Geylang Street 29, #06-40",
+    "level" : "P6",
+    "subjects" : [ "Math" ],
+    "tags" : [ "Student" ]
   } ]
 }

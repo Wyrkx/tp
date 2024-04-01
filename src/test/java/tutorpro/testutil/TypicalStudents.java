@@ -39,15 +39,15 @@ public class TypicalStudents {
     public static final Student DANIEL = new StudentBuilder().withName("Daniel Meier").withPhone("87652533")
             .withEmail("cornelia@example.com").withAddress("10th street").withLevel("K1")
             .withSubjects("Reading-A-").build();
-    public static final Student ELLE = new StudentBuilder().withName("Elle Meyer").withPhone("9482224")
+    public static final Student ELLE = new StudentBuilder().withName("Elle Meyer").withPhone("94822249")
             .withEmail("werner@example.com").withAddress("michegan ave").withLevel("UNI").build();
-    public static final Student FIONA = new StudentBuilder().withName("Fiona Kunz").withPhone("9482427")
+    public static final Student FIONA = new StudentBuilder().withName("Fiona Kunz").withPhone("94824279")
             .withEmail("lydia@example.com").withAddress("little tokyo").build();
-    public static final Student GEORGE = new StudentBuilder().withName("George Best").withPhone("9482442")
+    public static final Student GEORGE = new StudentBuilder().withName("George Best").withPhone("94824429")
             .withEmail("anna@example.com").withAddress("4th street").withLevel("J2").build();
-    public static final Student HOON = new StudentBuilder().withName("Hoon Meier").withPhone("8482424")
+    public static final Student HOON = new StudentBuilder().withName("Hoon Meier").withPhone("84824249")
             .withEmail("stefan@example.com").withAddress("little india").withLevel("P1").build();
-    public static final Student IDA = new StudentBuilder().withName("Ida Mueller").withPhone("8482131")
+    public static final Student IDA = new StudentBuilder().withName("Ida Mueller").withPhone("84821319")
             .withEmail("hans@example.com").withAddress("chicago ave").build();
     public static final Student AMY = new StudentBuilder().withName(VALID_NAME_AMY).withPhone(VALID_PHONE_AMY)
             .withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY).withLevel(VALID_LEVEL_P6)

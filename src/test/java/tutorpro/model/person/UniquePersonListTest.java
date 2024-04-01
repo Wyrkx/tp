@@ -148,13 +148,13 @@ public class UniquePersonListTest {
 
     @Test
     public void setPersons_nullList_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> uniquePersonList.setPersons((List<Student>) null));
+        Assert.assertThrows(NullPointerException.class, () -> uniquePersonList.setPersons((List<Person>) null));
     }
 
     @Test
     public void setPersons_list_replacesOwnListWithProvidedList() {
         uniquePersonList.add(TypicalStudents.ALICE);
-        List<Student> personList = Collections.singletonList(TypicalStudents.BOB);
+        List<Person> personList = Collections.singletonList(TypicalStudents.BOB);
         uniquePersonList.setPersons(personList);
         UniquePersonList expectedUniquePersonList = new UniquePersonList();
         expectedUniquePersonList.add(TypicalStudents.BOB);
@@ -163,7 +163,7 @@ public class UniquePersonListTest {
 
     @Test
     public void setPersons_listWithDuplicatePersons_throwsDuplicatePersonException() {
-        List<Student> listWithDuplicatePersons = Arrays.asList(TypicalStudents.ALICE, TypicalStudents.ALICE);
+        List<Person> listWithDuplicatePersons = Arrays.asList(TypicalStudents.ALICE, TypicalStudents.ALICE);
         Assert.assertThrows(DuplicatePersonException.class, () -> uniquePersonList
                 .setPersons(listWithDuplicatePersons));
     }

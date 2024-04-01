@@ -1,6 +1,5 @@
 {
-  "_comment": "AddressBook save file which contains the same Person values as in TypicalPersons#getTypicalAddressBook()",
-  "persons" : [ {
+  "students" : [ {
     "name" : "Alice Pauline",
     "phone" : "94351253",
     "email" : "alice@example.com",
@@ -34,7 +33,7 @@
     "tags" : [ "Student" ]
   }, {
     "name" : "Elle Meyer",
-    "phone" : "9482224",
+    "phone" : "94822249",
     "email" : "werner@example.com",
     "address" : "michegan ave",
     "level" : "UNI",
@@ -42,7 +41,7 @@
     "tags" : [ "Student" ]
   }, {
     "name" : "Fiona Kunz",
-    "phone" : "9482427",
+    "phone" : "94824279",
     "email" : "lydia@example.com",
     "address" : "little tokyo",
     "level" : "P6",
@@ -50,7 +49,7 @@
     "tags" : [ "Student" ]
   }, {
     "name" : "George Best",
-    "phone" : "9482442",
+    "phone" : "94824429",
     "email" : "anna@example.com",
     "address" : "4th street",
     "level" : "J2",

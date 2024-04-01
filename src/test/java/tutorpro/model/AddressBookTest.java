@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import tutorpro.model.person.Person;
 import tutorpro.model.person.exceptions.DuplicatePersonException;
 import tutorpro.model.person.student.Student;
 import tutorpro.testutil.Assert;
@@ -28,7 +29,7 @@ public class AddressBookTest {
 
     @Test
     public void constructor() {
-        assertEquals(Collections.emptyList(), addressBook.getStudentList());
+        assertEquals(Collections.emptyList(), addressBook.getPersonList());
     }
 
     @Test
@@ -80,12 +81,12 @@ public class AddressBookTest {
 
     @Test
     public void getStudentList_modifyList_throwsUnsupportedOperationException() {
-        Assert.assertThrows(UnsupportedOperationException.class, () -> addressBook.getStudentList().remove(0));
+        Assert.assertThrows(UnsupportedOperationException.class, () -> addressBook.getPersonList().remove(0));
     }
 
     @Test
     public void toStringMethod() {
-        String expected = AddressBook.class.getCanonicalName() + "{persons=" + addressBook.getStudentList() + "}";
+        String expected = AddressBook.class.getCanonicalName() + "{persons=" + addressBook.getPersonList() + "}";
         assertEquals(expected, addressBook.toString());
     }
 
@@ -93,14 +94,14 @@ public class AddressBookTest {
      * A stub ReadOnlyAddressBook whose persons list can violate interface constraints.
      */
     private static class AddressBookStub implements ReadOnlyAddressBook {
-        private final ObservableList<Student> persons = FXCollections.observableArrayList();
+        private final ObservableList<Person> persons = FXCollections.observableArrayList();
 
         AddressBookStub(Collection<Student> persons) {
             this.persons.setAll(persons);
         }
 
         @Override
-        public ObservableList<Student> getStudentList() {
+        public ObservableList<Person> getPersonList() {
             return persons;
         }
     }

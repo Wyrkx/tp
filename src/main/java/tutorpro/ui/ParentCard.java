@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import tutorpro.model.person.parent.Parent;
+import tutorpro.model.person.student.Parent;
 
 
 /**
@@ -41,7 +41,7 @@ public class ParentCard extends UiPart<Region> {
     @FXML
     private FlowPane tags;
     @FXML
-    private FlowPane students;
+    private FlowPane children;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -57,8 +57,8 @@ public class ParentCard extends UiPart<Region> {
         parent.getTags().stream()
             .sorted(Comparator.comparing(tag -> tag.tagName))
             .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
-        parent.getStudents().stream()
+        parent.getChildren().stream()
             .sorted(Comparator.comparing(student -> student.getName().fullName))
-            .forEach(student -> students.getChildren().add(new Label(student.getName().fullName)));
+            .forEach(student -> children.getChildren().add(new Label(student.getName().fullName)));
     }
 }

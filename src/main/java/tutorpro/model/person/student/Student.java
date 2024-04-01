@@ -2,6 +2,7 @@ package tutorpro.model.person.student;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import javafx.scene.layout.Region;
@@ -82,10 +83,11 @@ public class Student extends Person {
                 .toString();
     }
 
-    /**
-     * Returns a UI representation of the person.
-     * @param displayIndex The index to be displayed on the card.
-     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getPhone(), getEmail(), getAddress(), getTags(), level, subjects);
+    }
+
     @Override
     public UiPart<Region> getCard(int displayIndex) {
         return new StudentCard(this, displayIndex);
