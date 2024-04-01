@@ -5,7 +5,7 @@
     "email" : "alice@example.com",
     "address" : "123, Jurong West Ave 6, #08-111",
     "level" : "P6",
-    "subjects" : [ "Math" ],
+    "subjects" : [ "Math-C"],
     "tags" : [ "Student" ]
   }, {
     "name" : "Benson Meier",
@@ -13,7 +13,7 @@
     "email" : "johnd@example.com",
     "address" : "311, Clementi Ave 2, #02-25",
     "level" : "S2",
-    "subjects" : [ "Finance" ],
+    "subjects" : [ "Finance-B+"],
     "tags" : [ "Student" ]
   }, {
     "name" : "Carl Kurz",
@@ -29,7 +29,7 @@
     "email" : "cornelia@example.com",
     "address" : "10th street",
     "level" : "K1",
-    "subjects" : [ "Reading" ],
+    "subjects" : [ "Reading-A-"],
     "tags" : [ "Student" ]
   }, {
     "name" : "Elle Meyer",
