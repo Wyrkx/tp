@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import tutorpro.commons.exceptions.IllegalValueException;
 import tutorpro.model.AddressBook;
 import tutorpro.model.ReadOnlyAddressBook;
+import tutorpro.model.person.Person;
 import tutorpro.model.person.student.Student;
 
 /**
@@ -20,15 +21,14 @@ import tutorpro.model.person.student.Student;
 class JsonSerializableAddressBook {
 
     public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
-
-    private final List<JsonAdaptedStudent> persons = new ArrayList<>();
+    private final List<JsonAdaptedStudent> students = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonSerializableAddressBook} with the given persons.
      */
     @JsonCreator
-    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedStudent> persons) {
-        this.persons.addAll(persons);
+    public JsonSerializableAddressBook(@JsonProperty("students") List<JsonAdaptedStudent> students) {
+        this.students.addAll(students);
     }
 
     /**
@@ -37,7 +37,8 @@ class JsonSerializableAddressBook {
      * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
      */
     public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
-        persons.addAll(source.getStudentList().stream().map(JsonAdaptedStudent::new).collect(Collectors.toList()));
+        students.addAll(source.getPersonList().stream().filter(person -> person instanceof Student)
+                .map(person -> new JsonAdaptedStudent((Student) person)).collect(Collectors.toList()));
     }
 
     /**
@@ -47,8 +48,8 @@ class JsonSerializableAddressBook {
      */
     public AddressBook toModelType() throws IllegalValueException {
         AddressBook addressBook = new AddressBook();
-        for (JsonAdaptedStudent jsonAdaptedStudent : persons) {
-            Student person = jsonAdaptedStudent.toModelType();
+        for (JsonAdaptedStudent jsonAdaptedStudent : students) {
+            Person person = jsonAdaptedStudent.toModelType();
             if (addressBook.hasPerson(person)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
             }

@@ -6,7 +6,7 @@ import tutorpro.model.person.Address;
 import tutorpro.model.person.Email;
 import tutorpro.model.person.Name;
 import tutorpro.model.person.Phone;
-import tutorpro.model.person.parent.Parent;
+import tutorpro.model.person.student.Parent;
 import tutorpro.model.person.student.Student;
 import tutorpro.model.tag.Tag;
 import tutorpro.model.util.SampleDataUtil;
@@ -48,7 +48,7 @@ public class ParentBuilder {
         email = parentToCopy.getEmail();
         address = parentToCopy.getAddress();
         tags = parentToCopy.getTags();
-        students = parentToCopy.getStudents();
+        students = parentToCopy.getChildren();
     }
 
     /**

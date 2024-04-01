@@ -25,6 +25,7 @@ import tutorpro.model.Model;
 import tutorpro.model.person.Address;
 import tutorpro.model.person.Email;
 import tutorpro.model.person.Name;
+import tutorpro.model.person.Person;
 import tutorpro.model.person.Phone;
 import tutorpro.model.person.student.Level;
 import tutorpro.model.person.student.Student;
@@ -75,18 +76,19 @@ public class EditCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException, ClassCastException {
         requireNonNull(model);
-        List<Student> lastShownList = model.getFilteredPersonList();
+        List<Person> lastShownList = model.getFilteredPersonList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
-        Student personToEdit = lastShownList.get(index.getZeroBased());
-        if (!(personToEdit instanceof Student)) {
-            throw new ClassCastException("class tutorpro.model.person.Person cannot be cast to class "
-                    + "tutorpro.model.person.student.Student");
+        Person personToEdit = lastShownList.get(index.getZeroBased());
+        Person editedPerson;
+        if (personToEdit instanceof Student) {
+            editedPerson = createEditedStudent((Student) personToEdit, editPersonDescriptor);
+        } else {
+            editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
         }
-        Student editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
 
         if (!personToEdit.isSamePerson(editedPerson) && model.hasPerson(editedPerson)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
@@ -98,10 +100,26 @@ public class EditCommand extends Command {
     }
 
     /**
+     * Creates and returns a {@code Person} with the details of {@code personToEdit}
+     * edited with {@code editPersonDescriptor}.
+     */
+    private static Person createEditedPerson(Person personToEdit, EditPersonDescriptor editPersonDescriptor) {
+        assert personToEdit != null;
+
+        Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
+        Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
+        Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
+        Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
+        Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
+    }
+
+    /**
      * Creates and returns a {@code Student} with the details of {@code studentToEdit}
      * edited with {@code editPersonDescriptor}.
      */
-    private static Student createEditedPerson(Student studentToEdit, EditPersonDescriptor editPersonDescriptor) {
+    private static Student createEditedStudent(Student studentToEdit, EditPersonDescriptor editPersonDescriptor) {
         assert studentToEdit != null;
 
         Name updatedName = editPersonDescriptor.getName().orElse(studentToEdit.getName());

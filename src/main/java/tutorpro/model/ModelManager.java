@@ -11,7 +11,7 @@ import javafx.collections.transformation.FilteredList;
 import tutorpro.commons.core.GuiSettings;
 import tutorpro.commons.core.LogsCenter;
 import tutorpro.commons.util.CollectionUtil;
-import tutorpro.model.person.student.Student;
+import tutorpro.model.person.Person;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -21,7 +21,7 @@ public class ModelManager implements Model {
 
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
-    private final FilteredList<Student> filteredPersons;
+    private final FilteredList<Person> filteredPersons;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -33,7 +33,7 @@ public class ModelManager implements Model {
 
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredPersons = new FilteredList<>(this.addressBook.getStudentList());
+        filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
     }
 
     public ModelManager() {
@@ -88,24 +88,24 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public boolean hasPerson(Student person) {
+    public boolean hasPerson(Person person) {
         requireNonNull(person);
         return addressBook.hasPerson(person);
     }
 
     @Override
-    public void deletePerson(Student target) {
+    public void deletePerson(Person target) {
         addressBook.removePerson(target);
     }
 
     @Override
-    public void addPerson(Student person) {
+    public void addPerson(Person person) {
         addressBook.addPerson(person);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
     }
 
     @Override
-    public void setPerson(Student target, Student editedPerson) {
+    public void setPerson(Person target, Person editedPerson) {
         CollectionUtil.requireAllNonNull(target, editedPerson);
 
         addressBook.setPerson(target, editedPerson);
@@ -118,12 +118,12 @@ public class ModelManager implements Model {
      * {@code versionedAddressBook}
      */
     @Override
-    public ObservableList<Student> getFilteredPersonList() {
+    public ObservableList<Person> getFilteredPersonList() {
         return filteredPersons;
     }
 
     @Override
-    public void updateFilteredPersonList(Predicate<Student> predicate) {
+    public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
     }

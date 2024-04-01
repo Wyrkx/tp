@@ -9,7 +9,7 @@ import tutorpro.logic.commands.exceptions.CommandException;
 import tutorpro.logic.parser.exceptions.ParseException;
 import tutorpro.model.Model;
 import tutorpro.model.ReadOnlyAddressBook;
-import tutorpro.model.person.student.Student;
+import tutorpro.model.person.Person;
 
 /**
  * API of the Logic component
@@ -32,7 +32,7 @@ public interface Logic {
     ReadOnlyAddressBook getAddressBook();
 
     /** Returns an unmodifiable view of the filtered list of persons */
-    ObservableList<Student> getFilteredPersonList();
+    ObservableList<Person> getFilteredPersonList();
 
     /**
      * Returns the user prefs' address book file path.

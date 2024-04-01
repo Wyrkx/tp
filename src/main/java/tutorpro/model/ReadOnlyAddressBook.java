@@ -1,7 +1,7 @@
 package tutorpro.model;
 
 import javafx.collections.ObservableList;
-import tutorpro.model.person.student.Student;
+import tutorpro.model.person.Person;
 
 /**
  * Unmodifiable view of an address book
@@ -18,6 +18,5 @@ public interface ReadOnlyAddressBook {
      * Returns an unmodifiable view of the student list.
      * This list will not contain any duplicate persons.
      */
-    ObservableList<Student> getStudentList();
-
+    ObservableList<Person> getPersonList();
 }

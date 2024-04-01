@@ -21,6 +21,7 @@ import tutorpro.model.AddressBook;
 import tutorpro.model.Model;
 import tutorpro.model.ReadOnlyAddressBook;
 import tutorpro.model.ReadOnlyUserPrefs;
+import tutorpro.model.person.Person;
 import tutorpro.model.person.student.Student;
 import tutorpro.testutil.Assert;
 import tutorpro.testutil.StudentBuilder;
@@ -121,7 +122,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public void addPerson(Student person) {
+        public void addPerson(Person person) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -136,27 +137,27 @@ public class AddCommandTest {
         }
 
         @Override
-        public boolean hasPerson(Student person) {
+        public boolean hasPerson(Person person) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void deletePerson(Student target) {
+        public void deletePerson(Person target) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setPerson(Student target, Student editedPerson) {
+        public void setPerson(Person target, Person editedPerson) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ObservableList<Student> getFilteredPersonList() {
+        public ObservableList<Person> getFilteredPersonList() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void updateFilteredPersonList(Predicate<Student> predicate) {
+        public void updateFilteredPersonList(Predicate<Person> predicate) {
             throw new AssertionError("This method should not be called.");
         }
     }
@@ -165,15 +166,15 @@ public class AddCommandTest {
      * A Model stub that contains a single person.
      */
     private class ModelStubWithPerson extends ModelStub {
-        private final Student person;
+        private final Person person;
 
-        ModelStubWithPerson(Student person) {
+        ModelStubWithPerson(Person person) {
             requireNonNull(person);
             this.person = person;
         }
 
         @Override
-        public boolean hasPerson(Student person) {
+        public boolean hasPerson(Person person) {
             requireNonNull(person);
             return this.person.isSamePerson(person);
         }
@@ -183,16 +184,16 @@ public class AddCommandTest {
      * A Model stub that always accept the person being added.
      */
     private class ModelStubAcceptingPersonAdded extends ModelStub {
-        final ArrayList<Student> personsAdded = new ArrayList<>();
+        final ArrayList<Person> personsAdded = new ArrayList<>();
 
         @Override
-        public boolean hasPerson(Student person) {
+        public boolean hasPerson(Person person) {
             requireNonNull(person);
             return personsAdded.stream().anyMatch(person::isSamePerson);
         }
 
         @Override
-        public void addPerson(Student person) {
+        public void addPerson(Person person) {
             requireNonNull(person);
             personsAdded.add(person);
         }

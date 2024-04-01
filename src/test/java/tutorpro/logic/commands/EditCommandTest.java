@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
-//import static tutorpro.logic.commands.CommandTestUtil.assertCommandSuccess;
 
 import org.junit.jupiter.api.Test;
 
@@ -17,6 +16,7 @@ import tutorpro.model.UserPrefs;
 import tutorpro.model.person.Person;
 import tutorpro.model.person.student.Student;
 import tutorpro.testutil.EditPersonDescriptorBuilder;
+import tutorpro.testutil.PersonBuilder;
 import tutorpro.testutil.StudentBuilder;
 import tutorpro.testutil.TypicalIndexes;
 import tutorpro.testutil.TypicalStudents;
@@ -87,9 +87,9 @@ public class EditCommandTest {
     public void execute_filteredList_success() {
         CommandTestUtil.showPersonAtIndex(model, TypicalIndexes.INDEX_FIRST_PERSON);
 
-        Student personInFilteredList = model.getFilteredPersonList()
+        Person personInFilteredList = model.getFilteredPersonList()
                 .get(TypicalIndexes.INDEX_FIRST_PERSON.getZeroBased());
-        Student editedPerson = new StudentBuilder(personInFilteredList)
+        Person editedPerson = new PersonBuilder(personInFilteredList)
                 .withName(CommandTestUtil.VALID_NAME_BOB).build();
         EditCommand editCommand = new EditCommand(TypicalIndexes.INDEX_FIRST_PERSON,
                 new EditPersonDescriptorBuilder().withName(CommandTestUtil.VALID_NAME_BOB).build());
@@ -120,7 +120,7 @@ public class EditCommandTest {
         CommandTestUtil.showPersonAtIndex(model, TypicalIndexes.INDEX_FIRST_PERSON);
 
         // edit person in filtered list into a duplicate in address book
-        Person personInList = model.getAddressBook().getStudentList()
+        Person personInList = model.getAddressBook().getPersonList()
                 .get(TypicalIndexes.INDEX_SECOND_PERSON.getZeroBased());
         if (!(personInList instanceof Student)) {
             fail();
@@ -151,7 +151,7 @@ public class EditCommandTest {
         CommandTestUtil.showPersonAtIndex(model, TypicalIndexes.INDEX_FIRST_PERSON);
         Index outOfBoundIndex = TypicalIndexes.INDEX_SECOND_PERSON;
         // ensures that outOfBoundIndex is still in bounds of address book list
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getStudentList().size());
+        assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getPersonList().size());
 
         EditCommand editCommand = new EditCommand(outOfBoundIndex,
                 new EditPersonDescriptorBuilder().withName(CommandTestUtil.VALID_NAME_BOB).build());

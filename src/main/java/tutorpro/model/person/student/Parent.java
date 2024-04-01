@@ -1,8 +1,9 @@
-package tutorpro.model.person.parent;
+package tutorpro.model.person.student;
 
 import java.util.HashSet;
 import java.util.Set;
 
+import javafx.scene.layout.Region;
 import tutorpro.commons.util.CollectionUtil;
 import tutorpro.commons.util.ToStringBuilder;
 import tutorpro.model.person.Address;
@@ -10,8 +11,9 @@ import tutorpro.model.person.Email;
 import tutorpro.model.person.Name;
 import tutorpro.model.person.Person;
 import tutorpro.model.person.Phone;
-import tutorpro.model.person.student.Student;
 import tutorpro.model.tag.Tag;
+import tutorpro.ui.ParentCard;
+import tutorpro.ui.UiPart;
 
 /**
  * Represents a Parent in TutorPro.
@@ -20,23 +22,23 @@ public class Parent extends Person {
 
     public static final Tag PARENT_TAG = new Tag("Parent");
 
-    private final Set<Student> students = new HashSet<>();
+    private final Set<Student> children = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Parent(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Set<Student> students) {
+    public Parent(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Set<Student> children) {
         super(name, phone, email, address, tags);
         addTags(PARENT_TAG);
-        CollectionUtil.requireAllNonNull(students);
-        this.students.addAll(students);
+        CollectionUtil.requireAllNonNull(children);
+        this.children.addAll(children);
     }
     /**
      * Creates a copy of the given Parent.
      * @return The students of the parent.
      */
-    public Set<Student> getStudents() {
-        return students;
+    public Set<Student> getChildren() {
+        return children;
     }
 
     @Override
@@ -55,7 +57,7 @@ public class Parent extends Person {
                 && otherParent.getEmail().equals(getEmail())
                 && otherParent.getAddress().equals(getAddress())
                 && otherParent.getTags().equals(getTags())
-                && otherParent.getStudents().equals(getStudents());
+                && otherParent.getChildren().equals(getChildren());
     }
 
     @Override
@@ -66,7 +68,12 @@ public class Parent extends Person {
                 .add("email", getEmail())
                 .add("address", getAddress())
                 .add("tags", getTags())
-                .add("students", getStudents())
+                .add("children", getChildren())
                 .toString();
+    }
+
+    @Override
+    public UiPart<Region> getCard(int displayIndex) {
+        return new ParentCard(this, displayIndex);
     }
 }

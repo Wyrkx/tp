@@ -6,8 +6,9 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import tutorpro.commons.util.ToStringBuilder;
+import tutorpro.model.person.Person;
 import tutorpro.model.person.UniquePersonList;
-import tutorpro.model.person.student.Student;
+import tutorpro.model.reminder.Calendar;
 
 /**
  * Wraps all data at the address-book level
@@ -16,6 +17,7 @@ import tutorpro.model.person.student.Student;
 public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
+    private final Calendar calendar;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -26,6 +28,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     {
         persons = new UniquePersonList();
+        calendar = new Calendar();
     }
 
     public AddressBook() {}
@@ -44,7 +47,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * Replaces the contents of the person list with {@code persons}.
      * {@code persons} must not contain duplicate persons.
      */
-    public void setPersons(List<Student> persons) {
+    public void setPersons(List<Person> persons) {
         this.persons.setPersons(persons);
     }
 
@@ -54,7 +57,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void resetData(ReadOnlyAddressBook newData) {
         requireNonNull(newData);
 
-        setPersons(newData.getStudentList());
+        setPersons(newData.getPersonList());
     }
 
     //// person-level operations
@@ -62,7 +65,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Returns true if a person with the same identity as {@code person} exists in the address book.
      */
-    public boolean hasPerson(Student person) {
+    public boolean hasPerson(Person person) {
         requireNonNull(person);
         return persons.contains(person);
     }
@@ -71,7 +74,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * Adds a person to the address book.
      * The person must not already exist in the address book.
      */
-    public void addPerson(Student p) {
+    public void addPerson(Person p) {
         persons.add(p);
     }
 
@@ -81,7 +84,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * The person identity of {@code editedPerson} must not be the same as another
      * existing person in the address book.
      */
-    public void setPerson(Student target, Student editedPerson) {
+    public void setPerson(Person target, Person editedPerson) {
         requireNonNull(editedPerson);
 
         persons.setPerson(target, editedPerson);
@@ -91,7 +94,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * Removes {@code key} from this {@code AddressBook}.
      * {@code key} must exist in the address book.
      */
-    public void removePerson(Student key) {
+    public void removePerson(Person key) {
         persons.remove(key);
     }
 
@@ -105,7 +108,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     @Override
-    public ObservableList<Student> getStudentList() {
+    public ObservableList<Person> getPersonList() {
         return persons.asUnmodifiableObservableList();
     }
 

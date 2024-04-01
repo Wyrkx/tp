@@ -1,5 +1,6 @@
 package tutorpro.model.util;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,8 +11,10 @@ import tutorpro.model.ReadOnlyAddressBook;
 import tutorpro.model.person.Address;
 import tutorpro.model.person.Email;
 import tutorpro.model.person.Name;
+import tutorpro.model.person.Person;
 import tutorpro.model.person.Phone;
 import tutorpro.model.person.student.Level;
+import tutorpro.model.person.student.Parent;
 import tutorpro.model.person.student.Student;
 import tutorpro.model.person.student.Subject;
 import tutorpro.model.tag.Tag;
@@ -24,28 +27,16 @@ public class SampleDataUtil {
         new Level("UNI")};
     private static final Subject subject = new Subject("Math");
     private static final Set<Subject> SUBJECTS = new HashSet<>();
-    public static Student[] getSamplePersons() {
-        SUBJECTS.add(subject);
-        return new Student[] {
-            new Student(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@example.com"),
-                new Address("Blk 30 Geylang Street 29, #06-40"), getTagSet("friends"),
-                LEVELS[0], SUBJECTS),
-            new Student(new Name("Bernice Yu"), new Phone("99272758"), new Email("berniceyu@example.com"),
-                new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"), getTagSet("colleagues", "friends"),
-                LEVELS[1], SUBJECTS),
-            new Student(new Name("Charlotte Oliveiro"), new Phone("93210283"), new Email("charlotte@example.com"),
-                new Address("Blk 11 Ang Mo Kio Street 74, #11-04"), getTagSet("neighbours"),
-                LEVELS[2], SUBJECTS),
-            new Student(new Name("David Li"), new Phone("91031282"), new Email("lidavid@example.com"),
-                new Address("Blk 436 Serangoon Gardens Street 26, #16-43"), getTagSet("family"),
-                LEVELS[3], SUBJECTS),
-            new Student(new Name("Irfan Ibrahim"), new Phone("92492021"), new Email("irfan@example.com"),
-                new Address("Blk 47 Tampines Street 20, #17-35"), getTagSet("classmates"),
-                LEVELS[0], SUBJECTS),
-            new Student(new Name("Roy Balakrishnan"), new Phone("92624417"), new Email("royb@example.com"),
-                new Address("Blk 45 Aljunied Street 85, #11-31"), getTagSet("colleagues"),
-                LEVELS[1], SUBJECTS)
-        };
+    public static Person[] getSamplePersons() {
+        ArrayList<Student> students = new ArrayList<>(Arrays.asList(getSampleStudents()));
+        Set<Student> children = new HashSet<>();
+        children.add(students.get(2));
+        children.add(students.get(3));
+        ArrayList<Person> people = new ArrayList<>(students);
+        people.add(new Parent(new Name("Donovan Li"), new Phone("98758712"), new Email("donovan@example.com"),
+                new Address("Blk 11 Ang Mo Kio Street 74, #11-04"),
+                getTagSet(), children));
+        return people.toArray(new Person[]{});
     }
 
     public static Student[] getSampleStudents() {
@@ -56,11 +47,11 @@ public class SampleDataUtil {
             new Student(new Name("Bernice Yu"), new Phone("99272758"), new Email("berniceyu@example.com"),
                     new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"),
                     getTagSet(), new Level("S2"), getSubjectSet("Math", "English")),
-            new Student(new Name("Charlotte Oliveiro"), new Phone("93210283"), new Email("charlotte@example.com"),
+            new Student(new Name("Charlotte Li"), new Phone("93210283"), new Email("charlotte@example.com"),
                     new Address("Blk 11 Ang Mo Kio Street 74, #11-04"),
                     getTagSet(), new Level("J1"), getSubjectSet("Physics")),
             new Student(new Name("David Li"), new Phone("91031282"), new Email("lidavid@example.com"),
-                    new Address("Blk 436 Serangoon Gardens Street 26, #16-43"),
+                    new Address("Blk 11 Ang Mo Kio Street 74, #11-04"),
                     getTagSet(), new Level("UNI"), getSubjectSet("Chemistry", "Biology")),
             new Student(new Name("Irfan Ibrahim"), new Phone("92492021"), new Email("irfan@example.com"),
                     new Address("Blk 47 Tampines Street 20, #17-35"),
@@ -73,7 +64,7 @@ public class SampleDataUtil {
 
     public static ReadOnlyAddressBook getSampleAddressBook() {
         AddressBook sampleAb = new AddressBook();
-        for (Student samplePerson : getSampleStudents()) {
+        for (Person samplePerson : getSamplePersons()) {
             sampleAb.addPerson(samplePerson);
         }
         return sampleAb;

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import tutorpro.model.person.parent.Parent;
+import tutorpro.model.person.student.Parent;
 import tutorpro.model.util.SampleDataUtil;
 
 /**

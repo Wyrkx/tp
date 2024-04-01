@@ -13,8 +13,8 @@ public class Phone {
 
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Phone numbers should only contain numbers, and it should be at least 3 digits long";
-    public static final String VALIDATION_REGEX = "\\d{3,}";
+            "Phone numbers should only contain numbers, and it should be 8 digits long";
+    public static final String VALIDATION_REGEX = "\\d{8}";
     public final String value;
 
     /**
@@ -45,7 +45,6 @@ public class Phone {
         if (other == this) {
             return true;
         }
-
         // instanceof handles nulls
         if (!(other instanceof Phone)) {
             return false;
