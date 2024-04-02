@@ -16,14 +16,18 @@ public class CommandResult {
     /** Help information should be shown to the user. */
     private final boolean showHelp;
 
+    /** User's schedule should be shown to the user. */
+    private final boolean showSchedule;
+
     /** The application should exit. */
     private final boolean exit;
 
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
-    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit) {
+    public CommandResult(String feedbackToUser, boolean showHelp, boolean showSchedule, boolean exit) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
+        this.showSchedule = showSchedule;
         this.showHelp = showHelp;
         this.exit = exit;
     }
@@ -33,7 +37,7 @@ public class CommandResult {
      * and other fields set to their default value.
      */
     public CommandResult(String feedbackToUser) {
-        this(feedbackToUser, false, false);
+        this(feedbackToUser, false, false, false);
     }
 
     /**
@@ -48,7 +52,7 @@ public class CommandResult {
     /**
      * Constructs a {@code CommandResult} with the specified {@code feedbackToUser},
      * and other fields set to their default value.
-     * @return a boolean of whether to show help
+     * @return a boolean indicating whether to show help
      */
     public boolean isShowHelp() {
         return showHelp;
@@ -57,7 +61,16 @@ public class CommandResult {
     /**
      * Constructs a {@code CommandResult} with the specified {@code feedbackToUser},
      * and other fields set to their default value.
-     * @return a boolean of whether to exit
+     * @return a boolean indicating whether to show schedule
+     */
+    public boolean isShowSchedule() {
+        return showSchedule;
+    }
+
+    /**
+     * Constructs a {@code CommandResult} with the specified {@code feedbackToUser},
+     * and other fields set to their default value.
+     * @return a boolean indicating whether to exit
      */
     public boolean isExit() {
         return exit;
@@ -77,12 +90,13 @@ public class CommandResult {
         CommandResult otherCommandResult = (CommandResult) other;
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
                 && showHelp == otherCommandResult.showHelp
+                && showSchedule == otherCommandResult.showSchedule
                 && exit == otherCommandResult.exit;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(feedbackToUser, showHelp, exit);
+        return Objects.hash(feedbackToUser, showHelp, showSchedule, exit);
     }
 
     @Override
@@ -90,6 +104,7 @@ public class CommandResult {
         return new ToStringBuilder(this)
                 .add("feedbackToUser", feedbackToUser)
                 .add("showHelp", showHelp)
+                .add("showSchedule", showSchedule)
                 .add("exit", exit)
                 .toString();
     }
