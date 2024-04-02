@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-//import static tutorpro.testutil.Assert.assertThrows;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -23,6 +22,7 @@ import tutorpro.model.ReadOnlyAddressBook;
 import tutorpro.model.ReadOnlyUserPrefs;
 import tutorpro.model.person.Person;
 import tutorpro.model.person.student.Student;
+import tutorpro.model.schedule.Reminder;
 import tutorpro.testutil.Assert;
 import tutorpro.testutil.StudentBuilder;
 import tutorpro.testutil.TypicalStudents;
@@ -158,6 +158,11 @@ public class AddCommandTest {
 
         @Override
         public void updateFilteredPersonList(Predicate<Person> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addReminder(Reminder reminder) {
             throw new AssertionError("This method should not be called.");
         }
     }

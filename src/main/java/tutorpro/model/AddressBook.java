@@ -8,6 +8,8 @@ import javafx.collections.ObservableList;
 import tutorpro.commons.util.ToStringBuilder;
 import tutorpro.model.person.Person;
 import tutorpro.model.person.UniquePersonList;
+import tutorpro.model.schedule.Reminder;
+import tutorpro.model.schedule.Schedule;
 
 /**
  * Wraps all data at the address-book level
@@ -16,6 +18,7 @@ import tutorpro.model.person.UniquePersonList;
 public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
+    private final Schedule schedule;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -26,6 +29,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     {
         persons = new UniquePersonList();
+        schedule = new Schedule();
     }
 
     public AddressBook() {}
@@ -93,6 +97,15 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void removePerson(Person key) {
         persons.remove(key);
+    }
+
+    //// reminder-level operations
+
+    /**
+     * Adds a reminder to the schedule.
+     */
+    public void addReminder(Reminder r) {
+        schedule.add(r);
     }
 
     //// util methods

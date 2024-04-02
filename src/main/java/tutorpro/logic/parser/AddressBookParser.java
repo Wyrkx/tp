@@ -13,10 +13,12 @@ import tutorpro.logic.commands.ClearCommand;
 import tutorpro.logic.commands.Command;
 import tutorpro.logic.commands.DeleteCommand;
 import tutorpro.logic.commands.EditCommand;
+import tutorpro.logic.commands.EventCommand;
 import tutorpro.logic.commands.ExitCommand;
 import tutorpro.logic.commands.FindCommand;
 import tutorpro.logic.commands.HelpCommand;
 import tutorpro.logic.commands.ListCommand;
+import tutorpro.logic.commands.RemindCommand;
 import tutorpro.logic.commands.ScheduleCommand;
 import tutorpro.logic.parser.exceptions.ParseException;
 
@@ -80,6 +82,12 @@ public class AddressBookParser {
 
         case ScheduleCommand.COMMAND_WORD:
             return new ScheduleCommand();
+
+        case RemindCommand.COMMAND_WORD:
+            return new RemindCommandParser().parse(arguments);
+
+        case EventCommand.COMMAND_WORD:
+            return new EventCommandParser().parse(arguments);
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);

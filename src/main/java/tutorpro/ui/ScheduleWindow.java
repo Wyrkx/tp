@@ -1,5 +1,7 @@
 package tutorpro.ui;
 
+import static tutorpro.ui.HelpWindow.USERGUIDE_URL;
+
 import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
@@ -9,6 +11,10 @@ import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.stage.Stage;
 import tutorpro.commons.core.LogsCenter;
+
+/**
+ * Window showing the Schedule.
+ */
 public class ScheduleWindow extends UiPart<Stage> {
 
     //public static final String USERGUIDE_URL = "https://tarinpairor.github.io/tp/";
@@ -88,11 +94,11 @@ public class ScheduleWindow extends UiPart<Stage> {
     /**
      * Copies the URL to the user guide to the clipboard.
      */
-//    @FXML
-//    private void copyUrl() {
-//        final Clipboard clipboard = Clipboard.getSystemClipboard();
-//        final ClipboardContent url = new ClipboardContent();
-//        url.putString(USERGUIDE_URL);
-//        clipboard.setContent(url);
-//    }
+    @FXML
+    private void copyUrl() {
+        final Clipboard clipboard = Clipboard.getSystemClipboard();
+        final ClipboardContent url = new ClipboardContent();
+        url.putString(USERGUIDE_URL);
+        clipboard.setContent(url);
+    }
 }

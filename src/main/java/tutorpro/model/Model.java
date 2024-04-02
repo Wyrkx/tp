@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import tutorpro.commons.core.GuiSettings;
 import tutorpro.model.person.Person;
+import tutorpro.model.schedule.Reminder;
 
 /**
  * The API of the Model component.
@@ -84,4 +85,9 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
+
+    /**
+     * Adds the given reminder.
+     */
+    void addReminder(Reminder reminder);
 }

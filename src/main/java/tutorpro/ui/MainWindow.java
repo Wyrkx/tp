@@ -43,7 +43,7 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
-    private MenuItem scheduleMenuitem;
+    private MenuItem scheduleMenuItem;
 
     @FXML
     private StackPane personListPanelPlaceholder;
@@ -79,7 +79,7 @@ public class MainWindow extends UiPart<Stage> {
 
     private void setAccelerators() {
         setAccelerator(helpMenuItem, KeyCombination.valueOf("F1"));
-        setAccelerator(scheduleMenuitem, KeyCombination.valueOf("F2"));
+        setAccelerator(scheduleMenuItem, KeyCombination.valueOf("F2"));
     }
 
     /**

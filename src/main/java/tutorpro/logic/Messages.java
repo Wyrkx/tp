@@ -6,6 +6,8 @@ import java.util.stream.Stream;
 
 import tutorpro.logic.parser.Prefix;
 import tutorpro.model.person.Person;
+import tutorpro.model.schedule.Event;
+import tutorpro.model.schedule.Reminder;
 
 /**
  * Container for user visible messages.
@@ -48,4 +50,31 @@ public class Messages {
         return builder.toString();
     }
 
+    /**
+     * Formats the {@code reminder} for display to the user.
+     */
+    public static String format(Reminder reminder) {
+        final StringBuilder builder = new StringBuilder();
+        builder.append(reminder.getName())
+                .append("; Time: ")
+                .append(reminder.getTime())
+                .append("; Tags: ");
+        reminder.getTags().forEach(builder::append);
+        return builder.toString();
+    }
+
+    /**
+     * Formats the {@code event} for display to the user.
+     */
+    public static String format(Event event) {
+        final StringBuilder builder = new StringBuilder();
+        builder.append(event.getName())
+                .append("; Time: ")
+                .append(event.getTime())
+                .append("; Duration: ")
+                .append(event.getDuration())
+                .append("; Tags: ");
+        event.getTags().forEach(builder::append);
+        return builder.toString();
+    }
 }
