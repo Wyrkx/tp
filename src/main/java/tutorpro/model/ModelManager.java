@@ -12,6 +12,7 @@ import tutorpro.commons.core.GuiSettings;
 import tutorpro.commons.core.LogsCenter;
 import tutorpro.commons.util.CollectionUtil;
 import tutorpro.model.person.Person;
+import tutorpro.model.schedule.Reminder;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -109,6 +110,12 @@ public class ModelManager implements Model {
         CollectionUtil.requireAllNonNull(target, editedPerson);
 
         addressBook.setPerson(target, editedPerson);
+    }
+
+    @Override
+    public void addReminder(Reminder reminder) {
+        addressBook.addReminder(reminder);
+
     }
 
     //=========== Filtered Person List Accessors =============================================================

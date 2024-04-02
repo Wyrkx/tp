@@ -25,11 +25,18 @@ public class CommandResult {
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
-    public CommandResult(String feedbackToUser, boolean showHelp, boolean showSchedule, boolean exit) {
+    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, boolean showSchedule) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showSchedule = showSchedule;
         this.showHelp = showHelp;
         this.exit = exit;
+    }
+
+    /**
+     * Constructs a {@code CommandResult} with the specified fields, with {@code showSchedule} defaulting to false.
+     */
+    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit) {
+        this(feedbackToUser, showHelp, exit, false);
     }
 
     /**
@@ -104,8 +111,8 @@ public class CommandResult {
         return new ToStringBuilder(this)
                 .add("feedbackToUser", feedbackToUser)
                 .add("showHelp", showHelp)
-                .add("showSchedule", showSchedule)
                 .add("exit", exit)
+                .add("showSchedule", showSchedule)
                 .toString();
     }
 
