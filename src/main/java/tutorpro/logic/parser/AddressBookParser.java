@@ -17,6 +17,7 @@ import tutorpro.logic.commands.ExitCommand;
 import tutorpro.logic.commands.FindCommand;
 import tutorpro.logic.commands.HelpCommand;
 import tutorpro.logic.commands.ListCommand;
+import tutorpro.logic.commands.ScheduleCommand;
 import tutorpro.logic.parser.exceptions.ParseException;
 
 /**
@@ -76,6 +77,9 @@ public class AddressBookParser {
 
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
+
+        case ScheduleCommand.COMMAND_WORD:
+            return new ScheduleCommand();
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
