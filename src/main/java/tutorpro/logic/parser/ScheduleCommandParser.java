@@ -1,6 +1,5 @@
 package tutorpro.logic.parser;
 
-import static tutorpro.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import tutorpro.logic.commands.ScheduleCommand;
 import tutorpro.logic.parser.exceptions.ParseException;
