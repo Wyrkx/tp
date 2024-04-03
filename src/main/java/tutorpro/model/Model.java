@@ -1,6 +1,7 @@
 package tutorpro.model;
 
 import java.nio.file.Path;
+import java.util.List;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -90,4 +91,15 @@ public interface Model {
      * Adds the given reminder.
      */
     void addReminder(Reminder reminder);
+
+    /**
+     *  Returns the list of reminders and events in the next n days
+     */
+    List<Reminder> getTruncatedSchedule(int n);
+
+    /**
+     * Returns the full list of reminders and events.
+     *
+     */
+    List<Reminder> getSchedule();
 }
