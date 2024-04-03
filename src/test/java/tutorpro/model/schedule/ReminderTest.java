@@ -3,14 +3,52 @@ package tutorpro.model.schedule;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import tutorpro.model.person.Person;
+import tutorpro.model.tag.Tag;
+import tutorpro.testutil.PersonBuilder;
+import tutorpro.ui.ReminderCard;
 
 
 
 public class ReminderTest {
     public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    Person person1 = new PersonBuilder().build();
+    Person person2 = new PersonBuilder().build();
+    Set<Person> people = new HashSet<Person>() {{
+        add(person1);
+        add(person2);
+    }};
+
+    Tag tag1 = new Tag("Tag1");
+    Tag tag2 = new Tag("Tag2");
+    Set<Tag> tags = new HashSet<Tag>() {{
+        add(tag1);
+        add(tag2);
+    }};
+
+    private Reminder reminder = new Reminder("Test", LocalDateTime.now(), "Notes", people, tags);
+
+    @Test
+    public void getPeople_returnsCorrectPeople() {
+        Assertions.assertEquals(people, reminder.getPeople());
+    }
+
+    @Test
+    public void getTags_returnsCorrectTags() {
+        Assertions.assertEquals(tags, reminder.getTags());
+    }
+
+    @Test
+    public void hashCode_returnsCorrectHashCode() {
+        int expectedHashCode = Objects.hash("Test", reminder.getTime(), "Notes", people, tags);
+        Assertions.assertEquals(expectedHashCode, reminder.hashCode());
+    }
 
     private Reminder sample1 = new Reminder("sample1",
             LocalDateTime.parse("2024-05-05 12:00", DATE_TIME_FORMATTER), "sample1",
@@ -53,6 +91,21 @@ public class ReminderTest {
 
         // Different object -> returns false
         Assertions.assertFalse(sample1.equals(sample2));
+
+        // Null object -> returns false
+        Assertions.assertFalse(sample1.equals(null));
+
+        // Different class -> returns false
+        String notAnEvent = "I am not an Event object";
+        Assertions.assertFalse(sample1.equals(notAnEvent));
+
+        // Different name -> returns false
+        Reminder differentNameReminder = new Reminder("DifferentName", sample1.getTime(), sample1.getNotes(), sample1.getPeople(), sample1.getTags());
+        Assertions.assertFalse(sample1.equals(differentNameReminder));
+
+        // Same name -> returns true
+        Reminder sameNameReminder = new Reminder(sample1.getName(), sample1.getTime(), sample1.getNotes(), sample1.getPeople(), sample1.getTags());
+        Assertions.assertTrue(sample1.equals(sameNameReminder));
 
     }
 }

@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import tutorpro.commons.util.ToStringBuilder;
 import tutorpro.model.person.student.Parent;
 import tutorpro.testutil.Assert;
 import tutorpro.testutil.ParentBuilder;
@@ -49,6 +50,21 @@ public class ParentTest {
         Parent editedAlice = new ParentBuilder(TypicalParents.JUCHIE).withName("Bob").build();
         Assertions.assertFalse(TypicalParents.JUCHIE.equals(editedAlice));
 
+    }
+
+    @Test
+    public void toString_checkCorrectFormat() {
+        Parent parent = new ParentBuilder().withName("John").withPhone("12345678").withEmail("john@example.com")
+                .withAddress("123 Street").withStudents(TypicalStudents.ALICE).build();
+        String expectedString = new ToStringBuilder(parent)
+                .add("name", "John")
+                .add("phone", "12345678")
+                .add("email", "john@example.com")
+                .add("address", "123 Street")
+                .add("tags", parent.getTags())
+                .add("children", parent.getChildren())
+                .toString();
+        Assertions.assertEquals(expectedString, parent.toString());
     }
 
     @Test
