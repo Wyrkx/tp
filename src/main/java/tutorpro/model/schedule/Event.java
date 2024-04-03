@@ -14,12 +14,13 @@ import tutorpro.model.tag.Tag;
 public class Event extends Reminder {
 
     public static final String END_BEFORE_START = "Events cannot end before they start.";
-    private final long duration;
+
+    private final float duration;
 
     /**
      * Every field must be present and not null.
      */
-    public Event(String name, LocalDateTime startTime, long duration, String notes, Set<Person> people, Set<Tag> tags) {
+    public Event(String name, LocalDateTime startTime, float duration, String notes, Set<Person> people, Set<Tag> tags) {
         super(name, startTime, notes, people, tags);
         CollectionUtil.requireAllNonNull(duration);
         this.duration = duration;
@@ -28,12 +29,13 @@ public class Event extends Reminder {
     /**
      * Returns the duration of the event in hours.
      */
-    public long getDuration() {
+    public float getDuration() {
         return duration;
     }
 
     public LocalDateTime getEndTime() {
-        return getTime().plusHours(duration);
+        long durationInMinutes = (long) duration * 60;
+        return getTime().plusMinutes(durationInMinutes);
     }
 
     @Override

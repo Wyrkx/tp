@@ -160,6 +160,7 @@ public class MainWindow extends UiPart<Stage> {
     public void handleSchedule() {
         if (!scheduleWindow.isShowing()) {
             scheduleWindow.show();
+            scheduleWindow.fillInnerParts();
         } else {
             scheduleWindow.focus();
         }

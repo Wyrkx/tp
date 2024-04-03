@@ -6,9 +6,12 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import javafx.scene.layout.Region;
 import tutorpro.commons.util.CollectionUtil;
 import tutorpro.model.person.Person;
 import tutorpro.model.tag.Tag;
+import tutorpro.ui.ReminderCard;
+import tutorpro.ui.UiPart;
 
 /**
  * A class representing a Reminder.
@@ -71,5 +74,8 @@ public class Reminder {
 
     public int hashCode() {
         return Objects.hash(name, time, notes, people, tags);
+    }
+    public UiPart<Region> getCard(int displayIndex) {
+        return new ReminderCard(this, displayIndex);
     }
 }
