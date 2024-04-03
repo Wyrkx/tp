@@ -5,8 +5,22 @@ title: User Guide
 
 Hi Tutors! A warm welcome to our user guide, your companion for navigating and finding the full potential of TutorPro.
 
-* Table of Contents
-{:toc}
+## Table of Contents
+* [Quick start](#quick-start)
+* [Features](#features)
+  * [Add new students: `add`](#adding-new-students--add)
+  * [Edit student's details: `edit`](#editing-a-students-details--edit)
+  * [Delete student: `delete`](#deleting-existing-students--delete)
+  * [Find certain student: `find`](#finding-certain-students--find)
+  * [Add events: `event`](#adding-events--event)
+  * [Set reminders: `remind`](#setting-reminders--remind)
+  * [Display schedule: `schedule`](#displaying-your-schedule--schedule)
+  * [Clear all entries: `clear`](#clearing-all-entries--clear)
+  * [List all persons](#listing-all-persons--list)
+  * [Exit: `exit`](#exiting-the-program--exit)
+* [FAQ](#faq)
+* [Known Issues](#known-issues)
+* [Command Summay](#command-summary)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -41,9 +55,9 @@ Hi Tutors! A warm welcome to our user guide, your companion for navigating and f
 
 ## Features
 
-<div markdown="block" class="alert alert-info">
+**<div markdown="block" class="alert alert-info">
 
-**:information_source: Notes about the command format:**<br>
+:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   E.g. in `add STUDENT_NAME`, `STUDENT_NAME` is a parameter which can be used as `add John Doe`.
@@ -61,13 +75,13 @@ Hi Tutors! A warm welcome to our user guide, your companion for navigating and f
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </div>
 
-### Adding new Students: `add`
+### Adding new Students : `add`
 
 Add a new student with their details to your TutorPro list.
 
 Format: `add n/STUDENT_NAME p/PHONE_NUMBER e/EMAIL_ADDRESS a/ADDRESS lvl/EDUCATION_LEVEL sub/SUBJECT-GRADE…  `
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+**<div markdown="span" class="alert alert-primary">:bulb: Tip:**
 A student can have 1 or more subjects.
 </div>
 
@@ -75,7 +89,7 @@ Examples:
 * `add n/John Doe p/98765432 e/johndoe@gmail.com a/Clementi Ave 123, Blk 321, #12-345 lvl/P5 sub/math-B sub/science-C`
 * `add n/Jany Doh p/97862354 e/janydoh@email.com a/Changi St 79, Blk 12, #03-456 lvl/S5 sub/english-B`
 
-<div markdown="span" class="alert alert-primary">:bulb: **Caution:**
+**<div markdown="span" class="alert alert-primary">:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
 </div>
 
@@ -99,7 +113,7 @@ Examples:
 *  `edit John Doe cat/sub new/math-A` Edits the subject John Doe is being tutored for and his grade to `Math` and `A` respectively.
 *  `edit Jany Doh cat/lvl new/s2` Edits the education level of Jany Doh to `S2`.
 
-<div markdown="span" class="alert alert-primary">:bulb: **Caution:**
+**<div markdown="span" class="alert alert-primary">:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
 </div>
 
@@ -138,7 +152,7 @@ Example:
 
 * User input 2: `3` → Johnsy Boy will be deleted.
 
-<div markdown="span" class="alert alert-primary">:bulb: **Caution:**
+**<div markdown="span" class="alert alert-primary">:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
 </div>
 
@@ -149,7 +163,7 @@ Constraints:
 * If any parameter is invalid, its respective error message will be printed.
 
 
-### Finding certain Students: `find`
+### Finding certain Students : `find`
 
 Find a list of students matching the user input.
 
@@ -160,7 +174,7 @@ Examples:
 * `find john`
 * `find dOE`
 
-<div markdown="span" class="alert alert-primary">:bulb: **Caution:**
+**<div markdown="span" class="alert alert-primary">:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
 </div>
 
@@ -168,7 +182,7 @@ Constraints:
 * For `STUDENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
 * If any parameter is invalid, its respective error message will be printed.
 
-### Adding events `event`
+### Adding events : `event`
 
 Add events to your schedule..
 
@@ -178,7 +192,7 @@ Examples:
 * `event n/Bob math tutoring at/2024-03-04 12:00 h/2 t/math t/tutoring`
 * `event n/John Doe science tutoring at/2024-10-10 h/1`
 
-<div markdown="span" class="alert alert-primary">:bulb: **Caution:**
+**<div markdown="span" class="alert alert-primary">:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
 </div>
 
@@ -187,7 +201,7 @@ Constraints:
 * If any parameter is invalid, its respective error message will be printed.
 
 
-### Setting reminders `remind`
+### Setting reminders : `remind`
 
 Set reminders for important deadlines or milestones(e.g. O-Levels, A-Levels).
 
@@ -196,7 +210,7 @@ Format: `remind n/DESCRIPTION at/TIME t/TAG`
 Example:
 * `remind n/Bob uni app deadline at/2024-03-04 12:00 t/urgent`
 
-<div markdown="span" class="alert alert-primary">:bulb: **Caution:**
+**<div markdown="span" class="alert alert-primary">:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
 </div>
 
@@ -205,7 +219,7 @@ Constraints:
 * If any parameter is invalid, its respective error message will be printed.
 
 
-### Displaying your schedule `schedule`
+### Displaying your schedule : `schedule`
 Lists out events and reminders that occur in the incoming specified number of days.
 If no number of days is specified, events and reminders that occur in the next 14 days will be listed.
 
@@ -217,9 +231,9 @@ Displays your schedule (consisting of all your events and reminders) for the nex
 * `schedule`
 Displays your schedule for the next 14 days.
 
-<div markdown="span" class="alert alert-primary">:bulb: **Caution:**
+**<div markdown="span" class="alert alert-primary">:bulb:</div> Caution:**
 Below are some constraints to follow when inputting parameters.
-</div>
+
 
 Constraints:
 * For `NUMBER_OF_DAYS`, the input should be a positive whole number.
@@ -252,7 +266,7 @@ TutorPro data are saved in the hard disk automatically after any command that ch
 
 TutorPro data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
 
-<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
+**<div markdown="span" class="alert alert-warning">:exclamation: Caution:**<br>
 If your changes to the data file makes its format invalid, TutorPro will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
 Furthermore, certain edits can cause TutorPro to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </div>
@@ -277,11 +291,11 @@ Furthermore, certain edits can cause TutorPro to behave in unexpected ways (e.g.
 
  Action       | Format, Examples                                                                                                                                                                                                 
 --------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- **Add**      | `add STUDENT_NAME p/PHONE_NUMBER a/ADDRESS lvl/EDUCATION_LEVEL sub/SUBJECT-GRADE… ` <br> e.g., `add John Doe p/98765432 e/johndoe@gmail.com a/Clementi Ave 123, Blk 321 #10-234 lvl/p5 sub/Math-B sub/Science-B` 
+ **Add**      | `add STUDENT_NAME p/PHONE_NUMBER a/ADDRESS lvl/EDUCATION_LEVEL [sub/SUBJECT-GRADE]… [t/TAG]…​` <br> e.g. `add John Doe p/98765432 e/johndoe@gmail.com a/Clementi Ave 123, Blk 321 #10-234 lvl/p5 sub/Math-B sub/Science-B` 
  **Clear**    | `clear`                                                                                                                                                                                                          
- **Delete**   | Step 1) `delete STUDENT_NAME` <br> * E.g. `delete John` (Outputs list of students with matching names) <br> Step 2) `LIST_NUMBER` <br> * E.g. `3` (Deletes 3rd person in the list)                               
- **Edit**     | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                      
- **Find**     | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                                                       
+ **Delete**   | Step 1) `delete STUDENT_NAME` <br> e.g. `delete John` (Outputs list of students with matching names) <br> Step 2) `LIST_NUMBER` <br> e.g. `3` (Deletes 3rd person in the list)                               
+ **Edit**     | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] lvl/EDUCATION_LEVEL [sub/SUBJECT-GRADE]… [t/TAG]…​`<br> e.g.`edit 2 n/James Lee e/jameslee@example.com`<br> e.g.`edit 5 sub/math-b sub/biology-c`                                                                                      
+ **Find**     | `find KEYWORD [MORE_KEYWORDS]`<br> e.g. `find James Jake`                                                                                                                                                       
  **List**     | `list`                                                                                                                                                                                                           
  **Help**     | `help`                                                                                                                                                                                                           
 | **Event**    | `event n/NAME at/TIME h/HOURS [t/TAG]...` <br> e.g. `event n/John Doe science tutoring at/2024-10-10 h/1`                                                                                                        |
