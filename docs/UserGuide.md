@@ -5,8 +5,12 @@ title: User Guide
 
 Hi Tutors! A warm welcome to our user guide, your companion for navigating and finding the full potential of TutorPro.
 
-* Table of Contents
-{:toc}
+## Table of Contents
+* [Quick start](##quickstart)
+* [Features](##features)
+* [FAQ](##faq)
+* [Known Issues](##knownissues)
+* [Command Summay](##commandsummary)
 
 --------------------------------------------------------------------------------------------------------------------
 
