@@ -12,27 +12,31 @@ import org.junit.jupiter.api.Test;
 import tutorpro.model.person.Person;
 import tutorpro.model.tag.Tag;
 import tutorpro.testutil.PersonBuilder;
-import tutorpro.ui.ReminderCard;
-
 
 
 public class ReminderTest {
     public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-    Person person1 = new PersonBuilder().build();
-    Person person2 = new PersonBuilder().build();
-    Set<Person> people = new HashSet<Person>() {{
-        add(person1);
-        add(person2);
-    }};
+    private Person person1 = new PersonBuilder().build();
+    private Person person2 = new PersonBuilder().build();
+    private Set<Person> people = new HashSet<Person>() {{
+            add(person1);
+            add(person2);
+        }};
 
-    Tag tag1 = new Tag("Tag1");
-    Tag tag2 = new Tag("Tag2");
-    Set<Tag> tags = new HashSet<Tag>() {{
-        add(tag1);
-        add(tag2);
-    }};
+    private Tag tag1 = new Tag("Tag1");
+    private Tag tag2 = new Tag("Tag2");
+    private Set<Tag> tags = new HashSet<Tag>() {{
+            add(tag1);
+            add(tag2);
+        }};
 
     private Reminder reminder = new Reminder("Test", LocalDateTime.now(), "Notes", people, tags);
+    private Reminder sample1 = new Reminder("sample1",
+            LocalDateTime.parse("2024-05-05 12:00", DATE_TIME_FORMATTER), "sample1",
+            new HashSet<>(), new HashSet<>());
+    private Reminder sample2 = new Reminder("sample2",
+            LocalDateTime.parse("2024-06-06 12:00", DATE_TIME_FORMATTER), "sample2",
+            new HashSet<>(), new HashSet<>());
 
     @Test
     public void getPeople_returnsCorrectPeople() {
@@ -49,14 +53,6 @@ public class ReminderTest {
         int expectedHashCode = Objects.hash("Test", reminder.getTime(), "Notes", people, tags);
         Assertions.assertEquals(expectedHashCode, reminder.hashCode());
     }
-
-    private Reminder sample1 = new Reminder("sample1",
-            LocalDateTime.parse("2024-05-05 12:00", DATE_TIME_FORMATTER), "sample1",
-            new HashSet<>(), new HashSet<>());
-
-    private Reminder sample2 = new Reminder("sample2",
-            LocalDateTime.parse("2024-06-06 12:00", DATE_TIME_FORMATTER), "sample2",
-            new HashSet<>(), new HashSet<>());
     @Test
     public void getName() {
         // correct values returned -> return true
@@ -100,11 +96,13 @@ public class ReminderTest {
         Assertions.assertFalse(sample1.equals(notAnEvent));
 
         // Different name -> returns false
-        Reminder differentNameReminder = new Reminder("DifferentName", sample1.getTime(), sample1.getNotes(), sample1.getPeople(), sample1.getTags());
+        Reminder differentNameReminder = new Reminder("DifferentName", sample1.getTime(), sample1.getNotes(),
+                sample1.getPeople(), sample1.getTags());
         Assertions.assertFalse(sample1.equals(differentNameReminder));
 
         // Same name -> returns true
-        Reminder sameNameReminder = new Reminder(sample1.getName(), sample1.getTime(), sample1.getNotes(), sample1.getPeople(), sample1.getTags());
+        Reminder sameNameReminder = new Reminder(sample1.getName(), sample1.getTime(), sample1.getNotes(),
+                sample1.getPeople(), sample1.getTags());
         Assertions.assertTrue(sample1.equals(sameNameReminder));
 
     }
