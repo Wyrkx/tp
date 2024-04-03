@@ -37,7 +37,7 @@ public class EventCommandParser implements Parser<EventCommand> {
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_TIME, PREFIX_HOURS);
         String name = argMultimap.getValue(PREFIX_NAME).get();
         LocalDateTime time = ParserUtil.parseTime(argMultimap.getValue(PREFIX_TIME).get());
-        float hours = ParserUtil.parseHours(argMultimap.getValue(PREFIX_HOURS).get());
+        double hours = ParserUtil.parseHours(argMultimap.getValue(PREFIX_HOURS).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
         Event event = new Event(name, time, hours, "", new HashSet<>(), tagList);

@@ -19,12 +19,13 @@ public class ScheduleCommandParser implements Parser<ScheduleCommand> {
         String trimmedArgs = args.trim();
         int numOfDays;
         if (trimmedArgs.isEmpty()) {
-            numOfDays = 14;
+            return ScheduleCommand.instance;
         } else {
             numOfDays = Integer.parseInt(trimmedArgs);
         }
 
-        return new ScheduleCommand(numOfDays);
+        ScheduleCommand.instance.numOfDaysToShow = numOfDays;
+        return ScheduleCommand.instance;
     }
 
 }

@@ -10,6 +10,7 @@ import tutorpro.model.Model;
  *
  */
 public class ScheduleCommand extends Command {
+    public static ScheduleCommand instance = new ScheduleCommand(14);
 
     public static final String COMMAND_WORD = "schedule";
 
@@ -18,20 +19,29 @@ public class ScheduleCommand extends Command {
             + "Example: " + COMMAND_WORD;
 
     public static final String SHOWING_SCHEDULE_MESSAGE = "Opened schedule.";
-    private int numOfDaysToShow;
+    public int numOfDaysToShow;
 
-    public ScheduleCommand(int n) {
+    private ScheduleCommand(int n) {
         this.numOfDaysToShow = n;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         if (numOfDaysToShow < 0) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_NUMBER_OF_DAYS);
         }
 
         model.getTruncatedSchedule(numOfDaysToShow);
         return new CommandResult(SHOWING_SCHEDULE_MESSAGE, false, false, true);
     }
-
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        } else if (!(other instanceof ScheduleCommand)) {
+            return false;
+        }
+        ScheduleCommand otherScheduleCommand = (ScheduleCommand) other;
+        return ScheduleCommand.instance.numOfDaysToShow == otherScheduleCommand.numOfDaysToShow;
+    }
 }
