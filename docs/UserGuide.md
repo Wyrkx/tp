@@ -81,7 +81,7 @@ Add a new student with their details to your TutorPro list.
 
 Format: `add n/STUDENT_NAME p/PHONE_NUMBER e/EMAIL_ADDRESS a/ADDRESS lvl/EDUCATION_LEVEL sub/SUBJECT-GRADE…  `
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+**<div markdown="span" class="alert alert-primary">:bulb: Tip:**
 A student can have 1 or more subjects.
 </div>
 
