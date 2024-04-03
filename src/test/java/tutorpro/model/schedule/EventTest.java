@@ -11,8 +11,8 @@ public class EventTest {
 
     public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     private Event sampleEvent1 = new Event("Sample Event 1",
-                    LocalDateTime.parse("2024-05-05 12:00", DATE_TIME_FORMATTER), 1, "Sample Notes 1",
-                            new HashSet<>(), new HashSet<>());
+            LocalDateTime.parse("2024-05-05 12:00", DATE_TIME_FORMATTER), 1, "Sample Notes 1",
+            new HashSet<>(), new HashSet<>());
 
     private Event sampleEvent2 = new Event("Sample Event 2",
             LocalDateTime.parse("2024-06-06 12:00", DATE_TIME_FORMATTER), 2, "Sample Notes 2",
@@ -42,14 +42,15 @@ public class EventTest {
         Assertions.assertFalse(sampleEvent1.equals(notAnEvent));
 
         // Different duration -> returns false
-        Event differentDurationEvent = new Event(sampleEvent1.getName(), sampleEvent1.getTime(), sampleEvent1.getDuration() + 1, sampleEvent1.getNotes(), sampleEvent1.getPeople(), sampleEvent1.getTags());
+        Event differentDurationEvent = new Event(sampleEvent1.getName(), sampleEvent1.getTime(),
+                sampleEvent1.getDuration() + 1, sampleEvent1.getNotes(), sampleEvent1.getPeople(),
+                sampleEvent1.getTags());
         Assertions.assertFalse(sampleEvent1.equals(differentDurationEvent));
 
         // Same duration -> returns true
-        Event sameDurationEvent = new Event(sampleEvent1.getName(), sampleEvent1.getTime(), sampleEvent1.getDuration(), sampleEvent1.getNotes(), sampleEvent1.getPeople(), sampleEvent1.getTags());
+        Event sameDurationEvent = new Event(sampleEvent1.getName(), sampleEvent1.getTime(), sampleEvent1.getDuration(),
+                sampleEvent1.getNotes(), sampleEvent1.getPeople(), sampleEvent1.getTags());
         Assertions.assertTrue(sampleEvent1.equals(sameDurationEvent));
-
-        
     }
 
     @Test
@@ -67,11 +68,14 @@ public class EventTest {
         Assertions.assertEquals(sampleEvent1.hashCode(), sampleEvent1.hashCode());
 
         // Different object with same values -> returns same hash code
-        Event sameValuesEvent = new Event(sampleEvent1.getName(), sampleEvent1.getTime(), sampleEvent1.getDuration(), sampleEvent1.getNotes(), sampleEvent1.getPeople(), sampleEvent1.getTags());
+        Event sameValuesEvent = new Event(sampleEvent1.getName(), sampleEvent1.getTime(), sampleEvent1.getDuration(),
+                sampleEvent1.getNotes(), sampleEvent1.getPeople(), sampleEvent1.getTags());
         Assertions.assertEquals(sampleEvent1.hashCode(), sameValuesEvent.hashCode());
 
         // Different object with different values -> returns different hash code
-        Event differentValuesEvent = new Event(sampleEvent1.getName(), sampleEvent1.getTime(), sampleEvent1.getDuration() + 1, sampleEvent1.getNotes(), sampleEvent1.getPeople(), sampleEvent1.getTags());
+        Event differentValuesEvent = new Event(sampleEvent1.getName(), sampleEvent1.getTime(),
+                sampleEvent1.getDuration() + 1, sampleEvent1.getNotes(), sampleEvent1.getPeople(),
+                sampleEvent1.getTags());
         Assertions.assertNotEquals(sampleEvent1.hashCode(), differentValuesEvent.hashCode());
     }
 }
