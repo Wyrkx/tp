@@ -17,11 +17,11 @@ import tutorpro.model.schedule.Reminder;
 public class RemindCommandTest {
 
     public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-    Reminder sampleReminder1 = new Reminder("sample1",
+    private Reminder sampleReminder1 = new Reminder("sample1",
             LocalDateTime.parse("2024-05-05 12:00", DATE_TIME_FORMATTER), "sample1",
             new HashSet<>(), new HashSet<>());
 
-    Reminder sampleReminder2 = new Reminder("sample2",
+    private Reminder sampleReminder2 = new Reminder("sample2",
             LocalDateTime.parse("2024-06-06 12:00", DATE_TIME_FORMATTER), "sample2",
             new HashSet<>(), new HashSet<>());
 
@@ -42,6 +42,5 @@ public class RemindCommandTest {
         // different event -> returns false
         assertFalse(remindFirstCommand.equals(remindSecondCommand));
     }
-
 
 }

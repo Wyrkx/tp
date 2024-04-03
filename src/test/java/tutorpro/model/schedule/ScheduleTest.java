@@ -1,12 +1,11 @@
 package tutorpro.model.schedule;
 
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.HashSet;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.time.LocalDateTime;
 
 public class ScheduleTest {
     public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
@@ -17,11 +16,11 @@ public class ScheduleTest {
     private Event sampleEvent2 = new Event("Sample Event 2",
             LocalDateTime.parse("2024-06-06 12:00", DATE_TIME_FORMATTER), 2, "Sample Notes 2",
             new HashSet<>(), new HashSet<>());
-    Reminder sampleReminder1 = new Reminder("sample1",
+    private Reminder sampleReminder1 = new Reminder("sample1",
             LocalDateTime.parse("2024-05-05 12:00", DATE_TIME_FORMATTER), "sample1",
             new HashSet<>(), new HashSet<>());
 
-    Reminder sampleReminder2 = new Reminder("sample2",
+    private Reminder sampleReminder2 = new Reminder("sample2",
             LocalDateTime.parse("2024-06-06 12:00", DATE_TIME_FORMATTER), "sample2",
             new HashSet<>(), new HashSet<>());
 

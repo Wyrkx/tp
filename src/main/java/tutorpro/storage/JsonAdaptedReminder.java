@@ -36,8 +36,9 @@ class JsonAdaptedReminder {
      */
     @JsonCreator
     public JsonAdaptedReminder(@JsonProperty("name") String name, @JsonProperty("time") LocalDateTime time,
-                             @JsonProperty("notes") String notes, @JsonProperty("people") List<JsonAdaptedPerson> people,
-                             @JsonProperty("tags") List<JsonAdaptedTag> tags) {
+                                @JsonProperty("notes") String notes,
+                                    @JsonProperty("people") List<JsonAdaptedPerson> people,
+                                        @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.name = name;
         this.time = time;
         this.notes = notes;
@@ -91,7 +92,8 @@ class JsonAdaptedReminder {
         final String modelName = name;
 
         if (time == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, LocalDateTime.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    LocalDateTime.class.getSimpleName()));
         }
         final LocalDateTime modelTime = time;
 

@@ -11,7 +11,6 @@ import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import tutorpro.commons.core.GuiSettings;
 import tutorpro.commons.core.LogsCenter;
 import tutorpro.logic.Logic;
 
@@ -20,7 +19,6 @@ import tutorpro.logic.Logic;
  */
 public class ScheduleWindow extends UiPart<Stage> {
 
-    //public static final String USERGUIDE_URL = "https://tarinpairor.github.io/tp/";
     public static final String SCHEDULE_MESSAGE = "Here is your schedule!";
 
     private static final Logger logger = LogsCenter.getLogger(ScheduleWindow.class);
@@ -95,18 +93,6 @@ public class ScheduleWindow extends UiPart<Stage> {
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
     }
-
-//    /**
-//     * Sets the default size based on {@code guiSettings}.
-//     */
-//    private void setWindowDefaultSize(GuiSettings guiSettings) {
-//        primaryStage.setHeight(guiSettings.getWindowHeight());
-//        primaryStage.setWidth(guiSettings.getWindowWidth());
-//        if (guiSettings.getWindowCoordinates() != null) {
-//            primaryStage.setX(guiSettings.getWindowCoordinates().getX());
-//            primaryStage.setY(guiSettings.getWindowCoordinates().getY());
-//        }
-//    }
     /**
      * Returns true if the schedule window is currently being shown.
      */
