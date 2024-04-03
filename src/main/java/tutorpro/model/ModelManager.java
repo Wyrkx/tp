@@ -1,8 +1,11 @@
 package tutorpro.model;
 
+import static java.time.LocalDateTime.now;
 import static java.util.Objects.requireNonNull;
 
 import java.nio.file.Path;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
@@ -14,6 +17,7 @@ import tutorpro.commons.core.LogsCenter;
 import tutorpro.commons.util.CollectionUtil;
 import tutorpro.model.person.Person;
 import tutorpro.model.schedule.Reminder;
+import tutorpro.model.schedule.ReminderComparator;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -121,7 +125,18 @@ public class ModelManager implements Model {
 
     @Override
     public List<Reminder> getTruncatedSchedule(int n) {
-        return addressBook.getSchedule().subList(0, n);
+        List<Reminder> schedule = addressBook.getSchedule();
+        addressBook.getSchedule().sort(new ReminderComparator());
+        LocalDateTime timeRange = now().plusDays(n);
+
+        List<Reminder> truncatedSchedule = new ArrayList<>();
+        for (int i = 0; i < schedule.size(); i++) {
+            Reminder reminder = schedule.get(i);
+            if (!reminder.getTime().isAfter(timeRange)) {
+                truncatedSchedule.add(reminder);
+            }
+        }
+        return truncatedSchedule;
 
     }
 
