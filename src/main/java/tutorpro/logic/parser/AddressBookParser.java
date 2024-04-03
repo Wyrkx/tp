@@ -81,7 +81,7 @@ public class AddressBookParser {
             return new HelpCommand();
 
         case ScheduleCommand.COMMAND_WORD:
-            return new ScheduleCommand();
+            return new ScheduleCommandParser().parse(arguments);
 
         case RemindCommand.COMMAND_WORD:
             return new RemindCommandParser().parse(arguments);

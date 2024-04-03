@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import java.nio.file.Path;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
+import java.util.List;
 
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -117,6 +118,18 @@ public class ModelManager implements Model {
         addressBook.addReminder(reminder);
 
     }
+
+    @Override
+    public List<Reminder> getTruncatedSchedule(int n) {
+        return addressBook.getSchedule().subList(0, n);
+
+    }
+
+    @Override
+    public List<Reminder> getSchedule() {
+        return addressBook.getSchedule();
+    }
+
 
     //=========== Filtered Person List Accessors =============================================================
 
