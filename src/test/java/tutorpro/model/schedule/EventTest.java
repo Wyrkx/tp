@@ -33,6 +33,23 @@ public class EventTest {
 
         // Different object -> returns false
         Assertions.assertFalse(sampleEvent1.equals(sampleEvent2));
+
+        // Null object -> returns false
+        Assertions.assertFalse(sampleEvent1.equals(null));
+
+        // Different class -> returns false
+        String notAnEvent = "I am not an Event object";
+        Assertions.assertFalse(sampleEvent1.equals(notAnEvent));
+
+        // Different duration -> returns false
+        Event differentDurationEvent = new Event(sampleEvent1.getName(), sampleEvent1.getTime(), sampleEvent1.getDuration() + 1, sampleEvent1.getNotes(), sampleEvent1.getPeople(), sampleEvent1.getTags());
+        Assertions.assertFalse(sampleEvent1.equals(differentDurationEvent));
+
+        // Same duration -> returns true
+        Event sameDurationEvent = new Event(sampleEvent1.getName(), sampleEvent1.getTime(), sampleEvent1.getDuration(), sampleEvent1.getNotes(), sampleEvent1.getPeople(), sampleEvent1.getTags());
+        Assertions.assertTrue(sampleEvent1.equals(sameDurationEvent));
+
+        
     }
 
     @Test
@@ -42,5 +59,19 @@ public class EventTest {
         LocalDateTime expected2 = LocalDateTime.parse("2024-06-06 14:00", DATE_TIME_FORMATTER);
         Assertions.assertEquals(expected1, sampleEvent1.getEndTime());
         Assertions.assertEquals(expected2, sampleEvent2.getEndTime());
+    }
+
+    @Test
+    public void hashCode_checkCorrectHash() {
+        // Same object -> returns same hash code
+        Assertions.assertEquals(sampleEvent1.hashCode(), sampleEvent1.hashCode());
+
+        // Different object with same values -> returns same hash code
+        Event sameValuesEvent = new Event(sampleEvent1.getName(), sampleEvent1.getTime(), sampleEvent1.getDuration(), sampleEvent1.getNotes(), sampleEvent1.getPeople(), sampleEvent1.getTags());
+        Assertions.assertEquals(sampleEvent1.hashCode(), sameValuesEvent.hashCode());
+
+        // Different object with different values -> returns different hash code
+        Event differentValuesEvent = new Event(sampleEvent1.getName(), sampleEvent1.getTime(), sampleEvent1.getDuration() + 1, sampleEvent1.getNotes(), sampleEvent1.getPeople(), sampleEvent1.getTags());
+        Assertions.assertNotEquals(sampleEvent1.hashCode(), differentValuesEvent.hashCode());
     }
 }

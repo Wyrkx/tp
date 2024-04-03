@@ -3,6 +3,7 @@ package tutorpro.model.schedule;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
+import java.util.Iterator;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -38,5 +39,23 @@ public class ScheduleTest {
         Assertions.assertEquals(sampleReminder1, testSchedule.getEvents().get(1));
     }
 
+    @Test
+    public void iterator() {
+        Schedule testSchedule = new Schedule();
+        testSchedule.add(sampleReminder1);
+        testSchedule.add(sampleReminder2);
 
+        Iterator<Reminder> iterator = testSchedule.iterator();
+
+        // Check first reminder
+        Assertions.assertTrue(iterator.hasNext());
+        Assertions.assertEquals(sampleReminder1, iterator.next());
+
+        // Check second reminder
+        Assertions.assertTrue(iterator.hasNext());
+        Assertions.assertEquals(sampleReminder2, iterator.next());
+
+        // No more reminders
+        Assertions.assertFalse(iterator.hasNext());
+   }
 }
