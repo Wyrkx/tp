@@ -165,6 +165,16 @@ public class AddCommandTest {
         public void addReminder(Reminder reminder) {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public ObservableList<Reminder> getTruncatedSchedule(int n) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Reminder> getSchedule() {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**
