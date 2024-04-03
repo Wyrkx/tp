@@ -185,7 +185,7 @@ public class ParserUtil {
     /**
      * Parses {@code String hours} into a {@code float}.
      */
-    public static float parseHours(String hours) throws ParseException {
+    public static double parseHours(String hours) throws ParseException {
         try {
             return Long.parseLong(hours);
         } catch (DateTimeParseException e) {

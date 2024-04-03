@@ -6,7 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
- * Represents a Calendar that manages and stores Reminders.
+ * Represents a Schedule that manages and stores Reminders.
  */
 public class Schedule implements Iterable<Reminder> {
 

@@ -15,12 +15,13 @@ public class Event extends Reminder {
 
     public static final String END_BEFORE_START = "Events cannot end before they start.";
 
-    private final float duration;
+    private final double duration;
 
     /**
      * Every field must be present and not null.
      */
-    public Event(String name, LocalDateTime startTime, float duration, String notes, Set<Person> people, Set<Tag> tags) {
+    public Event(String name, LocalDateTime startTime, double duration,
+                    String notes, Set<Person> people, Set<Tag> tags) {
         super(name, startTime, notes, people, tags);
         CollectionUtil.requireAllNonNull(duration);
         this.duration = duration;
@@ -29,7 +30,7 @@ public class Event extends Reminder {
     /**
      * Returns the duration of the event in hours.
      */
-    public float getDuration() {
+    public double getDuration() {
         return duration;
     }
 
