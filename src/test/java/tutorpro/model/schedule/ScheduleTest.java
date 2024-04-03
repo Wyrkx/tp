@@ -57,5 +57,5 @@ public class ScheduleTest {
 
         // No more reminders
         Assertions.assertFalse(iterator.hasNext());
-   }
+    }
 }

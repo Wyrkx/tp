@@ -1,9 +1,14 @@
 package tutorpro.model.schedule;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import tutorpro.model.person.Person;
+import tutorpro.model.tag.Tag;
+import tutorpro.testutil.PersonBuilder;
 
 
 public class ReminderComparatorTest {
@@ -11,9 +16,13 @@ public class ReminderComparatorTest {
 
     @Test
     public void compare() {
-        Reminder reminder1 = new Reminder("Test1", LocalDateTime.of(2022, 1, 1, 12, 0), "Notes1", null, null);
-        Reminder reminder2 = new Reminder("Test2", LocalDateTime.of(2022, 1, 1, 13, 0), "Notes2", null, null);
-        Reminder reminder3 = new Reminder("Test3", LocalDateTime.of(2022, 1, 1, 12, 0), "Notes3", null, null);
+        Person person = new PersonBuilder().build();
+        Set<Person> people = Set.of(person);
+        Tag tag = new Tag("Tag");
+        Set<Tag> tags = Set.of(tag);
+        Reminder reminder1 = new Reminder("Test1", LocalDateTime.of(2022, 1, 1, 12, 0), "Notes1", people, tags);
+        Reminder reminder2 = new Reminder("Test2", LocalDateTime.of(2022, 1, 1, 13, 0), "Notes2", people, tags);
+        Reminder reminder3 = new Reminder("Test3", LocalDateTime.of(2022, 1, 1, 12, 0), "Notes3", people, tags);
 
         // Reminder1 is before Reminder2 -> returns -1
         Assertions.assertEquals(-1, comparator.compare(reminder1, reminder2));
