@@ -2,7 +2,9 @@ package tutorpro.model.schedule;
 
 import java.util.Comparator;
 
-
+/**
+ * A comparator for the Reminder class.
+ */
 public class ReminderComparator implements Comparator<Reminder> {
     @Override
     public int compare(Reminder o1, Reminder o2) {
