@@ -1,12 +1,13 @@
 package tutorpro.model.schedule;
 
+import java.time.LocalDateTime;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDateTime;
 
 public class ReminderComparatorTest {
-    ReminderComparator comparator = new ReminderComparator();
+    private ReminderComparator comparator = new ReminderComparator();
 
     @Test
     public void compare() {
