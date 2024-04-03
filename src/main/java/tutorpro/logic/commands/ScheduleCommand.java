@@ -33,4 +33,5 @@ public class ScheduleCommand extends Command {
         model.getTruncatedSchedule(numOfDaysToShow);
         return new CommandResult(SHOWING_SCHEDULE_MESSAGE, false, false, true);
     }
+
 }

@@ -9,8 +9,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import tutorpro.commons.core.GuiSettings;
 import tutorpro.commons.core.LogsCenter;
+import tutorpro.logic.Logic;
 
 /**
  * Window showing the Schedule.
@@ -22,12 +25,23 @@ public class ScheduleWindow extends UiPart<Stage> {
 
     private static final Logger logger = LogsCenter.getLogger(ScheduleWindow.class);
     private static final String FXML = "ScheduleWindow.fxml";
+    private Logic logic;
 
+    // Independent Ui parts residing in this Ui container
+    private ReminderListPanel reminderListPanel;
+
+    private ResultDisplay resultDisplay;
     @FXML
     private Button copyButton;
 
     @FXML
     private Label scheduleMessage;
+
+    @FXML
+    private StackPane reminderListPanelPlaceholder;
+
+    @FXML
+    private StackPane resultDisplayPlaceholder;
 
     /**
      * Creates a new ScheduleWindow.
@@ -70,6 +84,29 @@ public class ScheduleWindow extends UiPart<Stage> {
         getRoot().centerOnScreen();
     }
 
+    /**
+     * Fills up all the placeholders of this window.
+     */
+    void fillInnerParts() {
+        reminderListPanel = new ReminderListPanel(logic.getTruncatedSchedule());
+        reminderListPanelPlaceholder.getChildren().add(reminderListPanel.getRoot());
+
+        resultDisplay = new ResultDisplay();
+        resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
+
+    }
+
+//    /**
+//     * Sets the default size based on {@code guiSettings}.
+//     */
+//    private void setWindowDefaultSize(GuiSettings guiSettings) {
+//        primaryStage.setHeight(guiSettings.getWindowHeight());
+//        primaryStage.setWidth(guiSettings.getWindowWidth());
+//        if (guiSettings.getWindowCoordinates() != null) {
+//            primaryStage.setX(guiSettings.getWindowCoordinates().getX());
+//            primaryStage.setY(guiSettings.getWindowCoordinates().getY());
+//        }
+//    }
     /**
      * Returns true if the schedule window is currently being shown.
      */

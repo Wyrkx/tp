@@ -183,13 +183,14 @@ public class ParserUtil {
     }
 
     /**
-     * Parses {@code String hours} into a {@code long}.
+     * Parses {@code String hours} into a {@code float}.
      */
-    public static long parseHours(String hours) throws ParseException {
+    public static float parseHours(String hours) throws ParseException {
         try {
             return Long.parseLong(hours);
         } catch (DateTimeParseException e) {
             throw new ParseException("Hours should be a number.");
         }
     }
+
 }

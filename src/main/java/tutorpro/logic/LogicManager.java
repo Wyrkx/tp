@@ -16,6 +16,7 @@ import tutorpro.logic.parser.exceptions.ParseException;
 import tutorpro.model.Model;
 import tutorpro.model.ReadOnlyAddressBook;
 import tutorpro.model.person.Person;
+import tutorpro.model.schedule.Reminder;
 import tutorpro.storage.Storage;
 
 /**
@@ -84,5 +85,11 @@ public class LogicManager implements Logic {
     @Override
     public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);
+    }
+
+    @Override
+    public ObservableList<Reminder> getTruncatedSchedule() {
+        ObservableList<Reminder> list = (ObservableList<Reminder>) model.getTruncatedSchedule(14);
+        return list;
     }
 }

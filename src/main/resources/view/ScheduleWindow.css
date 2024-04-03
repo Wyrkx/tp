@@ -1,18 +1,11 @@
-/*#copyButton, #scheduleMessage {*/
-/*    -fx-text-fill: white;*/
-/*}*/
+#filterField, #scheduleListPanel, #personWebpage {
+    -fx-effect: innershadow(gaussian, black, 10, 0, 0, 0);
+}
 
-/*#copyButton {*/
-/*    -fx-background-color: dimgray;*/
-/*}*/
-
-/*#copyButton:hover {*/
-/*    -fx-background-color: gray;*/
-/*}*/
-
-/*#copyButton:armed {*/
-/*    -fx-background-color: darkgray;*/
-/*}*/
+#resultDisplay .content {
+    -fx-background-color: transparent, #383838, transparent, #383838;
+    -fx-background-radius: 0;
+}
 
 #scheduleMessageContainer {
     -fx-background-color: derive(#1d1d1d, 20%);

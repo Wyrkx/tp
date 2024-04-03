@@ -10,6 +10,7 @@ import tutorpro.logic.parser.exceptions.ParseException;
 import tutorpro.model.Model;
 import tutorpro.model.ReadOnlyAddressBook;
 import tutorpro.model.person.Person;
+import tutorpro.model.schedule.Reminder;
 
 /**
  * API of the Logic component
@@ -48,4 +49,9 @@ public interface Logic {
      * Set the user prefs' GUI settings.
      */
     void setGuiSettings(GuiSettings guiSettings);
+
+    /**
+     * Returns an unmodifiable view of the user's schedule
+     */
+    ObservableList<Reminder> getTruncatedSchedule();
 }
