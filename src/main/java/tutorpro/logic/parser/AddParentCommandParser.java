@@ -4,7 +4,6 @@ import static tutorpro.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static tutorpro.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static tutorpro.logic.parser.CliSyntax.PREFIX_CHILDREN;
 import static tutorpro.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static tutorpro.logic.parser.CliSyntax.PREFIX_LEVEL;
 import static tutorpro.logic.parser.CliSyntax.PREFIX_NAME;
 import static tutorpro.logic.parser.CliSyntax.PREFIX_PHONE;
 import static tutorpro.logic.parser.CliSyntax.PREFIX_SUBJECT;
@@ -37,13 +36,13 @@ public class AddParentCommandParser implements Parser<AddParentCommand> {
         assert args != null;
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
-                        PREFIX_LEVEL, PREFIX_SUBJECT, PREFIX_TAG);
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_LEVEL)
+                        PREFIX_SUBJECT, PREFIX_TAG);
+        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddParentCommand.MESSAGE_USAGE));
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_LEVEL);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS);
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());

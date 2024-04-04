@@ -32,14 +32,11 @@ public class AddParentCommand extends Command {
             + "[" + PREFIX_SUBJECT + "SUBJECT-GRADE]... "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_NAME + "John Doe "
+            + PREFIX_NAME + "John Doe Senior "
             + PREFIX_PHONE + "98765432 "
-            + PREFIX_EMAIL + "johnd@example.com "
+            + PREFIX_EMAIL + "johnds@example.com "
             + PREFIX_ADDRESS + "311, Clementi Ave 2, #02-25 "
-            + PREFIX_LEVEL + "P5 "
-            + PREFIX_SUBJECT + "Math-B "
-            + PREFIX_SUBJECT + "English-C "
-            + PREFIX_TAG + "friends "
+            + PREFIX_TAG + "isWise "
             + PREFIX_TAG + "owesMoney";
 
     public static final String MESSAGE_SUCCESS = "New parent added: %1$s";
