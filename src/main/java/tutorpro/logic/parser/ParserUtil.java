@@ -17,6 +17,7 @@ import tutorpro.model.person.Email;
 import tutorpro.model.person.Name;
 import tutorpro.model.person.Phone;
 import tutorpro.model.person.student.Level;
+import tutorpro.model.person.student.Student;
 import tutorpro.model.person.student.Subject;
 import tutorpro.model.tag.Tag;
 
@@ -161,6 +162,7 @@ public class ParserUtil {
 
     /**
      * Parses {@code Collection<String> subjects} into a {@code Set<Subject>}.
+     * @throws ParseException if the given {@code subjects} is invalid.
      */
     public static Set<Subject> parseSubjects(Collection<String> subjects) throws ParseException {
         requireNonNull(subjects);
@@ -169,6 +171,34 @@ public class ParserUtil {
             subjectSet.add(parseSubject(subjectName));
         }
         return subjectSet;
+    }
+
+    /**
+     * Parses a {@code String child} into a {@code Student}.
+     * Leading and trailing whitespaces will be trimmed.
+     * @throws ParseException if the given {@code child} is invalid.
+     */
+    public static Student parseChild(String child) throws ParseException {
+        requireNonNull(child);
+        String trimmedChild = child.trim();
+        if (!Name.isValidName(trimmedChild)) {
+            throw new ParseException(Name.MESSAGE_CONSTRAINTS);
+        }
+        return new Student(new Name(trimmedChild), new Phone("0"), new Email("0"), new Address("0"),
+                new HashSet<>(), new Level("0"), new HashSet<>());
+    }
+
+    /**
+     * Parses {@code Collection<String> children} into a {@code Set<Student>}.
+     * @throws ParseException if the given {@code children} is invalid.
+     */
+    public static Set<Student> parseChildren(Collection<String> children) throws ParseException {
+        requireNonNull(children);
+        final Set<Student> childrenSet = new HashSet<>();
+        for (String child : children) {
+            childrenSet.add(parseChild(child));
+        }
+        return childrenSet;
     }
 
     /**

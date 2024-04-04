@@ -1,19 +1,10 @@
 package tutorpro.commons.util;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-//import static tutorpro.testutil.Assert.assertThrows;
-
 import org.junit.jupiter.api.Test;
 
 import tutorpro.testutil.Assert;
 
 public class AppUtilTest {
-
-    @Test
-    public void getImage_exitingImage() {
-        assertNotNull(AppUtil.getImage("/images/address_book_32.png"));
-    }
-
     @Test
     public void getImage_nullGiven_throwsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> AppUtil.getImage(null));

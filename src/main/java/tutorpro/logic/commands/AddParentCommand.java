@@ -13,16 +13,16 @@ import tutorpro.commons.util.ToStringBuilder;
 import tutorpro.logic.Messages;
 import tutorpro.logic.commands.exceptions.CommandException;
 import tutorpro.model.Model;
-import tutorpro.model.person.student.Student;
+import tutorpro.model.person.student.Parent;
 
 /**
  * Adds a person to the address book.
  */
-public class AddCommand extends Command {
+public class AddParentCommand extends Command {
 
-    public static final String COMMAND_WORD = "add";
+    public static final String COMMAND_WORD = "addp";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a student to your contacts. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a parent to your contacts. "
             + "Parameters: "
             + PREFIX_NAME + "NAME "
             + PREFIX_PHONE + "PHONE "
@@ -42,17 +42,17 @@ public class AddCommand extends Command {
             + PREFIX_TAG + "friends "
             + PREFIX_TAG + "owesMoney";
 
-    public static final String MESSAGE_SUCCESS = "New student added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This student already exists in the address book";
+    public static final String MESSAGE_SUCCESS = "New parent added: %1$s";
+    public static final String MESSAGE_DUPLICATE_PERSON = "This parent already exists in the address book";
 
-    private final Student toAdd;
+    private final Parent toAdd;
 
     /**
-     * Creates an AddCommand to add the specified {@code Person}
+     * Creates an AddParentCommand to add the specified {@code Person}
      */
-    public AddCommand(Student student) {
-        requireNonNull(student);
-        toAdd = student;
+    public AddParentCommand(Parent parent) {
+        requireNonNull(parent);
+        toAdd = parent;
     }
 
     @Override
@@ -78,7 +78,7 @@ public class AddCommand extends Command {
             return false;
         }
 
-        AddCommand otherAddCommand = (AddCommand) other;
+        AddParentCommand otherAddCommand = (AddParentCommand) other;
         return toAdd.equals(otherAddCommand.toAdd);
     }
 

@@ -3,6 +3,7 @@ package tutorpro.model.person.student;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import tutorpro.testutil.Assert;
@@ -32,6 +33,12 @@ public class SubjectTest {
         // valid addresses
         assertTrue(Subject.isValidSubject("Math-B"));
         assertTrue(Subject.isValidSubject("b-c")); // one character
+    }
+
+    @Test
+    public void getGrade_checkCorrectGrade() {
+        Subject subject = new Subject("Math-B");
+        Assertions.assertEquals("B", subject.getGrade());
     }
 
     @Test
