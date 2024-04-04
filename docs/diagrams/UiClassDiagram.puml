@@ -10,9 +10,14 @@ Class "{abstract}\nUiPart" as UiPart
 Class UiManager
 Class MainWindow
 Class HelpWindow
+Class ScheduleWindow
 Class ResultDisplay
 Class PersonListPanel
+Class ReminderListPanel
+Class ReminderCard
 Class PersonCard
+Class StudentCard
+Class ParentCard
 Class StatusBarFooter
 Class CommandBox
 }
@@ -35,8 +40,13 @@ MainWindow *-down-> "1" ResultDisplay
 MainWindow *-down-> "1" PersonListPanel
 MainWindow *-down-> "1" StatusBarFooter
 MainWindow --> "0..1" HelpWindow
+MainWindow -right-> "0..1" ScheduleWindow
+ScheduleWindow *-down-> "1" ReminderListPanel
 
 PersonListPanel -down-> "*" PersonCard
+PersonListPanel -down-> "*" StudentCard
+PersonListPanel -down-> "*" ParentCard
+ReminderListPanel -down-> "*" ReminderCard
 
 MainWindow -left-|> UiPart
 
@@ -44,10 +54,17 @@ ResultDisplay --|> UiPart
 CommandBox --|> UiPart
 PersonListPanel --|> UiPart
 PersonCard --|> UiPart
+StudentCard --|> UiPart
+ParentCard --|> UiPart
+ReminderCard --|> UiPart
 StatusBarFooter --|> UiPart
 HelpWindow --|> UiPart
+ScheduleWindow--|> UiPart
 
-PersonCard ..> Model
+PersonCard ...> Model
+StudentCard ..> Model
+ParentCard ..> Model
+ReminderCard ..> Model
 UiManager -right-> Logic
 MainWindow -left-> Logic
 
