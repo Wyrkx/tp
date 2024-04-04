@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import tutorpro.commons.core.GuiSettings;
@@ -120,16 +121,15 @@ public class ModelManager implements Model {
     @Override
     public void addReminder(Reminder reminder) {
         addressBook.addReminder(reminder);
-
     }
 
     @Override
-    public List<Reminder> getTruncatedSchedule(int n) {
-        List<Reminder> schedule = addressBook.getSchedule();
+    public ObservableList<Reminder> getTruncatedSchedule(int n) {
+        ObservableList<Reminder> schedule = addressBook.getSchedule();
         addressBook.getSchedule().sort(new ReminderComparator());
         LocalDateTime timeRange = now().plusDays(n);
 
-        List<Reminder> truncatedSchedule = new ArrayList<>();
+        ObservableList<Reminder> truncatedSchedule = FXCollections.observableArrayList();
         for (int i = 0; i < schedule.size(); i++) {
             Reminder reminder = schedule.get(i);
             if (!reminder.getTime().isAfter(timeRange)) {
