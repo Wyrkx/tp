@@ -10,6 +10,7 @@ Hi Tutors! A warm welcome to our user guide, your companion for navigating and f
 - [Quick start](#quick-start)
 - [Features](#features)
   - [Add new students: `add`](#adding-new-students--add)
+  - [Add new parents: `addp`](#adding-new-parents--addp)
   - [Edit student's details: `edit`](#editing-a-students-details--edit)
   - [Delete student: `delete`](#deleting-existing-students--delete)
   - [Find certain student: `find`](#finding-certain-students--find)
@@ -56,9 +57,9 @@ Hi Tutors! A warm welcome to our user guide, your companion for navigating and f
 
 ## Features
 
-\*\*<div markdown="block" class="alert alert-info">
+<div markdown="block" class="alert alert-info">
 
-:information_source: Notes about the command format:\*\*<br>
+:information_source: **Notes about the command format:**</div>
 
 - Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   E.g. in `add STUDENT_NAME`, `STUDENT_NAME` is a parameter which can be used as `add John Doe`.
@@ -74,7 +75,7 @@ Hi Tutors! A warm welcome to our user guide, your companion for navigating and f
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 - If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
-</div>
+
 
 ### Adding new Students : `add`
 
@@ -87,8 +88,7 @@ A student can have 1 or more subjects.
 
 </div>
 
-Examples:
-
+**Examples:**
 - `add n/John Doe p/98765432 e/johndoe@gmail.com a/Clementi Ave 123, Blk 321, #12-345 lvl/P5 sub/math-B sub/science-C`
 - `add n/Jany Doh p/97862354 e/janydoh@email.com a/Changi St 79, Blk 12, #03-456 lvl/S5 sub/english-B`
 
@@ -97,8 +97,7 @@ Below are some constraints to follow when inputting parameters.
 
 </div>
 
-Constraints:
-
+**Constraints:**
 - For `STUDENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
 - For `PHONE_NUMBER`, the input must be an 8-digit number
 - For `EDUCATION_LEVEL`, the input must not contain special characters
@@ -108,25 +107,21 @@ Constraints:
 - If any parameter is invalid, its respective error message will be printed.
 
 ### Adding new Parents : `addp`
-
 Add a new parent with their details to your TutorPro list.
 
-Format: `addp n/PARENT_NAME p/PHONE_NUMBER e/EMAIL_ADDRESS a/ADDRESS lvl/EDUCATION_LEVEL`
+Format: `addp n/PARENT_NAME p/PHONE_NUMBER e/EMAIL_ADDRESS a/ADDRESS`
 
-Examples:
-
-- `addp n/Teacher Doe p/98765432 e/teacherd@gmail.com a/Clementi Ave 123, Blk 321, #12-345 lvl/P5`
+**Examples:**
+- `addp n/Jonny Doe p/98765432 e/jonnyd@gmail.com a/Clementi Ave 123, Blk 321, #12-345`
 
 **<div markdown="span" class="alert alert-primary">:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
 
 </div>
 
-Constraints:
-
+**Constraints:**
 - For `PARENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
 - For `PHONE_NUMBER`, the input must be an 8-digit number
-- For `EDUCATION_LEVEL`, the input must not contain special characters
 - If any parameter is invalid, its respective error message will be printed.
 
 ### Editing a Student's details : `edit`
@@ -135,8 +130,7 @@ Edit and/or update a particular student’s details/progress.
 
 Format: `edit STUDENT_NAME cat/CATEGORY new/NEW_INFORMATION`
 
-Examples:
-
+**Examples:**
 - `edit John Doe cat/sub new/math-A` Edits the subject John Doe is being tutored for and his grade to `Math` and `A` respectively.
 - `edit Jany Doh cat/lvl new/s2` Edits the education level of Jany Doh to `S2`.
 
@@ -145,8 +139,7 @@ Below are some constraints to follow when inputting parameters.
 
 </div>
 
-Constraints:
-
+**Constraints:**
 - For `STUDENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
 - For `CATEGORY`, the input must be one of the following:
   - `name`, `sub`, `number`, `address` or `lvl`
@@ -159,38 +152,24 @@ Constraints:
 
 ### Deleting existing Students : `delete`
 
-Deletes the specified student from your list of contacts.
+Deletes the person at the specified index from your list of contacts.
 
-To delete a student from your list, type in the `delete` command and a list of matching contacts will show up. Then, choose the correct contact that you wish to delete from the list.
+Format: `delete LIST_NUMBER`
 
-Format:
+**Example:**
+1. John Doe, 98765432, Clementi Ave 123…, P5, Math-B
+2. Johnny, 91234567, Jurong…, P5, Science-B
+3. Johnsy Boy, 83947237, <address>..., P3, English-C
 
-1. `delete STUDENT_NAME` → a list of matching contacts will appear and TutorPro will prompt you for input again.
-2. `LIST_NUMBER` → the contact at the specified list number will be deleted.
-
-- Deletes the person at the specified `INDEX`.
-- The index refers to the index number shown in the displayed person list.
-- The index **must be a positive integer** 1, 2, 3, …​
-
-Example:
-
-- User input 1: `delete John`
-
-  -     Output: 1. John Doe, 98765432, Clementi Ave 123…, P5, Math-B
-                2. Johnny, 91234567, Jurong…, P5, Science-B
-                3. Johnsy Boy, 83947237, <address>..., P3, English-C
-
-- User input 2: `3` → Johnsy Boy will be deleted.
+User input: `delete 3` → Johnsy Boy will be deleted.
 
 **<div markdown="span" class="alert alert-primary">:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
 
 </div>
 
-Constraints:
-
-- For `STUDENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
-- For `LIST_NUMBER`, the input must be a number not greater than the size of the list.
+**Constraints:**
+- For `LIST_NUMBER`, the input **must be a positive integer** 1, 2, 3, …​, and the input must be a number not greater than the size of the list.
   - E.g. if the list contains 3 people, inputting `4` will print an error message.
 - If any parameter is invalid, its respective error message will be printed.
 
@@ -200,8 +179,7 @@ Find a list of students matching the user input.
 
 Format: `find STUDENT_NAME`
 
-Examples:
-
+**Examples:**
 - `find John Doe`
 - `find john`
 - `find dOE`
@@ -211,8 +189,7 @@ Below are some constraints to follow when inputting parameters.
 
 </div>
 
-Constraints:
-
+**Constraints:**
 - For `STUDENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
 - If any parameter is invalid, its respective error message will be printed.
 
@@ -222,8 +199,7 @@ Add events to your schedule..
 
 Format: `event n/NAME at/TIME h/HOURS [t/TAG]...`
 
-Examples:
-
+**Examples:**
 - `event n/Bob math tutoring at/2024-03-04 12:00 h/2 t/math t/tutoring`
 - `event n/John Doe science tutoring at/2024-10-10 h/1`
 
@@ -232,8 +208,7 @@ Below are some constraints to follow when inputting parameters.
 
 </div>
 
-Constraints:
-
+**Constraints:**
 - For `TIME`, the input should follow the format of `YYYY-MM-DD HH:mm`.
 - If any parameter is invalid, its respective error message will be printed.
 
@@ -243,8 +218,7 @@ Set reminders for important deadlines or milestones(e.g. O-Levels, A-Levels).
 
 Format: `remind n/DESCRIPTION at/TIME t/TAG`
 
-Example:
-
+**Example:**
 - `remind n/Bob uni app deadline at/2024-03-04 12:00 t/urgent`
 
 **<div markdown="span" class="alert alert-primary">:bulb: Caution:**
@@ -252,8 +226,7 @@ Below are some constraints to follow when inputting parameters.
 
 </div>
 
-Constraints:
-
+**Constraints:**
 - For `TIME`, the input should follow the format of `YYYY-MM-DD HH:mm`.
 - If any parameter is invalid, its respective error message will be printed.
 
@@ -264,8 +237,7 @@ If no number of days is specified, events and reminders that occur in the next 1
 
 Format: `schedule [NUMBER_OF_DAYS]`
 
-Example:
-
+**Example:**
 - `schedule 10`
   Displays your schedule (consisting of all your events and reminders) for the next 10 days.
 - `schedule`
@@ -274,8 +246,7 @@ Example:
 **<div markdown="span" class="alert alert-primary">:bulb:</div> Caution:**
 Below are some constraints to follow when inputting parameters.
 
-Constraints:
-
+**Constraints:**
 - For `NUMBER_OF_DAYS`, the input should be a positive whole number.
 - If any parameter is invalid, its respective error message will be printed.
 
@@ -331,6 +302,7 @@ Furthermore, certain edits can cause TutorPro to behave in unexpected ways (e.g.
 | Action       | Format, Examples                                                                                                                                                                                                           |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Add**      | `add STUDENT_NAME p/PHONE_NUMBER a/ADDRESS lvl/EDUCATION_LEVEL [sub/SUBJECT-GRADE]… [t/TAG]…​` <br> e.g. `add John Doe p/98765432 e/johndoe@gmail.com a/Clementi Ave 123, Blk 321 #10-234 lvl/p5 sub/Math-B sub/Science-B` |
+| **Add parent**      | `add PARENT_NAME p/PHONE_NUMBER a/ADDRESS [t/TAG]…​` <br> e.g. `addp n/Jonny Doe p/98765432 e/jonnyd@gmail.com a/Clementi Ave 123, Blk 321, #12-345` |
 | **Clear**    | `clear`                                                                                                                                                                                                                    |
 | **Delete**   | Step 1) `delete STUDENT_NAME` <br> e.g. `delete John` (Outputs list of students with matching names) <br> Step 2) `LIST_NUMBER` <br> e.g. `3` (Deletes 3rd person in the list)                                             |
 | **Edit**     | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] lvl/EDUCATION_LEVEL [sub/SUBJECT-GRADE]… [t/TAG]…​`<br> e.g.`edit 2 n/James Lee e/jameslee@example.com`<br> e.g.`edit 5 sub/math-b sub/biology-c`              |
