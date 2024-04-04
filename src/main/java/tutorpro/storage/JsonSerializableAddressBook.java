@@ -12,7 +12,9 @@ import tutorpro.commons.exceptions.IllegalValueException;
 import tutorpro.model.AddressBook;
 import tutorpro.model.ReadOnlyAddressBook;
 import tutorpro.model.person.Person;
+import tutorpro.model.person.student.Parent;
 import tutorpro.model.person.student.Student;
+import tutorpro.model.schedule.Event;
 
 /**
  * An Immutable AddressBook that is serializable to JSON format.
@@ -22,13 +24,19 @@ class JsonSerializableAddressBook {
 
     public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
     private final List<JsonAdaptedStudent> students = new ArrayList<>();
+    private final List<JsonAdaptedReminder> reminders = new ArrayList<>();
+    private final List<JsonAdaptedParent> parents = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonSerializableAddressBook} with the given persons.
      */
     @JsonCreator
-    public JsonSerializableAddressBook(@JsonProperty("students") List<JsonAdaptedStudent> students) {
+    public JsonSerializableAddressBook(@JsonProperty("students") List<JsonAdaptedStudent> students,
+                                       @JsonProperty("parents") List<JsonAdaptedParent> parents,
+                                       @JsonProperty("reminders") List<JsonAdaptedReminder> reminders) {
         this.students.addAll(students);
+        this.parents.addAll(parents);
+        this.reminders.addAll(reminders);
     }
 
     /**
@@ -39,6 +47,10 @@ class JsonSerializableAddressBook {
     public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
         students.addAll(source.getPersonList().stream().filter(person -> person instanceof Student)
                 .map(person -> new JsonAdaptedStudent((Student) person)).collect(Collectors.toList()));
+        parents.addAll(source.getPersonList().stream().filter(person -> person instanceof Parent)
+                .map(person -> new JsonAdaptedParent((Parent) person)).collect(Collectors.toList()));
+        reminders.addAll(source.getSchedule().stream().filter(reminder -> !(reminder instanceof Event))
+                .map(reminder -> new JsonAdaptedReminder(reminder)).collect(Collectors.toList()));
     }
 
     /**
@@ -55,7 +67,13 @@ class JsonSerializableAddressBook {
             }
             addressBook.addPerson(person);
         }
+        for (JsonAdaptedParent jsonAdaptedParent : parents) {
+            Person person = jsonAdaptedParent.toModelType();
+            if (addressBook.hasPerson(person)) {
+                throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
+            }
+            addressBook.addPerson(person);
+        }
         return addressBook;
     }
-
 }
