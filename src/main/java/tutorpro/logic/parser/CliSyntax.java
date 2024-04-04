@@ -17,4 +17,5 @@ public class CliSyntax {
     public static final Prefix PREFIX_PERSON = new Prefix("psn/");
     public static final Prefix PREFIX_HOURS = new Prefix("h/");
     public static final Prefix PREFIX_CHILDREN = new Prefix("c/");
+    public static final Prefix PREFIX_DESCRIPTION = new Prefix("desc/");
 }

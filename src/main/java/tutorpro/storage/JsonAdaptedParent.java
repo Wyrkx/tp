@@ -24,10 +24,10 @@ import tutorpro.model.tag.Tag;
 */
 public class JsonAdaptedParent extends JsonAdaptedPerson {
 
-    private List<String> children = new ArrayList<>();
+    private final List<String> children = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonAdaptedStudent} with the given person details.
+     * Constructs a {@code JsonAdaptedParent} with the given person details.
      */
     @JsonCreator
     public JsonAdaptedParent(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
@@ -39,7 +39,7 @@ public class JsonAdaptedParent extends JsonAdaptedPerson {
     }
 
     /**
-     * Converts a given {@code Student} into this class for Jackson use.
+     * Converts a given {@code Parent} into this class for Jackson use.
      */
     public JsonAdaptedParent(Parent source) {
         super(source.getName().fullName, source.getPhone().value, source.getEmail().value, source.getAddress().value,

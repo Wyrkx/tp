@@ -1,18 +1,19 @@
 package tutorpro.logic.parser;
 
 import static tutorpro.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static tutorpro.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static tutorpro.logic.parser.CliSyntax.PREFIX_NAME;
+import static tutorpro.logic.parser.CliSyntax.PREFIX_PERSON;
 import static tutorpro.logic.parser.CliSyntax.PREFIX_TAG;
 import static tutorpro.logic.parser.CliSyntax.PREFIX_TIME;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Stream;
 
+import tutorpro.commons.core.index.Index;
 import tutorpro.logic.commands.RemindCommand;
 import tutorpro.logic.parser.exceptions.ParseException;
-import tutorpro.model.schedule.Reminder;
 import tutorpro.model.tag.Tag;
 
 /**
@@ -27,7 +28,8 @@ public class RemindCommandParser implements Parser<RemindCommand> {
      */
     public RemindCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_TIME, PREFIX_TAG);
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_TIME, PREFIX_TAG,
+                        PREFIX_PERSON, PREFIX_DESCRIPTION);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_TIME)
                 || !argMultimap.getPreamble().isEmpty()) {
@@ -36,12 +38,12 @@ public class RemindCommandParser implements Parser<RemindCommand> {
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_TIME);
         String name = argMultimap.getValue(PREFIX_NAME).get();
+        String desc = argMultimap.getValue(PREFIX_DESCRIPTION).orElse("");
         LocalDateTime time = ParserUtil.parseTime(argMultimap.getValue(PREFIX_TIME).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
+        Set<Index> personList = ParserUtil.parseIndexes(argMultimap.getAllValues(PREFIX_PERSON));
 
-        Reminder reminder = new Reminder(name, time, "", new HashSet<>(), tagList);
-
-        return new RemindCommand(reminder);
+        return new RemindCommand(name, time, desc, personList, tagList);
     }
 
     /**
