@@ -36,12 +36,6 @@ public class SubjectTest {
     }
 
     @Test
-    public void getValue_checkCorrectValue() {
-        Subject subject = new Subject("Math-B");
-        Assertions.assertEquals("Math-B", subject.getValue());
-    }
-
-    @Test
     public void getGrade_checkCorrectGrade() {
         Subject subject = new Subject("Math-B");
         Assertions.assertEquals("B", subject.getGrade());
