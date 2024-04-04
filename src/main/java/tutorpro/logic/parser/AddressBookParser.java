@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 
 import tutorpro.commons.core.LogsCenter;
 import tutorpro.logic.commands.AddCommand;
+import tutorpro.logic.commands.AddParentCommand;
 import tutorpro.logic.commands.ClearCommand;
 import tutorpro.logic.commands.Command;
 import tutorpro.logic.commands.DeleteCommand;
@@ -58,6 +59,9 @@ public class AddressBookParser {
 
         case AddCommand.COMMAND_WORD:
             return new AddCommandParser().parse(arguments);
+
+        case AddParentCommand.COMMAND_WORD:
+            return new AddParentCommandParser().parse(arguments);
 
         case EditCommand.COMMAND_WORD:
             return new EditCommandParser().parse(arguments);
