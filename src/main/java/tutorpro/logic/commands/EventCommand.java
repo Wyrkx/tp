@@ -27,7 +27,7 @@ public class EventCommand extends Command {
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "Bob math tutoring "
             + PREFIX_TIME + "2024-03-04 12:00 "
-            + PREFIX_HOURS + "1.5 "
+            + PREFIX_HOURS + "2 "
             + PREFIX_TAG + "math "
             + PREFIX_TAG + "tutoring ";
 
