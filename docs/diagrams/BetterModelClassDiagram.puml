@@ -4,12 +4,11 @@ skinparam arrowThickness 1.1
 skinparam arrowColor MODEL_COLOR
 skinparam classBackgroundColor MODEL_COLOR
 
-AddressBook *-right-> "1" UniquePersonList
-AddressBook *-right-> "1" UniqueTagList
-UniqueTagList -[hidden]down- UniquePersonList
-UniqueTagList -[hidden]down- UniquePersonList
+TutorPro *-right-> "1" UniquePersonList
+TutorPro *-up-> "1" UniqueTagList
+TutorPro *-down-> "*" Reminder
 
-UniqueTagList -right-> "*" Tag
+UniqueTagList -right-> Tag
 UniquePersonList -right-> Person
 
 Person -up-> "*" Tag
@@ -19,7 +18,12 @@ Person *--> Phone
 Person *--> Email
 Person *--> Address
 
-Person <|-down- Student
+Person <|-right- Student
 Student *--> Level
 Student *--> "*" Subject
+Person <|-right- Parent
+
+Reminder <|-down- Event
+Schedule -left-> Reminder
+Schedule *--> "*" Event
 @enduml

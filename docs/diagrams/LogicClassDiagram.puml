@@ -9,7 +9,16 @@ package Logic as LogicPackage {
 package "Parser Classes" as ParserClasses{
 }
 Class AddCommand
+Class ClearCommand
+Class DeleteCommand
 Class EditCommand
+Class EventCommand
+Class ExitCommand
+Class FindCommand
+Class HelpCommand
+Class ListCommand
+Class RemindCommand
+Class ScheduleCommand
 Class CommandResult
 Class "{abstract}\nCommand" as Command
 
@@ -31,10 +40,28 @@ HiddenOutside ..> Logic
 LogicManager .right.|> Logic
 LogicManager -right->"1" ParserClasses
 ParserClasses ..> AddCommand : <<create>>
+ParserClasses ..> ClearCommand : <<clear>>
+ParserClasses ..> DeleteCommand : <<delete>>
 ParserClasses ..> EditCommand : <<update>>
+ParserClasses ..> EventCommand : <<event>>
+ParserClasses ..> ExitCommand : <<exit>>
+ParserClasses ..> FindCommand : <<find>>
+ParserClasses ..> HelpCommand : <<help>>
+ParserClasses ..> ListCommand : <<list>>
+ParserClasses ..> RemindCommand : <<remind>>
+ParserClasses ..> ScheduleCommand : <<schedule>>
 
 AddCommand -up-|> Command
+ClearCommand -up-|> Command
+DeleteCommand -up-|> Command
 EditCommand -up-|> Command
+EventCommand -up-|> Command
+ExitCommand -up-|> Command
+FindCommand -up-|> Command
+HelpCommand -up-|> Command
+ListCommand -up-|> Command
+RemindCommand -up-|> Command
+ScheduleCommand -up-|> Command
 LogicManager .left.> Command : <<call>>
 
 LogicManager --> Model
