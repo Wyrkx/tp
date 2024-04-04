@@ -95,7 +95,7 @@ public interface Model {
     /**
      *  Returns the list of reminders and events in the next n days
      */
-    List<Reminder> getTruncatedSchedule(int n);
+    ObservableList<Reminder> getTruncatedSchedule(int n);
 
     /**
      * Returns the full list of reminders and events.
