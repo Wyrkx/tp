@@ -11,13 +11,16 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import tutorpro.commons.exceptions.IllegalValueException;
+import tutorpro.model.person.Address;
+import tutorpro.model.person.Email;
 import tutorpro.model.person.Name;
 import tutorpro.model.person.Person;
+import tutorpro.model.person.Phone;
 import tutorpro.model.schedule.Reminder;
 import tutorpro.model.tag.Tag;
 
 /**
- * Jackson-friendly version of {@link Person}.
+ * Jackson-friendly version of {@link Reminder}.
  */
 class JsonAdaptedReminder {
 
@@ -26,19 +29,19 @@ class JsonAdaptedReminder {
     protected final String name;
     protected final LocalDateTime time;
     protected final String notes;
-    protected final List<JsonAdaptedPerson> people = new ArrayList<>();
+    protected final List<String> people = new ArrayList<>();
     protected final List<JsonAdaptedTag> tags = new ArrayList<>();
 
 
 
     /**
-     * Constructs a {@code JsonAdaptedPerson} with the given person details.
+     * Constructs a {@code JsonAdaptedReminder} with the given person details.
      */
     @JsonCreator
     public JsonAdaptedReminder(@JsonProperty("name") String name, @JsonProperty("time") LocalDateTime time,
-                                @JsonProperty("notes") String notes,
-                                    @JsonProperty("people") List<JsonAdaptedPerson> people,
-                                        @JsonProperty("tags") List<JsonAdaptedTag> tags) {
+                               @JsonProperty("notes") String notes,
+                               @JsonProperty("people") List<String> people,
+                               @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.name = name;
         this.time = time;
         this.notes = notes;
@@ -51,7 +54,7 @@ class JsonAdaptedReminder {
     }
 
     /**
-     * Converts a given {@code Person} into this class for Jackson use.
+     * Converts a given {@code Reminder} into this class for Jackson use.
      */
     public JsonAdaptedReminder(Reminder source) {
         name = source.getName();
@@ -59,7 +62,7 @@ class JsonAdaptedReminder {
         notes = source.getNotes();
 
         people.addAll(source.getPeople().stream()
-                .map(JsonAdaptedPerson::new)
+                .map(person -> person.getName().toString())
                 .collect(Collectors.toList()));
 
         tags.addAll(source.getTags().stream()
@@ -68,14 +71,15 @@ class JsonAdaptedReminder {
     }
 
     /**
-     * Converts this Jackson-friendly adapted person object into the model's {@code Reminder} object.
+     * Converts this Jackson-friendly adapted reminder object into the model's {@code Reminder} object.
      *
      * @throws IllegalValueException if there were any data constraints violated in the adapted reminder.
      */
     public Reminder toModelType() throws IllegalValueException {
         final List<Person> reminderPeople = new ArrayList<>();
-        for (JsonAdaptedPerson person : people) {
-            reminderPeople.add(person.toModelType());
+        for (String person : people) {
+            reminderPeople.add(new Person(new Name(person), new Phone("88888888"),
+                    new Email("a@bc"), new Address("0"), new HashSet<>()));
         }
 
         final List<Tag> reminderTags = new ArrayList<>();

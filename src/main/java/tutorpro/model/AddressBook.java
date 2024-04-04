@@ -108,10 +108,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         schedule.add(r);
     }
 
-    /**
-     * Returns the user's list of reminders and events (their schedule)
-     * @return the user's schedule
-     */
+    @Override
     public ObservableList<Reminder> getSchedule() {
         return schedule.getEvents();
     }

@@ -19,6 +19,7 @@ import javafx.collections.ObservableList;
 import tutorpro.model.person.Person;
 import tutorpro.model.person.exceptions.DuplicatePersonException;
 import tutorpro.model.person.student.Student;
+import tutorpro.model.schedule.Reminder;
 import tutorpro.testutil.Assert;
 import tutorpro.testutil.StudentBuilder;
 import tutorpro.testutil.TypicalStudents;
@@ -95,6 +96,7 @@ public class AddressBookTest {
      */
     private static class AddressBookStub implements ReadOnlyAddressBook {
         private final ObservableList<Person> persons = FXCollections.observableArrayList();
+        private final ObservableList<Reminder> schedule = FXCollections.observableArrayList();
 
         AddressBookStub(Collection<Student> persons) {
             this.persons.setAll(persons);
@@ -103,6 +105,11 @@ public class AddressBookTest {
         @Override
         public ObservableList<Person> getPersonList() {
             return persons;
+        }
+
+        @Override
+        public ObservableList<Reminder> getSchedule() {
+            return schedule;
         }
     }
 
