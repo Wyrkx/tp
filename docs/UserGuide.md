@@ -57,13 +57,14 @@ Hi Tutors! A warm welcome to our user guide, your companion for navigating and f
 
 ## Features
 
-<div markdown="block" class="alert alert-info">:information_source:</div> **Notes about the command format:**
+<div markdown="block" class="alert alert-info">
+**:information_source: Notes about the command format:** <br>
 
 - Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   E.g. in `add STUDENT_NAME`, `STUDENT_NAME` is a parameter which can be used as `add John Doe`.
 
 - Items in square brackets are optional.<br>
-  E.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
+  E.g. `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
 
 - Items with `…`​ after them can be used multiple times including zero times.<br>
   Items with … after them can be used multiple times.
@@ -73,7 +74,7 @@ Hi Tutors! A warm welcome to our user guide, your companion for navigating and f
   E.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 - If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
-
+</div>
 
 ### Adding new Students : `add`
 
@@ -81,19 +82,19 @@ Add a new student with their details to your TutorPro list.
 
 Format: `add n/STUDENT_NAME p/PHONE_NUMBER e/EMAIL_ADDRESS a/ADDRESS lvl/EDUCATION_LEVEL sub/SUBJECT-GRADE…  `
 
-<div markdown="span" class="alert alert-primary">:bulb:</div> **Tip:**
+<div markdown="span" class="alert alert-primary">
+**:bulb: Tip:**<br>
 A student can have 1 or more subjects.
-
+</div>
 
 
 **Examples:**
 * `add n/John Doe p/98765432 e/johndoe@gmail.com a/Clementi Ave 123, Blk 321, #12-345 lvl/P5 sub/math-B sub/science-C`
 * `add n/Jany Doh p/97862354 e/janydoh@email.com a/Changi St 79, Blk 12, #03-456 lvl/S5 sub/english-B`
 
-<div markdown="span" class="alert alert-primary">:bulb:</div> **Caution:**
+<div markdown="span" class="alert alert-primary">
+**:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
-
-
 
 **Constraints:**
 * For `STUDENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
@@ -105,6 +106,7 @@ Below are some constraints to follow when inputting parameters.
   * Note: `SUBJECT` refers to the subject the student is receiving tuition for, while `GRADE` refers to the grade the student obtained for their most recent test on that subject.
   * E.g. `math-B` indicates that the student is receiving tuition for Mathematics, and obtained a B grade for their most recent test for Mathematics.
 * If any parameter is invalid, its respective error message will be printed.
+</div>
 
 ### Adding new Parents : `addp`
 Add a new parent with their details to your TutorPro list.
@@ -114,14 +116,15 @@ Format: `addp n/PARENT_NAME p/PHONE_NUMBER e/EMAIL_ADDRESS a/ADDRESS`
 **Examples:**
 * `addp n/Jonny Doe p/98765432 e/jonnyd@gmail.com a/Clementi Ave 123, Blk 321, #12-345`
 
-<div markdown="span" class="alert alert-primary">:bulb:</div> **Caution:**
+<div markdown="span" class="alert alert-primary">
+**:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
-
 
 **Constraints:**
 * For `PARENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
 * For `PHONE_NUMBER`, the input must be an 8-digit number
 * If any parameter is invalid, its respective error message will be printed.
+</div>
 
 ### Editing a Student's details : `edit`
 
@@ -136,7 +139,8 @@ For the example list shown below:
 * `edit 1 sub/Math-A` Edits the subject John Doe is being tutored for and his grade to `Math` and `A` respectively.
 * `edit 2 lvl/S2` Edits the education level of Jany Doh to `S2`.
 
-<div markdown="span" class="alert alert-primary">:bulb:</div> **Caution:**
+<div markdown="span" class="alert alert-primary">
+**:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
 
 **Constraints:**
@@ -151,6 +155,7 @@ Below are some constraints to follow when inputting parameters.
   * For `email`, the input must consist of the username and the domain name of the email service provider.
     * Format: `username@domain.com`
 * If any parameter is invalid, its respective error message will be printed.
+</div>
 
 ### Deleting existing Students : `delete`
 
@@ -165,15 +170,15 @@ Format: `delete LIST_NUMBER`
 
 User input: `delete 3` → Johnsy Boy will be deleted.
 
-<div markdown="span" class="alert alert-primary">:bulb:</div> **Caution:**
+<div markdown="span" class="alert alert-primary">
+**:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
-
-
 
 **Constraints:**
 * For `LIST_NUMBER`, the input **must be a positive integer** 1, 2, 3, …​, and the input must be a number not greater than the size of the list.
   * E.g. if the list contains 3 people, inputting `4` will print an error message.
 * If any parameter is invalid, its respective error message will be printed.
+</div>
 
 ### Finding certain Students : `find`
 
@@ -187,12 +192,14 @@ Format: `find NAME`
 * `find john`
 * `find dOE`
 
-<div markdown="span" class="alert alert-primary">:bulb:</div> **Caution:**
+<div markdown="span" class="alert alert-primary">
+**:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
 
 **Constraints:**
 * For `NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
 * If any parameter is invalid, its respective error message will be printed.
+</div>
 
 ### Adding events : `event`
 
@@ -204,14 +211,14 @@ Format: `event n/NAME at/TIME h/HOURS [t/TAG]...`
 * `event n/Bob math tutoring at/2024-03-04 12:00 h/2 t/math t/tutoring`
 * `event n/John Doe science tutoring at/2024-10-10 14:00 h/1`
 
-<div markdown="span" class="alert alert-primary">:bulb:</div> **Caution:**
+<div markdown="span" class="alert alert-primary">
+**:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
-
-
 
 **Constraints:**
 * For `TIME`, the input should follow the format of `YYYY-MM-DD hh:mm`.
 * If any parameter is invalid, its respective error message will be printed.
+</div>
 
 ### Setting reminders : `remind`
 
@@ -222,14 +229,14 @@ Format: `remind n/DESCRIPTION at/TIME t/TAG`
 **Example:**
 * `remind n/Bob uni app deadline at/2024-03-04 12:00 t/urgent`
 
-<div markdown="span" class="alert alert-primary">:bulb:</div> **Caution:**
+<div markdown="span" class="alert alert-primary">
+**:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
-
-
 
 **Constraints:**
 * For `TIME`, the input should follow the format of `YYYY-MM-DD HH:mm`.
 * If any parameter is invalid, its respective error message will be printed.
+</div>
 
 ### Displaying your schedule : `schedule`
 
@@ -244,12 +251,14 @@ Format: `schedule [NUMBER_OF_DAYS]`
 * `schedule`
   Displays your schedule for the next 14 days.
 
-<div markdown="span" class="alert alert-primary">:bulb:</div> **Caution:**
+<div markdown="span" class="alert alert-primary">
+**:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
 
 **Constraints:**
 * For `NUMBER_OF_DAYS`, the input (if any) should be a positive whole number.
 * If any parameter is invalid, its respective error message will be printed.
+</div>
 
 ### Clearing all entries : `clear`
 
@@ -277,10 +286,11 @@ TutorPro data are saved in the hard disk automatically after any command that ch
 
 TutorPro data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
 
-<div markdown="span" class="alert alert-warning">:exclamation:</div> **Caution:**<br>
+<div markdown="span" class="alert alert-warning">
+**:exclamation: Caution:**<br>
 If your changes to the data file makes its format invalid, TutorPro will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
 Furthermore, certain edits can cause TutorPro to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
-
+</div>
 
 
 ---
