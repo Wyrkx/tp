@@ -184,6 +184,7 @@ Below are some constraints to follow when inputting parameters.
 ### Finding certain Students : `find`
 
 Find a list of persons with names matching the user input.
+The entire word (i.e. `John` instead of `Joh`) should be inputted for this command to work.
 
 Format: `find NAME`
 
