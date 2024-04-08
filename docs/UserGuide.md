@@ -57,9 +57,8 @@ Hi Tutors! A warm welcome to our user guide, your companion for navigating and f
 
 ## Features
 
-<div markdown="block" class="alert alert-info">
-
-:information_source: **Notes about the command format:**</div>
+<div markdown="block" class="alert alert-info">:information_source:</div> 
+**Notes about the command format:**
 
 - Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   E.g. in `add STUDENT_NAME`, `STUDENT_NAME` is a parameter which can be used as `add John Doe`.
@@ -83,19 +82,21 @@ Add a new student with their details to your TutorPro list.
 
 Format: `add n/STUDENT_NAME p/PHONE_NUMBER e/EMAIL_ADDRESS a/ADDRESS lvl/EDUCATION_LEVEL sub/SUBJECT-GRADE…  `
 
-**<div markdown="span" class="alert alert-primary">:bulb: Tip:**
+<div markdown="span" class="alert alert-primary">:bulb:</div>
+**Tip:**
 A student can have 1 or more subjects.
 
-</div>
+
 
 **Examples:**
 * `add n/John Doe p/98765432 e/johndoe@gmail.com a/Clementi Ave 123, Blk 321, #12-345 lvl/P5 sub/math-B sub/science-C`
 * `add n/Jany Doh p/97862354 e/janydoh@email.com a/Changi St 79, Blk 12, #03-456 lvl/S5 sub/english-B`
 
-**<div markdown="span" class="alert alert-primary">:bulb: Caution:**
+<div markdown="span" class="alert alert-primary">:bulb:</div>
+**Caution:**
 Below are some constraints to follow when inputting parameters.
 
-</div>
+
 
 **Constraints:**
 * For `STUDENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
@@ -114,10 +115,10 @@ Format: `addp n/PARENT_NAME p/PHONE_NUMBER e/EMAIL_ADDRESS a/ADDRESS`
 **Examples:**
 * `addp n/Jonny Doe p/98765432 e/jonnyd@gmail.com a/Clementi Ave 123, Blk 321, #12-345`
 
-**<div markdown="span" class="alert alert-primary">:bulb: Caution:**
+<div markdown="span" class="alert alert-primary">:bulb:</div>
+**Caution:**
 Below are some constraints to follow when inputting parameters.
 
-</div>
 
 **Constraints:**
 * For `PARENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
@@ -137,10 +138,11 @@ For the example list shown below:
 * `edit 1 sub/Math-A` Edits the subject John Doe is being tutored for and his grade to `Math` and `A` respectively.
 * `edit 2 lvl/S2` Edits the education level of Jany Doh to `S2`.
 
-**<div markdown="span" class="alert alert-primary">:bulb: Caution:**
+<div markdown="span" class="alert alert-primary">:bulb:</div>
+**Caution:**
 Below are some constraints to follow when inputting parameters.
 
-</div>
+
 
 **Constraints:**
 * For `STUDENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
@@ -166,10 +168,11 @@ Format: `delete LIST_NUMBER`
 
 User input: `delete 3` → Johnsy Boy will be deleted.
 
-**<div markdown="span" class="alert alert-primary">:bulb: Caution:**
+<div markdown="span" class="alert alert-primary">:bulb:</div> 
+**Caution:**
 Below are some constraints to follow when inputting parameters.
 
-</div>
+
 
 **Constraints:**
 * For `LIST_NUMBER`, the input **must be a positive integer** 1, 2, 3, …​, and the input must be a number not greater than the size of the list.
@@ -187,10 +190,9 @@ Format: `find STUDENT_NAME`
 * `find john`
 * `find dOE`
 
-**<div markdown="span" class="alert alert-primary">:bulb: Caution:**
+<div markdown="span" class="alert alert-primary">:bulb:</div>
+**Caution:**
 Below are some constraints to follow when inputting parameters.
-
-</div>
 
 **Constraints:**
 * For `STUDENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
@@ -206,10 +208,11 @@ Format: `event n/NAME at/TIME h/HOURS [t/TAG]...`
 * `event n/Bob math tutoring at/2024-03-04 12:00 h/2 t/math t/tutoring`
 * `event n/John Doe science tutoring at/2024-10-10 h/1`
 
-**<div markdown="span" class="alert alert-primary">:bulb: Caution:**
+<div markdown="span" class="alert alert-primary">:bulb:</div> 
+**Caution:**
 Below are some constraints to follow when inputting parameters.
 
-</div>
+
 
 **Constraints:**
 * For `TIME`, the input should follow the format of `YYYY-MM-DD HH:mm`.
@@ -224,10 +227,11 @@ Format: `remind n/DESCRIPTION at/TIME t/TAG`
 **Example:**
 * `remind n/Bob uni app deadline at/2024-03-04 12:00 t/urgent`
 
-**<div markdown="span" class="alert alert-primary">:bulb: Caution:**
+<div markdown="span" class="alert alert-primary">:bulb:</div>
+**Caution:**
 Below are some constraints to follow when inputting parameters.
 
-</div>
+
 
 **Constraints:**
 * For `TIME`, the input should follow the format of `YYYY-MM-DD HH:mm`.
@@ -246,7 +250,8 @@ Format: `schedule [NUMBER_OF_DAYS]`
 * `schedule`
   Displays your schedule for the next 14 days.
 
-**<div markdown="span" class="alert alert-primary">:bulb:</div> Caution:**
+<div markdown="span" class="alert alert-primary">:bulb:</div> 
+**Caution:**
 Below are some constraints to follow when inputting parameters.
 
 **Constraints:**
@@ -279,11 +284,12 @@ TutorPro data are saved in the hard disk automatically after any command that ch
 
 TutorPro data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
 
-**<div markdown="span" class="alert alert-warning">:exclamation: Caution:**<br>
+<div markdown="span" class="alert alert-warning">:exclamation:</div> 
+**Caution:**<br>
 If your changes to the data file makes its format invalid, TutorPro will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
 Furthermore, certain edits can cause TutorPro to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 
-</div>
+
 
 ---
 
