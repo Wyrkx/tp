@@ -101,7 +101,9 @@ Below are some constraints to follow when inputting parameters.
 **Constraints:**
 * For `STUDENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
 * For `PHONE_NUMBER`, the input must be an 8-digit number
-* For `EDUCATION_LEVEL`, the input must not contain special characters
+* For `EDUCATION_LEVEL`, the input must not contain special characters.
+* For `EMAIL`, the input must consist of the username and the domain name of the email service provider.
+  * Format: `username@domain.com`
 * For `SUBJECT-GRADE`, the input must not contain special characters.
   * Note: `SUBJECT` refers to the subject the student is receiving tuition for, while `GRADE` refers to the grade the student obtained for their most recent test on that subject.
   * E.g. `math-B` indicates that the student is receiving tuition for Mathematics, and obtained a B grade for their most recent test for Mathematics.
@@ -142,17 +144,17 @@ For the example list shown below:
 **Caution:**
 Below are some constraints to follow when inputting parameters.
 
-
-
 **Constraints:**
 * For `STUDENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
 * For `CATEGORY`, the input must be one of the following:
-  * `name`, `sub`, `number`, `address` or `lvl`
+  * `name`, `sub`, `number`, `address`, `email` or `lvl`
 * For `NEW_INFORMATION`, the input format depends on the category
   * For `name`, the input should not contain special characters (e.g. `#`, `@`, `!` etc).
   * For `sub`, the input must follow the format `SUBJECT-GRADE`, as explained in the add command above.
   * For `lvl`, the input must not contain special characters (e.g. `#`, `@`, `!` etc).
   * For `num`, the input must be an 8-digit number.
+  * For `email`, the input must consist of the username and the domain name of the email service provider.
+    * Format: `username@domain.com`
 * If any parameter is invalid, its respective error message will be printed.
 
 ### Deleting existing Students : `delete`
