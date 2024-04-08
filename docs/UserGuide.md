@@ -183,9 +183,9 @@ Below are some constraints to follow when inputting parameters.
 
 ### Finding certain Students : `find`
 
-Find a list of students matching the user input.
+Find a list of persons with names matching the user input.
 
-Format: `find STUDENT_NAME`
+Format: `find NAME`
 
 **Examples:**
 * `find John Doe`
@@ -197,18 +197,18 @@ Format: `find STUDENT_NAME`
 Below are some constraints to follow when inputting parameters.
 
 **Constraints:**
-* For `STUDENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
+* For `NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
 * If any parameter is invalid, its respective error message will be printed.
 
 ### Adding events : `event`
 
-Add events to your schedule..
+Add events to your schedule.
 
 Format: `event n/NAME at/TIME h/HOURS [t/TAG]...`
 
 **Examples:**
 * `event n/Bob math tutoring at/2024-03-04 12:00 h/2 t/math t/tutoring`
-* `event n/John Doe science tutoring at/2024-10-10 h/1`
+* `event n/John Doe science tutoring at/2024-10-10 14:00 h/1`
 
 <div markdown="span" class="alert alert-primary">:bulb:</div> 
 **Caution:**
@@ -217,7 +217,7 @@ Below are some constraints to follow when inputting parameters.
 
 
 **Constraints:**
-* For `TIME`, the input should follow the format of `YYYY-MM-DD HH:mm`.
+* For `TIME`, the input should follow the format of `YYYY-MM-DD hh:mm`.
 * If any parameter is invalid, its respective error message will be printed.
 
 ### Setting reminders : `remind`
