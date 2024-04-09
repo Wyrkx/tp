@@ -216,7 +216,7 @@ Format: `event n/NAME at/TIME h/HOURS [t/TAG]...`
 Below are some constraints to follow when inputting parameters.
 
 **Constraints:**
-* For `TIME`, the input should follow the format of `YYYY-MM-DD hh:mm`.
+* For `TIME`, the input should follow the format of `YYYY-MM-DD HH:mm`.
 * If any parameter is invalid, its respective error message will be printed.
 </div>
 
