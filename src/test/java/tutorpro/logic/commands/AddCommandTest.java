@@ -167,7 +167,12 @@ public class AddCommandTest {
         }
 
         @Override
-        public ObservableList<Reminder> getTruncatedSchedule(int n) {
+        public ObservableList<Reminder> getTruncatedFilteredScheduleList(int n) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredScheduleList(Predicate<Reminder> predicate) {
             throw new AssertionError("This method should not be called.");
         }
 

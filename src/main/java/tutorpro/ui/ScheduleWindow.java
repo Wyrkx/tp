@@ -1,14 +1,10 @@
 package tutorpro.ui;
 
-import static tutorpro.ui.HelpWindow.USERGUIDE_URL;
-
 import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.Clipboard;
-import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import tutorpro.commons.core.LogsCenter;
@@ -86,7 +82,7 @@ public class ScheduleWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        reminderListPanel = new ReminderListPanel(logic.getTruncatedSchedule());
+        reminderListPanel = new ReminderListPanel(logic.getTruncatedFilteredSchedule());
         reminderListPanelPlaceholder.getChildren().add(reminderListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
@@ -112,16 +108,5 @@ public class ScheduleWindow extends UiPart<Stage> {
      */
     public void focus() {
         getRoot().requestFocus();
-    }
-
-    /**
-     * Copies the URL to the user guide to the clipboard.
-     */
-    @FXML
-    private void copyUrl() {
-        final Clipboard clipboard = Clipboard.getSystemClipboard();
-        final ClipboardContent url = new ClipboardContent();
-        url.putString(USERGUIDE_URL);
-        clipboard.setContent(url);
     }
 }

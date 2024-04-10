@@ -75,6 +75,7 @@ public class Reminder {
     public int hashCode() {
         return Objects.hash(name, time, notes, people, tags);
     }
+
     public UiPart<Region> getCard(int displayIndex) {
         return new ReminderCard(this, displayIndex);
     }

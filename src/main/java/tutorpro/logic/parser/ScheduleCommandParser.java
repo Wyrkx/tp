@@ -18,14 +18,12 @@ public class ScheduleCommandParser implements Parser<ScheduleCommand> {
     public ScheduleCommand parse(String args) throws ParseException {
         String trimmedArgs = args.trim();
         int numOfDays;
-        if (trimmedArgs.isEmpty()) {
-            return ScheduleCommand.getInstance();
-        } else {
+        ScheduleCommand command = ScheduleCommand.getInstance();
+        if (!(trimmedArgs.isEmpty())) {
             numOfDays = Integer.parseInt(trimmedArgs);
+            command.setNumOfDays(numOfDays);
         }
-
-        ScheduleCommand.getInstance().setNumOfDays(numOfDays);
-        return ScheduleCommand.getInstance();
+        return command;
     }
 
 }

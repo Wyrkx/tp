@@ -1,5 +1,7 @@
 package tutorpro.logic.commands;
 
+import static tutorpro.model.Model.PREDICATE_SHOW_ALL_REMINDERS;
+
 import tutorpro.logic.Messages;
 import tutorpro.logic.commands.exceptions.CommandException;
 import tutorpro.model.Model;
@@ -14,12 +16,14 @@ public class ScheduleCommand extends Command {
     public static final String COMMAND_WORD = "schedule";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Shows user's schedule.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD;
+            + "Parameters: DAYS (must be a positive integer)\n"
+            + "If no parameters entered, user's schedule for the next 14 days will be displayed."
+            + "Example: " + COMMAND_WORD + " or " + COMMAND_WORD + " 6";
 
     public static final String SHOWING_SCHEDULE_MESSAGE = "Opened schedule.";
     private static ScheduleCommand instance = new ScheduleCommand(14);
     private int numOfDaysToShow;
+
     private ScheduleCommand(int n) {
         this.numOfDaysToShow = n;
     }
@@ -27,9 +31,11 @@ public class ScheduleCommand extends Command {
     public int getNumOfDays() {
         return numOfDaysToShow;
     }
+
     public void setNumOfDays(int n) {
         numOfDaysToShow = n;
     }
+
     public static ScheduleCommand getInstance() {
         return instance;
     }
@@ -41,9 +47,11 @@ public class ScheduleCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_NUMBER_OF_DAYS);
         }
 
-        model.getTruncatedSchedule(numOfDaysToShow);
+        model.updateFilteredScheduleList(PREDICATE_SHOW_ALL_REMINDERS);
+        model.getTruncatedFilteredScheduleList(numOfDaysToShow);
         return new CommandResult(SHOWING_SCHEDULE_MESSAGE, false, false, true);
     }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {

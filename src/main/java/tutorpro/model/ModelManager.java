@@ -28,6 +28,7 @@ public class ModelManager implements Model {
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
+    private final FilteredList<Reminder> filteredSchedule;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -40,6 +41,7 @@ public class ModelManager implements Model {
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        filteredSchedule = new FilteredList<>(this.addressBook.getSchedule());
     }
 
     public ModelManager() {
@@ -123,23 +125,6 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public ObservableList<Reminder> getTruncatedSchedule(int n) {
-        ObservableList<Reminder> schedule = addressBook.getSchedule();
-        addressBook.getSchedule().sort(new ReminderComparator());
-        LocalDateTime timeRange = now().plusDays(n);
-
-        ObservableList<Reminder> truncatedSchedule = FXCollections.observableArrayList();
-        for (int i = 0; i < schedule.size(); i++) {
-            Reminder reminder = schedule.get(i);
-            if (!reminder.getTime().isAfter(timeRange)) {
-                truncatedSchedule.add(reminder);
-            }
-        }
-        return truncatedSchedule;
-
-    }
-
-    @Override
     public List<Reminder> getSchedule() {
         return addressBook.getSchedule();
     }
@@ -162,6 +147,29 @@ public class ModelManager implements Model {
         filteredPersons.setPredicate(predicate);
     }
 
+    //=========== Filtered Schedule List Accessors =============================================================
+
+    @Override
+    public ObservableList<Reminder> getTruncatedFilteredScheduleList(int n) {
+        filteredSchedule.sort(new ReminderComparator());
+        LocalDateTime timeRange = now().plusDays(n);
+
+        ObservableList<Reminder> truncatedSchedule = FXCollections.observableArrayList();
+        for (Reminder reminder : filteredSchedule) {
+            if (!reminder.getTime().isAfter(timeRange)) {
+                truncatedSchedule.add(reminder);
+            }
+        }
+        return truncatedSchedule;
+
+    }
+
+    @Override
+    public void updateFilteredScheduleList(Predicate<Reminder> predicate) {
+        requireNonNull(predicate);
+        filteredSchedule.setPredicate(predicate);
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -176,7 +184,8 @@ public class ModelManager implements Model {
         ModelManager otherModelManager = (ModelManager) other;
         return addressBook.equals(otherModelManager.addressBook)
                 && userPrefs.equals(otherModelManager.userPrefs)
-                && filteredPersons.equals(otherModelManager.filteredPersons);
+                && filteredPersons.equals(otherModelManager.filteredPersons)
+                && filteredSchedule.equals(otherModelManager.filteredSchedule);
     }
 
 }
