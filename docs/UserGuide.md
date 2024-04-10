@@ -82,7 +82,7 @@ Add a new student with their details to your TutorPro list.
 
 Format: `add n/STUDENT_NAME p/PHONE_NUMBER e/EMAIL_ADDRESS a/ADDRESS lvl/EDUCATION_LEVEL sub/SUBJECT-GRADE…  `
 
-<div markdown="span" class="alert alert-primary">
+<div markdown="span" class="alert alert-success">
 **:bulb: Tip:**<br>
 A student can have 1 or more subjects.
 </div>
@@ -95,17 +95,17 @@ A student can have 1 or more subjects.
 <div markdown="span" class="alert alert-primary">
 **:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
-
+<br>
 **Constraints:**
-* For `STUDENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
-* For `PHONE_NUMBER`, the input must be an 8-digit number
-* For `EDUCATION_LEVEL`, the input must not contain special characters.
-* For `EMAIL`, the input must consist of the username and the domain name of the email service provider.
-  * Format: `username@domain.com`
-* For `SUBJECT-GRADE`, the input must not contain special characters.
-  * Note: `SUBJECT` refers to the subject the student is receiving tuition for, while `GRADE` refers to the grade the student obtained for their most recent test on that subject.
-  * E.g. `math-B` indicates that the student is receiving tuition for Mathematics, and obtained a B grade for their most recent test for Mathematics.
-* If any parameter is invalid, its respective error message will be printed.
+<br>* For `STUDENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
+<br>* For `PHONE_NUMBER`, the input must be an 8-digit number
+<br>* For `EDUCATION_LEVEL`, the input must not contain special characters.
+<br>* For `EMAIL`, the input must consist of the username and the domain name of the email service provider.
+<br>  * Format: `username@domain.com`
+<br>* For `SUBJECT-GRADE`, the input must not contain special characters.
+<br>  * Note: `SUBJECT` refers to the subject the student is receiving tuition for, while `GRADE` refers to the grade the student obtained for their most recent test on that subject.
+<br>  * E.g. `math-B` indicates that the student is receiving tuition for Mathematics, and obtained a B grade for their most recent test for Mathematics.
+<br>* If any parameter is invalid, its respective error message will be printed.
 </div>
 
 ### Adding new Parents : `addp`
@@ -119,11 +119,11 @@ Format: `addp n/PARENT_NAME p/PHONE_NUMBER e/EMAIL_ADDRESS a/ADDRESS`
 <div markdown="span" class="alert alert-primary">
 **:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
-
+<br>
 **Constraints:**
-* For `PARENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
-* For `PHONE_NUMBER`, the input must be an 8-digit number
-* If any parameter is invalid, its respective error message will be printed.
+<br>* For `PARENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
+<br>* For `PHONE_NUMBER`, the input must be an 8-digit number
+<br>* If any parameter is invalid, its respective error message will be printed.
 </div>
 
 ### Editing a Student's details : `edit`
@@ -142,19 +142,19 @@ For the example list shown below:
 <div markdown="span" class="alert alert-primary">
 **:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
-
+<br>
 **Constraints:**
-* For `STUDENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
-* For `CATEGORY`, the input must be one of the following:
-  * `name`, `sub`, `number`, `address`, `email` or `lvl`
-* For `NEW_INFORMATION`, the input format depends on the category
-  * For `name`, the input should not contain special characters (e.g. `#`, `@`, `!` etc).
-  * For `sub`, the input must follow the format `SUBJECT-GRADE`, as explained in the add command above.
-  * For `lvl`, the input must not contain special characters (e.g. `#`, `@`, `!` etc).
-  * For `num`, the input must be an 8-digit number.
-  * For `email`, the input must consist of the username and the domain name of the email service provider.
-    * Format: `username@domain.com`
-* If any parameter is invalid, its respective error message will be printed.
+<br>* For `STUDENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
+<br>* For `CATEGORY`, the input must be one of the following:
+<br>  * `name`, `sub`, `number`, `address`, `email` or `lvl`
+<br>* For `NEW_INFORMATION`, the input format depends on the category
+<br>  * For `name`, the input should not contain special characters (e.g. `#`, `@`, `!` etc).
+<br>  * For `sub`, the input must follow the format `SUBJECT-GRADE`, as explained in the add command above.
+<br>  * For `lvl`, the input must not contain special characters (e.g. `#`, `@`, `!` etc).
+<br>  * For `num`, the input must be an 8-digit number.
+<br>  * For `email`, the input must consist of the username and the domain name of the email service provider.
+<br>    * Format: `username@domain.com`
+<br>* If any parameter is invalid, its respective error message will be printed.
 </div>
 
 ### Deleting existing Students : `delete`
@@ -173,11 +173,11 @@ User input: `delete 3` → Johnsy Boy will be deleted.
 <div markdown="span" class="alert alert-primary">
 **:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
-
+<br>
 **Constraints:**
-* For `LIST_NUMBER`, the input **must be a positive integer** 1, 2, 3, …​, and the input must be a number not greater than the size of the list.
-  * E.g. if the list contains 3 people, inputting `4` will print an error message.
-* If any parameter is invalid, its respective error message will be printed.
+<br>* For `LIST_NUMBER`, the input **must be a positive integer** 1, 2, 3, …​, and the input must be a number not greater than the size of the list.
+<br>  * E.g. if the list contains 3 people, inputting `4` will print an error message.
+<br>* If any parameter is invalid, its respective error message will be printed.
 </div>
 
 ### Finding certain Students : `find`
@@ -195,10 +195,10 @@ Format: `find NAME`
 <div markdown="span" class="alert alert-primary">
 **:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
-
+<br>
 **Constraints:**
-* For `NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
-* If any parameter is invalid, its respective error message will be printed.
+<br>* For `NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
+<br>* If any parameter is invalid, its respective error message will be printed.
 </div>
 
 ### Adding events : `event`
@@ -214,10 +214,10 @@ Format: `event n/NAME at/TIME h/HOURS [t/TAG]...`
 <div markdown="span" class="alert alert-primary">
 **:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
-
+<br>
 **Constraints:**
-* For `TIME`, the input should follow the format of `YYYY-MM-DD HH:mm`.
-* If any parameter is invalid, its respective error message will be printed.
+<br>* For `TIME`, the input should follow the format of `YYYY-MM-DD HH:mm`.
+<br>* If any parameter is invalid, its respective error message will be printed.
 </div>
 
 ### Setting reminders : `remind`
@@ -232,10 +232,10 @@ Format: `remind n/DESCRIPTION at/TIME t/TAG`
 <div markdown="span" class="alert alert-primary">
 **:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
-
+<br>
 **Constraints:**
-* For `TIME`, the input should follow the format of `YYYY-MM-DD HH:mm`.
-* If any parameter is invalid, its respective error message will be printed.
+<br>* For `TIME`, the input should follow the format of `YYYY-MM-DD HH:mm`.
+<br>* If any parameter is invalid, its respective error message will be printed.
 </div>
 
 ### Displaying your schedule : `schedule`
@@ -254,10 +254,10 @@ Format: `schedule [NUMBER_OF_DAYS]`
 <div markdown="span" class="alert alert-primary">
 **:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
-
+<br>
 **Constraints:**
-* For `NUMBER_OF_DAYS`, the input (if any) should be a positive whole number.
-* If any parameter is invalid, its respective error message will be printed.
+<br>* For `NUMBER_OF_DAYS`, the input (if any) should be a positive whole number.
+<br>* If any parameter is invalid, its respective error message will be printed.
 </div>
 
 ### Clearing all entries : `clear`
