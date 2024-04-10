@@ -63,6 +63,10 @@ Hi Tutors! A warm welcome to our user guide, your companion for navigating and f
 - Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   E.g. in `add STUDENT_NAME`, `STUDENT_NAME` is a parameter which can be used as `add John Doe`.
 
+- Names can be duplicated as people can have the same names.
+
+- Phone numbers and emails must be unique.
+
 - Items in square brackets are optional.<br>
   E.g. `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
 
@@ -80,7 +84,7 @@ Hi Tutors! A warm welcome to our user guide, your companion for navigating and f
 
 Add a new student with their details to your TutorPro list.
 
-Format: `add n/STUDENT_NAME p/PHONE_NUMBER e/EMAIL_ADDRESS a/ADDRESS lvl/EDUCATION_LEVEL sub/SUBJECT-GRADE…  `
+Format: `add n/STUDENT_NAME p/PHONE_NUMBER e/EMAIL_ADDRESS a/ADDRESS lvl/EDUCATION_LEVEL [sub/SUBJECT-GRADE]… [t/TAG]…  `
 
 <div markdown="span" class="alert alert-success">
 **:bulb: Tip:**<br>
@@ -90,7 +94,7 @@ A student can have 1 or more subjects.
 
 **Examples:**
 * `add n/John Doe p/98765432 e/johndoe@gmail.com a/Clementi Ave 123, Blk 321, #12-345 lvl/P5 sub/math-B sub/science-C`
-* `add n/Jany Doh p/97862354 e/janydoh@email.com a/Changi St 79, Blk 12, #03-456 lvl/S5 sub/english-B`
+* `add n/Jany Doh p/97862354 e/janydoh@email.com a/Changi St 79, Blk 12, #03-456 lvl/S5 t/Seafood allergy`
 
 <div markdown="span" class="alert alert-primary">
 **:bulb: Caution:**
@@ -98,10 +102,10 @@ Below are some constraints to follow when inputting parameters.
 <br>
 **Constraints:**
 <br>* For `STUDENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
-<br>* For `PHONE_NUMBER`, the input must be an 8-digit number
-<br>* For `EDUCATION_LEVEL`, the input must not contain special characters.
-<br>* For `EMAIL`, the input must consist of the username and the domain name of the email service provider.
+<br>* For `PHONE_NUMBER`, the input must be an 8-digit number and unique.
+<br>* For `EMAIL`, the input must consist of the username and the domain name of the email service provider. Must be unique as well.
 <br>  * Format: `username@domain.com`
+<br>* For `EDUCATION_LEVEL`, the input must not contain special characters.
 <br>* For `SUBJECT-GRADE`, the input must not contain special characters.
 <br>  * Note: `SUBJECT` refers to the subject the student is receiving tuition for, while `GRADE` refers to the grade the student obtained for their most recent test on that subject.
 <br>  * E.g. `math-B` indicates that the student is receiving tuition for Mathematics, and obtained a B grade for their most recent test for Mathematics.
@@ -111,7 +115,7 @@ Below are some constraints to follow when inputting parameters.
 ### Adding new Parents : `addp`
 Add a new parent with their details to your TutorPro list.
 
-Format: `addp n/PARENT_NAME p/PHONE_NUMBER e/EMAIL_ADDRESS a/ADDRESS`
+Format: `addp n/PARENT_NAME p/PHONE_NUMBER e/EMAIL_ADDRESS a/ADDRESS [t/TAG]…`
 
 **Examples:**
 * `addp n/Jonny Doe p/98765432 e/jonnyd@gmail.com a/Clementi Ave 123, Blk 321, #12-345`
@@ -131,6 +135,15 @@ Below are some constraints to follow when inputting parameters.
 Edit and/or update a particular student’s details/progress.
 
 Format: `edit INDEX cat/NEW_INFORMATION`
+- `INDEX` refers to list index of the person to be edited.
+- `cat/` refers to the command prefix of the category that you want to edit. You can edit more than one category in the same command.
+  - For name: `n/`
+  - For phone number: `p/`
+  - For email: `e/`
+  - For address: `a/`
+  - For education level: `lvl/`
+  - For subjects: `sub/`
+  - For tags: `t/`
 
 **Examples:**
 For the example list shown below:
@@ -141,19 +154,25 @@ For the example list shown below:
 
 <div markdown="span" class="alert alert-primary">
 **:bulb: Caution:**
-Below are some constraints to follow when inputting parameters.
+<br>
+Editing the `subject` and `tag` categories will replace existing subjects and tags with the new information. For exmaple, <br>
+- Current subjects: science-B, math-C <br>
+- Edit command: `sub/science-C`<br>
+- New subjects: science-c <br>
+As you can see, the existing information will be replaced with new information by you.
+<br>
+Also, below are some constraints to follow when inputting parameters.
 <br>
 **Constraints:**
-<br>* For `STUDENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
 <br>* For `CATEGORY`, the input must be one of the following:
-<br>  * `name`, `sub`, `number`, `address`, `email` or `lvl`
+<br>  * `name`, `number`, `email`, `address`, `level`, `subject` or `tags`
 <br>* For `NEW_INFORMATION`, the input format depends on the category
-<br>  * For `name`, the input should not contain special characters (e.g. `#`, `@`, `!` etc).
-<br>  * For `sub`, the input must follow the format `SUBJECT-GRADE`, as explained in the add command above.
-<br>  * For `lvl`, the input must not contain special characters (e.g. `#`, `@`, `!` etc).
-<br>  * For `num`, the input must be an 8-digit number.
-<br>  * For `email`, the input must consist of the username and the domain name of the email service provider.
+<br>  * For `name`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
+<br>  * For `phone number`, the input must be an 8-digit number and unique.
+<br>  * For `email`, the input must consist of the username and the domain name of the email service provider. It must also be unique.
 <br>    * Format: `username@domain.com`
+<br>  * For `level`, the input must not contain special characters (e.g. `#`, `@`, `!` etc).
+<br>  * For `subject`, the input must follow the format `SUBJECT-GRADE`, as explained in the add command above.
 <br>* If any parameter is invalid, its respective error message will be printed.
 </div>
 
