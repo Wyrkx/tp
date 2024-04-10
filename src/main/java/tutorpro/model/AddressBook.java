@@ -106,11 +106,12 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void addReminder(Reminder r) {
         schedule.add(r);
+        System.out.println("Reminder added!");
     }
 
     @Override
     public ObservableList<Reminder> getSchedule() {
-        return schedule.getEvents();
+        return schedule.asUnmodifiableObservableEvents();
     }
 
     //// util methods

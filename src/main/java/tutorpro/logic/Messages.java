@@ -18,6 +18,7 @@ public class Messages {
     public static final String MESSAGE_INVALID_COMMAND_FORMAT = "Invalid command format! \n%1$s";
     public static final String MESSAGE_INVALID_PERSON_DISPLAYED_INDEX = "The person index provided is invalid";
     public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d persons listed!";
+    public static final String MESSAGE_SCHEDULE_LISTED = "Schedule listed!";
     public static final String MESSAGE_DUPLICATE_FIELDS =
                 "Multiple values specified for the following single-valued field(s): ";
     public static final String MESSAGE_INVALID_NUMBER_OF_DAYS = "The number of days stated is invalid.";
@@ -55,9 +56,11 @@ public class Messages {
      */
     public static String format(Reminder reminder) {
         final StringBuilder builder = new StringBuilder();
-        builder.append(reminder.getName())
+        builder.append(reminder.getDescription())
                 .append("; Time: ")
                 .append(reminder.getTime())
+                .append("; Notes: ")
+                .append(reminder.getNotes())
                 .append("; Tags: ");
         reminder.getTags().forEach(builder::append);
         return builder.toString();
@@ -68,11 +71,13 @@ public class Messages {
      */
     public static String format(Event event) {
         final StringBuilder builder = new StringBuilder();
-        builder.append(event.getName())
+        builder.append(event.getDescription())
                 .append("; Time: ")
                 .append(event.getTime())
                 .append("; Duration: ")
                 .append(event.getDuration())
+                .append("; Notes: ")
+                .append(event.getNotes())
                 .append("; Tags: ");
         event.getTags().forEach(builder::append);
         return builder.toString();

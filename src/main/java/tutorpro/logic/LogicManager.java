@@ -89,6 +89,6 @@ public class LogicManager implements Logic {
 
     @Override
     public ObservableList<Reminder> getTruncatedFilteredSchedule() {
-        return (ObservableList<Reminder>) model.getTruncatedFilteredScheduleList(14);
+        return (ObservableList<Reminder>) model.getTruncatedScheduleList();
     }
 }

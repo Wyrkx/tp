@@ -90,14 +90,11 @@ public interface Model {
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
 
-    /** Returns an unmodifiable view of the filtered schedule list */
-    ObservableList<Reminder> getTruncatedFilteredScheduleList(int days);
+    /** Returns an unmodifiable view of the filtered person list */
+    public ObservableList<Reminder> getTruncatedScheduleList();
 
-    /**
-     * Updates the filter of the filtered schedule list to filter by the given {@code predicate}.
-     * @throws NullPointerException if {@code predicate} is null.
-     */
-    void updateFilteredScheduleList(Predicate<Reminder> predicate);
+    /** Returns an unmodifiable view of the filtered schedule list */
+    void updateTruncatedScheduleList(int days);
 
     /**
      * Adds the given reminder.

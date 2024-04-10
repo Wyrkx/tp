@@ -10,8 +10,9 @@ import javafx.collections.ObservableList;
  */
 public class Schedule implements Iterable<Reminder> {
 
-    private ObservableList<Reminder> events = FXCollections.observableArrayList();
-    private ObservableList<Reminder> internalUnmodifiableEvents = FXCollections.unmodifiableObservableList(events);
+    private final ObservableList<Reminder> events = FXCollections.observableArrayList();
+    private final ObservableList<Reminder> internalUnmodifiableEvents =
+            FXCollections.unmodifiableObservableList(events);
 
     /**
      * Adds a reminder to the Schedule.
@@ -24,6 +25,13 @@ public class Schedule implements Iterable<Reminder> {
      * Returns the backing list as an unmodifiable {@code ObservableList}.
      */
     public ObservableList<Reminder> getEvents() {
+        return internalUnmodifiableEvents;
+    }
+
+    /**
+     * Returns the backing list as an unmodifiable {@code ObservableList}.
+     */
+    public ObservableList<Reminder> asUnmodifiableObservableEvents() {
         return internalUnmodifiableEvents;
     }
 

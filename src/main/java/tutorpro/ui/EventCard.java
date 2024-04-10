@@ -29,17 +29,13 @@ public class EventCard extends UiPart<Region> {
     @FXML
     private HBox cardPane;
     @FXML
-    private Label name;
+    private Label description;
     @FXML
     private Label id;
     @FXML
     private Label time;
     @FXML
     private Label duration;
-    @FXML
-    private Label notes;
-    @FXML
-    private Label people;
     @FXML
     private FlowPane tags;
 
@@ -50,17 +46,9 @@ public class EventCard extends UiPart<Region> {
         super(FXML);
         this.event = event;
         id.setText(displayedIndex + ". ");
-        name.setText(event.getName());
+        description.setText(event.getDescription());
         time.setText(event.getTime().toString());
         duration.setText(event.getDuration() + "");
-        notes.setText(event.getNotes());
-
-        String listOfPeople = " ";
-        for (int i = 0; i < event.getPeople().size(); i++) {
-            listOfPeople = i + 1 + ". " + event.getPeople().toArray()[i].toString() + "\n";
-        }
-        people.setText(listOfPeople);
-
         event.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));

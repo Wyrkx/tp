@@ -1,9 +1,7 @@
 package tutorpro.logic.parser;
 
-
 import tutorpro.logic.commands.ScheduleCommand;
 import tutorpro.logic.parser.exceptions.ParseException;
-
 
 /**
  * Parses input arguments and creates a new FindCommand object
@@ -18,12 +16,13 @@ public class ScheduleCommandParser implements Parser<ScheduleCommand> {
     public ScheduleCommand parse(String args) throws ParseException {
         String trimmedArgs = args.trim();
         int numOfDays;
-        ScheduleCommand command = ScheduleCommand.getInstance();
+
         if (!(trimmedArgs.isEmpty())) {
             numOfDays = Integer.parseInt(trimmedArgs);
-            command.setNumOfDays(numOfDays);
+            return new ScheduleCommand(numOfDays);
+        } else {
+            return new ScheduleCommand();
         }
-        return command;
     }
 
 }

@@ -29,7 +29,7 @@ public class ReminderCard extends UiPart<Region> {
     @FXML
     private HBox cardPane;
     @FXML
-    private Label name;
+    private Label description;
     @FXML
     private Label id;
     @FXML
@@ -48,7 +48,7 @@ public class ReminderCard extends UiPart<Region> {
         super(FXML);
         this.reminder = reminder;
         id.setText(displayedIndex + ". ");
-        name.setText(reminder.getName());
+        description.setText(reminder.getDescription());
         time.setText(reminder.getTime().toString());
         notes.setText(reminder.getNotes());
 

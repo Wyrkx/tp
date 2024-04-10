@@ -1,7 +1,5 @@
 package tutorpro.logic.commands;
 
-import static tutorpro.model.Model.PREDICATE_SHOW_ALL_REMINDERS;
-
 import tutorpro.logic.Messages;
 import tutorpro.logic.commands.exceptions.CommandException;
 import tutorpro.model.Model;
@@ -21,11 +19,14 @@ public class ScheduleCommand extends Command {
             + "Example: " + COMMAND_WORD + " or " + COMMAND_WORD + " 6";
 
     public static final String SHOWING_SCHEDULE_MESSAGE = "Opened schedule.";
-    private static ScheduleCommand instance = new ScheduleCommand(14);
-    private int numOfDaysToShow;
+    private static int numOfDaysToShow;
 
-    private ScheduleCommand(int n) {
-        this.numOfDaysToShow = n;
+    public ScheduleCommand(int n) {
+        numOfDaysToShow = n;
+    }
+
+    public ScheduleCommand() {
+        numOfDaysToShow = 14;
     }
 
     public int getNumOfDays() {
@@ -36,20 +37,17 @@ public class ScheduleCommand extends Command {
         numOfDaysToShow = n;
     }
 
-    public static ScheduleCommand getInstance() {
-        return instance;
-    }
-
-
     @Override
     public CommandResult execute(Model model) throws CommandException {
         if (numOfDaysToShow < 0) {
             throw new CommandException(Messages.MESSAGE_INVALID_NUMBER_OF_DAYS);
         }
 
-        model.updateFilteredScheduleList(PREDICATE_SHOW_ALL_REMINDERS);
-        model.getTruncatedFilteredScheduleList(numOfDaysToShow);
-        return new CommandResult(SHOWING_SCHEDULE_MESSAGE, false, false, true);
+        model.updateTruncatedScheduleList(numOfDaysToShow);
+        //return new CommandResult(SHOWING_SCHEDULE_MESSAGE, false, false, true);
+        return new CommandResult(
+                String.format(Messages.MESSAGE_SCHEDULE_LISTED, model.getTruncatedScheduleList().size()),
+                true);
     }
 
     @Override
@@ -60,6 +58,6 @@ public class ScheduleCommand extends Command {
             return false;
         }
         ScheduleCommand otherScheduleCommand = (ScheduleCommand) other;
-        return ScheduleCommand.instance.numOfDaysToShow == otherScheduleCommand.numOfDaysToShow;
+        return ScheduleCommand.numOfDaysToShow == otherScheduleCommand.numOfDaysToShow;
     }
 }

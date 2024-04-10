@@ -42,6 +42,7 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         filteredSchedule = new FilteredList<>(this.addressBook.getSchedule());
+        System.out.println("break");
     }
 
     public ModelManager() {
@@ -149,8 +150,17 @@ public class ModelManager implements Model {
 
     //=========== Filtered Schedule List Accessors =============================================================
 
+    /**
+     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
     @Override
-    public ObservableList<Reminder> getTruncatedFilteredScheduleList(int n) {
+    public ObservableList<Reminder> getTruncatedScheduleList() {
+        return filteredSchedule;
+    }
+
+    @Override
+    public void updateTruncatedScheduleList(int n) {
         filteredSchedule.sort(new ReminderComparator());
         LocalDateTime timeRange = now().plusDays(n);
 
@@ -160,16 +170,8 @@ public class ModelManager implements Model {
                 truncatedSchedule.add(reminder);
             }
         }
-        return truncatedSchedule;
 
     }
-
-    @Override
-    public void updateFilteredScheduleList(Predicate<Reminder> predicate) {
-        requireNonNull(predicate);
-        filteredSchedule.setPredicate(predicate);
-    }
-
     @Override
     public boolean equals(Object other) {
         if (other == this) {
