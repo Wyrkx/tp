@@ -26,7 +26,7 @@ Hi Tutors! A warm welcome to our user guide, your companion for navigating and f
 
 ---
 
-## Quick start
+## [Quick start](#table-of-contents)
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
@@ -55,27 +55,26 @@ Hi Tutors! A warm welcome to our user guide, your companion for navigating and f
 
 ---
 
-## Features
+## [Features](#table-of-contents)
 
 <div markdown="block" class="alert alert-info">
-
-:information_source: **Notes about the command format:**</div>
+**:information_source: Notes about the command format:** <br>
 
 - Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   E.g. in `add STUDENT_NAME`, `STUDENT_NAME` is a parameter which can be used as `add John Doe`.
 
 - Items in square brackets are optional.<br>
-  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
+  E.g. `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
 
 - Items with `…`​ after them can be used multiple times including zero times.<br>
   Items with … after them can be used multiple times.
   E.g. `sub/SUBJECT-GRADE…` can be used as `sub/math-B`(i.e. 1 time), `sub/math-B sub/science-C`(i.e. 2 times), etc.
 
 - Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
-  e.g. if the command specifies `help 123`, it will be interpreted as `help`.
+  E.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 - If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
-
+</div>
 
 ### Adding new Students : `add`
 
@@ -83,28 +82,31 @@ Add a new student with their details to your TutorPro list.
 
 Format: `add n/STUDENT_NAME p/PHONE_NUMBER e/EMAIL_ADDRESS a/ADDRESS lvl/EDUCATION_LEVEL sub/SUBJECT-GRADE…  `
 
-**<div markdown="span" class="alert alert-primary">:bulb: Tip:**
+<div markdown="span" class="alert alert-success">
+**:bulb: Tip:**<br>
 A student can have 1 or more subjects.
-
 </div>
+
 
 **Examples:**
-- `add n/John Doe p/98765432 e/johndoe@gmail.com a/Clementi Ave 123, Blk 321, #12-345 lvl/P5 sub/math-B sub/science-C`
-- `add n/Jany Doh p/97862354 e/janydoh@email.com a/Changi St 79, Blk 12, #03-456 lvl/S5 sub/english-B`
+* `add n/John Doe p/98765432 e/johndoe@gmail.com a/Clementi Ave 123, Blk 321, #12-345 lvl/P5 sub/math-B sub/science-C`
+* `add n/Jany Doh p/97862354 e/janydoh@email.com a/Changi St 79, Blk 12, #03-456 lvl/S5 sub/english-B`
 
-**<div markdown="span" class="alert alert-primary">:bulb: Caution:**
+<div markdown="span" class="alert alert-primary">
+**:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
-
-</div>
-
+<br>
 **Constraints:**
-- For `STUDENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
-- For `PHONE_NUMBER`, the input must be an 8-digit number
-- For `EDUCATION_LEVEL`, the input must not contain special characters
-- For `SUBJECT-GRADE`, the input must not contain special characters.
-  - Note: `SUBJECT` refers to the subject the student is receiving tuition for, while `GRADE` refers to the grade the student obtained for their most recent test on that subject.
-  - E.g. `math-B` indicates that the student is receiving tuition for Mathematics, and obtained a B grade for their most recent test for Mathematics.
-- If any parameter is invalid, its respective error message will be printed.
+<br>* For `STUDENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
+<br>* For `PHONE_NUMBER`, the input must be an 8-digit number
+<br>* For `EDUCATION_LEVEL`, the input must not contain special characters.
+<br>* For `EMAIL`, the input must consist of the username and the domain name of the email service provider.
+<br>  * Format: `username@domain.com`
+<br>* For `SUBJECT-GRADE`, the input must not contain special characters.
+<br>  * Note: `SUBJECT` refers to the subject the student is receiving tuition for, while `GRADE` refers to the grade the student obtained for their most recent test on that subject.
+<br>  * E.g. `math-B` indicates that the student is receiving tuition for Mathematics, and obtained a B grade for their most recent test for Mathematics.
+<br>* If any parameter is invalid, its respective error message will be printed.
+</div>
 
 ### Adding new Parents : `addp`
 Add a new parent with their details to your TutorPro list.
@@ -112,43 +114,48 @@ Add a new parent with their details to your TutorPro list.
 Format: `addp n/PARENT_NAME p/PHONE_NUMBER e/EMAIL_ADDRESS a/ADDRESS`
 
 **Examples:**
-- `addp n/Jonny Doe p/98765432 e/jonnyd@gmail.com a/Clementi Ave 123, Blk 321, #12-345`
+* `addp n/Jonny Doe p/98765432 e/jonnyd@gmail.com a/Clementi Ave 123, Blk 321, #12-345`
 
-**<div markdown="span" class="alert alert-primary">:bulb: Caution:**
+<div markdown="span" class="alert alert-primary">
+**:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
-
-</div>
-
+<br>
 **Constraints:**
-- For `PARENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
-- For `PHONE_NUMBER`, the input must be an 8-digit number
-- If any parameter is invalid, its respective error message will be printed.
+<br>* For `PARENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
+<br>* For `PHONE_NUMBER`, the input must be an 8-digit number
+<br>* If any parameter is invalid, its respective error message will be printed.
+</div>
 
 ### Editing a Student's details : `edit`
 
 Edit and/or update a particular student’s details/progress.
 
-Format: `edit STUDENT_NAME cat/CATEGORY new/NEW_INFORMATION`
+Format: `edit INDEX cat/NEW_INFORMATION`
 
 **Examples:**
-- `edit John Doe cat/sub new/math-A` Edits the subject John Doe is being tutored for and his grade to `Math` and `A` respectively.
-- `edit Jany Doh cat/lvl new/s2` Edits the education level of Jany Doh to `S2`.
+For the example list shown below:
+1. John Doe, P5, Math-B
+2. Jany Doh, S1, Science-C
+* `edit 1 sub/Math-A` Edits the subject John Doe is being tutored for and his grade to `Math` and `A` respectively.
+* `edit 2 lvl/S2` Edits the education level of Jany Doh to `S2`.
 
-**<div markdown="span" class="alert alert-primary">:bulb: Caution:**
+<div markdown="span" class="alert alert-primary">
+**:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
-
-</div>
-
+<br>
 **Constraints:**
-- For `STUDENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
-- For `CATEGORY`, the input must be one of the following:
-  - `name`, `sub`, `number`, `address` or `lvl`
-- For `NEW_INFORMATION`, the input format depends on the category
-  - For `name`, the input should not contain special characters (e.g. `#`, `@`, `!` etc).
-  - For `sub`, the input must follow the format `SUBJECT-GRADE`, as explained in the add command above.
-  - For `lvl`, the input must not contain special characters (e.g. `#`, `@`, `!` etc).
-  - For `num`, the input must be an 8-digit number.
-- If any parameter is invalid, its respective error message will be printed.
+<br>* For `STUDENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
+<br>* For `CATEGORY`, the input must be one of the following:
+<br>  * `name`, `sub`, `number`, `address`, `email` or `lvl`
+<br>* For `NEW_INFORMATION`, the input format depends on the category
+<br>  * For `name`, the input should not contain special characters (e.g. `#`, `@`, `!` etc).
+<br>  * For `sub`, the input must follow the format `SUBJECT-GRADE`, as explained in the add command above.
+<br>  * For `lvl`, the input must not contain special characters (e.g. `#`, `@`, `!` etc).
+<br>  * For `num`, the input must be an 8-digit number.
+<br>  * For `email`, the input must consist of the username and the domain name of the email service provider.
+<br>    * Format: `username@domain.com`
+<br>* If any parameter is invalid, its respective error message will be printed.
+</div>
 
 ### Deleting existing Students : `delete`
 
@@ -163,54 +170,55 @@ Format: `delete LIST_NUMBER`
 
 User input: `delete 3` → Johnsy Boy will be deleted.
 
-**<div markdown="span" class="alert alert-primary">:bulb: Caution:**
+<div markdown="span" class="alert alert-primary">
+**:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
-
-</div>
-
+<br>
 **Constraints:**
-- For `LIST_NUMBER`, the input **must be a positive integer** 1, 2, 3, …​, and the input must be a number not greater than the size of the list.
-  - E.g. if the list contains 3 people, inputting `4` will print an error message.
-- If any parameter is invalid, its respective error message will be printed.
+<br>* For `LIST_NUMBER`, the input **must be a positive integer** 1, 2, 3, …​, and the input must be a number not greater than the size of the list.
+<br>  * E.g. if the list contains 3 people, inputting `4` will print an error message.
+<br>* If any parameter is invalid, its respective error message will be printed.
+</div>
 
 ### Finding certain Students : `find`
 
-Find a list of students matching the user input.
+Find a list of persons with names matching the user input.
+The entire word (i.e. `John` instead of `Joh`) should be inputted for this command to work.
 
-Format: `find STUDENT_NAME`
+Format: `find NAME`
 
 **Examples:**
-- `find John Doe`
-- `find john`
-- `find dOE`
+* `find John Doe`
+* `find john`
+* `find dOE`
 
-**<div markdown="span" class="alert alert-primary">:bulb: Caution:**
+<div markdown="span" class="alert alert-primary">
+**:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
-
-</div>
-
+<br>
 **Constraints:**
-- For `STUDENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
-- If any parameter is invalid, its respective error message will be printed.
+<br>* For `NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
+<br>* If any parameter is invalid, its respective error message will be printed.
+</div>
 
 ### Adding events : `event`
 
-Add events to your schedule..
+Add events to your schedule.
 
 Format: `event n/NAME at/TIME h/HOURS [t/TAG]...`
 
 **Examples:**
-- `event n/Bob math tutoring at/2024-03-04 12:00 h/2 t/math t/tutoring`
-- `event n/John Doe science tutoring at/2024-10-10 h/1`
+* `event n/Bob math tutoring at/2024-03-04 12:00 h/2 t/math t/tutoring`
+* `event n/John Doe science tutoring at/2024-10-10 14:00 h/1`
 
-**<div markdown="span" class="alert alert-primary">:bulb: Caution:**
+<div markdown="span" class="alert alert-primary">
+**:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
-
-</div>
-
+<br>
 **Constraints:**
-- For `TIME`, the input should follow the format of `YYYY-MM-DD HH:mm`.
-- If any parameter is invalid, its respective error message will be printed.
+<br>* For `TIME`, the input should follow the format of `YYYY-MM-DD HH:mm`.
+<br>* If any parameter is invalid, its respective error message will be printed.
+</div>
 
 ### Setting reminders : `remind`
 
@@ -219,16 +227,16 @@ Set reminders for important deadlines or milestones(e.g. O-Levels, A-Levels).
 Format: `remind n/DESCRIPTION at/TIME t/TAG`
 
 **Example:**
-- `remind n/Bob uni app deadline at/2024-03-04 12:00 t/urgent`
+* `remind n/Bob uni app deadline at/2024-03-04 12:00 t/urgent`
 
-**<div markdown="span" class="alert alert-primary">:bulb: Caution:**
+<div markdown="span" class="alert alert-primary">
+**:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
-
-</div>
-
+<br>
 **Constraints:**
-- For `TIME`, the input should follow the format of `YYYY-MM-DD HH:mm`.
-- If any parameter is invalid, its respective error message will be printed.
+<br>* For `TIME`, the input should follow the format of `YYYY-MM-DD HH:mm`.
+<br>* If any parameter is invalid, its respective error message will be printed.
+</div>
 
 ### Displaying your schedule : `schedule`
 
@@ -238,17 +246,19 @@ If no number of days is specified, events and reminders that occur in the next 1
 Format: `schedule [NUMBER_OF_DAYS]`
 
 **Example:**
-- `schedule 10`
+* `schedule 10`
   Displays your schedule (consisting of all your events and reminders) for the next 10 days.
-- `schedule`
+* `schedule`
   Displays your schedule for the next 14 days.
 
-**<div markdown="span" class="alert alert-primary">:bulb:</div> Caution:**
+<div markdown="span" class="alert alert-primary">
+**:bulb: Caution:**
 Below are some constraints to follow when inputting parameters.
-
+<br>
 **Constraints:**
-- For `NUMBER_OF_DAYS`, the input should be a positive whole number.
-- If any parameter is invalid, its respective error message will be printed.
+<br>* For `NUMBER_OF_DAYS`, the input (if any) should be a positive whole number.
+<br>* If any parameter is invalid, its respective error message will be printed.
+</div>
 
 ### Clearing all entries : `clear`
 
@@ -276,28 +286,29 @@ TutorPro data are saved in the hard disk automatically after any command that ch
 
 TutorPro data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
 
-**<div markdown="span" class="alert alert-warning">:exclamation: Caution:**<br>
+<div markdown="span" class="alert alert-warning">
+**:exclamation: Caution:**<br>
 If your changes to the data file makes its format invalid, TutorPro will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
 Furthermore, certain edits can cause TutorPro to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
-
 </div>
+
 
 ---
 
-## FAQ
+## [FAQ](#table-of-contents)
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
 
 ---
 
-## Known issues
+## [Known issues](#table-of-contents)
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 
 ---
 
-## Command summary
+## [Command summary](#table-of-contents)
 
 | Action       | Format, Examples                                                                                                                                                                                                           |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

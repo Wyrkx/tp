@@ -3,6 +3,7 @@ package tutorpro.logic.parser;
 import static java.util.Objects.requireNonNull;
 
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Collection;
@@ -28,7 +29,7 @@ public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
     public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-    public static final String DATE_TIME_FORMAT = "YYYY-MM-DD hh:mm";
+    public static final String DATE_TIME_FORMAT = "YYYY-MM-DD HH:mm";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -219,8 +220,15 @@ public class ParserUtil {
      */
     public static LocalDateTime parseTime(String time) throws ParseException {
         try {
+            int month = Integer.parseInt(time.substring(5, 7));
+            int day = Integer.parseInt(time.substring(8, 10));
+            if (month == Month.FEBRUARY.getValue() && day > 29) {
+                throw new ParseException("Invalid date. February has 29 days only in leap years.");
+            }
             return LocalDateTime.parse(time, DATE_TIME_FORMATTER);
         } catch (DateTimeParseException e) {
+
+
             throw new ParseException("Times should follow the format " + DATE_TIME_FORMAT);
         }
     }
