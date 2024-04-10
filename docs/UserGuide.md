@@ -26,7 +26,7 @@ Hi Tutors! A warm welcome to our user guide, your companion for navigating and f
 
 ---
 
-## Quick start
+## [Quick start](#table-of-contents)
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
@@ -55,7 +55,7 @@ Hi Tutors! A warm welcome to our user guide, your companion for navigating and f
 
 ---
 
-## Features
+## [Features](#table-of-contents)
 
 <div markdown="block" class="alert alert-info">
 **:information_source: Notes about the command format:** <br>
@@ -295,20 +295,20 @@ Furthermore, certain edits can cause TutorPro to behave in unexpected ways (e.g.
 
 ---
 
-## FAQ
+## [FAQ](#table-of-contents)
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
 
 ---
 
-## Known issues
+## [Known issues](#table-of-contents)
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 
 ---
 
-## Command summary
+## [Command summary](#table-of-contents)
 
 | Action       | Format, Examples                                                                                                                                                                                                           |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
