@@ -3,6 +3,7 @@ package tutorpro.logic.parser;
 import static java.util.Objects.requireNonNull;
 
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Collection;
@@ -219,8 +220,15 @@ public class ParserUtil {
      */
     public static LocalDateTime parseTime(String time) throws ParseException {
         try {
+            int month = Integer.parseInt(time.substring(5, 7));
+            int day = Integer.parseInt(time.substring(8, 10));
+            if (month == Month.FEBRUARY.getValue() && day > 29) {
+                throw new ParseException("Invalid date. February has 29 days only in leap years.");
+            }
             return LocalDateTime.parse(time, DATE_TIME_FORMATTER);
         } catch (DateTimeParseException e) {
+
+
             throw new ParseException("Times should follow the format " + DATE_TIME_FORMAT);
         }
     }
