@@ -3,10 +3,8 @@ package tutorpro.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static tutorpro.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static tutorpro.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static tutorpro.logic.parser.CliSyntax.PREFIX_LEVEL;
 import static tutorpro.logic.parser.CliSyntax.PREFIX_NAME;
 import static tutorpro.logic.parser.CliSyntax.PREFIX_PHONE;
-import static tutorpro.logic.parser.CliSyntax.PREFIX_SUBJECT;
 import static tutorpro.logic.parser.CliSyntax.PREFIX_TAG;
 
 import tutorpro.commons.util.ToStringBuilder;
@@ -28,8 +26,6 @@ public class AddParentCommand extends Command {
             + PREFIX_PHONE + "PHONE "
             + PREFIX_EMAIL + "EMAIL "
             + PREFIX_ADDRESS + "ADDRESS "
-            + PREFIX_LEVEL + "LVL "
-            + "[" + PREFIX_SUBJECT + "SUBJECT-GRADE]... "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe Senior "
