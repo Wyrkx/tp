@@ -53,5 +53,5 @@ public interface Logic {
     /**
      * Returns an unmodifiable view of the user's schedule
      */
-    ObservableList<Reminder> getTruncatedFilteredSchedule();
+    ObservableList<Reminder> getTruncatedSchedule();
 }

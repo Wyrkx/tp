@@ -26,7 +26,7 @@ class JsonAdaptedReminder {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Reminder's %s field is missing!";
 
-    protected final String description;
+    protected final String name;
     protected final LocalDateTime time;
     protected final String notes;
     protected final List<String> people = new ArrayList<>();
@@ -38,12 +38,11 @@ class JsonAdaptedReminder {
      * Constructs a {@code JsonAdaptedReminder} with the given person details.
      */
     @JsonCreator
-    public JsonAdaptedReminder(@JsonProperty("description") String description,
-                               @JsonProperty("time") LocalDateTime time,
+    public JsonAdaptedReminder(@JsonProperty("name") String name, @JsonProperty("time") LocalDateTime time,
                                @JsonProperty("notes") String notes,
                                @JsonProperty("people") List<String> people,
                                @JsonProperty("tags") List<JsonAdaptedTag> tags) {
-        this.description = description;
+        this.name = name;
         this.time = time;
         this.notes = notes;
         if (people != null) {
@@ -58,7 +57,7 @@ class JsonAdaptedReminder {
      * Converts a given {@code Reminder} into this class for Jackson use.
      */
     public JsonAdaptedReminder(Reminder source) {
-        description = source.getDescription();
+        name = source.getName();
         time = source.getTime();
         notes = source.getNotes();
 
@@ -88,13 +87,13 @@ class JsonAdaptedReminder {
             reminderTags.add(tag.toModelType());
         }
 
-        if (description == null) {
+        if (name == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
         }
-        if (!Name.isValidName(description)) {
+        if (!Name.isValidName(name)) {
             throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
         }
-        final String modelName = description;
+        final String modelName = name;
 
         if (time == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,

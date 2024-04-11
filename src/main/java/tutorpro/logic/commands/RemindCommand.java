@@ -2,7 +2,7 @@ package tutorpro.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static tutorpro.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
-import static tutorpro.logic.parser.CliSyntax.PREFIX_NOTES;
+import static tutorpro.logic.parser.CliSyntax.PREFIX_NAME;
 import static tutorpro.logic.parser.CliSyntax.PREFIX_PERSON;
 import static tutorpro.logic.parser.CliSyntax.PREFIX_TAG;
 import static tutorpro.logic.parser.CliSyntax.PREFIX_TIME;
@@ -30,21 +30,21 @@ public class RemindCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a reminder to your schedule. "
             + "Parameters: "
-            + PREFIX_DESCRIPTION + "DESCRIPTION "
-            + PREFIX_TIME + "DATE&TIME "
-            + PREFIX_NOTES + "NOTES "
+            + PREFIX_NAME + "NAME "
+            + PREFIX_TIME + "TIME "
+            + "[" + PREFIX_DESCRIPTION + "DESC] "
             + "[" + PREFIX_PERSON + "INDEX]... "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_DESCRIPTION + "Bob uni app deadline "
+            + PREFIX_NAME + "Bob uni app deadline "
             + PREFIX_TIME + "2024-03-04 12:00 "
-            + PREFIX_NOTES + "ONLINE "
+            + PREFIX_DESCRIPTION + "ONLINE "
             + PREFIX_PERSON + "1 "
             + PREFIX_TAG + "urgent";
 
     public static final String MESSAGE_SUCCESS = "New reminder added: %1$s";
 
-    private final String description;
+    private final String name;
     private final LocalDateTime time;
     private final String notes;
     private final Set<Index> indexes;
@@ -55,7 +55,7 @@ public class RemindCommand extends Command {
      */
     public RemindCommand(Reminder reminder) {
         requireNonNull(reminder);
-        this.description = reminder.getDescription();
+        this.name = reminder.getName();
         this.time = reminder.getTime();
         this.notes = reminder.getNotes();
         this.indexes = new HashSet<>();
@@ -67,7 +67,7 @@ public class RemindCommand extends Command {
      */
     public RemindCommand(String name, LocalDateTime time, String notes, Set<Index> indexes, Set<Tag> tagList) {
         CollectionUtil.requireAllNonNull(name, time, notes, indexes, tagList);
-        this.description = name;
+        this.name = name;
         this.time = time;
         this.notes = notes;
         this.indexes = indexes;
@@ -80,7 +80,7 @@ public class RemindCommand extends Command {
         List<Person> lastShownList = model.getFilteredPersonList();
         Set<Person> people = indexes.stream().filter(index -> index.getZeroBased() >= lastShownList.size())
                 .map(index -> lastShownList.get(index.getZeroBased())).collect(Collectors.toSet());
-        Reminder reminder = new Reminder(description, time, notes, people, tagList);
+        Reminder reminder = new Reminder(name, time, notes, people, tagList);
         model.addReminder(reminder);
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(reminder)));
     }
@@ -93,8 +93,8 @@ public class RemindCommand extends Command {
             return false;
         }
         RemindCommand otherAddCommand = (RemindCommand) other;
-        return this.description == otherAddCommand.description
-                && this.notes == otherAddCommand.notes
+        return this.name == otherAddCommand.name
+                && this.notes == otherAddCommand.name
                 && this.indexes.equals(otherAddCommand)
                 && this.tagList.equals(otherAddCommand)
                 && this.time.equals(otherAddCommand);
@@ -103,7 +103,7 @@ public class RemindCommand extends Command {
     @Override
     public String toString() {
         return "RemindCommand{"
-                + "description='" + description + '\''
+                + "name='" + name + '\''
                 + ", time=" + time
                 + ", notes='" + notes + '\''
                 + ", indexes=" + indexes

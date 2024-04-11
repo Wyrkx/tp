@@ -2,7 +2,7 @@ package tutorpro.logic.parser;
 
 import static tutorpro.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static tutorpro.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
-import static tutorpro.logic.parser.CliSyntax.PREFIX_NOTES;
+import static tutorpro.logic.parser.CliSyntax.PREFIX_NAME;
 import static tutorpro.logic.parser.CliSyntax.PREFIX_PERSON;
 import static tutorpro.logic.parser.CliSyntax.PREFIX_TAG;
 import static tutorpro.logic.parser.CliSyntax.PREFIX_TIME;
@@ -28,22 +28,22 @@ public class RemindCommandParser implements Parser<RemindCommand> {
      */
     public RemindCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_DESCRIPTION, PREFIX_TIME, PREFIX_TAG,
-                        PREFIX_PERSON, PREFIX_NOTES);
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_TIME, PREFIX_TAG,
+                        PREFIX_PERSON, PREFIX_DESCRIPTION);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_DESCRIPTION, PREFIX_TIME)
+        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_TIME)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, RemindCommand.MESSAGE_USAGE));
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_DESCRIPTION, PREFIX_TIME);
-        String description = argMultimap.getValue(PREFIX_DESCRIPTION).get();
-        String notes = argMultimap.getValue(PREFIX_NOTES).orElse("");
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_TIME);
+        String name = argMultimap.getValue(PREFIX_NAME).get();
+        String desc = argMultimap.getValue(PREFIX_DESCRIPTION).orElse("");
         LocalDateTime time = ParserUtil.parseTime(argMultimap.getValue(PREFIX_TIME).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         Set<Index> personList = ParserUtil.parseIndexes(argMultimap.getAllValues(PREFIX_PERSON));
 
-        return new RemindCommand(description, time, notes, personList, tagList);
+        return new RemindCommand(name, time, desc, personList, tagList);
     }
 
     /**

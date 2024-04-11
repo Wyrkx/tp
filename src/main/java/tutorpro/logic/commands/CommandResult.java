@@ -49,14 +49,6 @@ public class CommandResult {
 
     /**
      * Constructs a {@code CommandResult} with the specified {@code feedbackToUser},
-     * and showHelp and exit fields set to their default value.
-     */
-    public CommandResult(String feedbackToUser, boolean showSchedule) {
-        this(feedbackToUser, false, false, showSchedule);
-    }
-
-    /**
-     * Constructs a {@code CommandResult} with the specified {@code feedbackToUser},
      * and other fields set to their default value.
      * @return a String of the feedback to the user
      */

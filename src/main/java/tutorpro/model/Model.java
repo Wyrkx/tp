@@ -16,9 +16,6 @@ public interface Model {
     /** {@code Predicate} that always evaluate to true */
     Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
 
-    /** {@code Predicate} that always evaluate to true */
-    Predicate<Reminder> PREDICATE_SHOW_ALL_REMINDERS = unused -> true;
-
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
      */
@@ -90,16 +87,15 @@ public interface Model {
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
 
-    /** Returns an unmodifiable view of the filtered person list */
-    public ObservableList<Reminder> getTruncatedScheduleList();
-
-    /** Returns an unmodifiable view of the filtered schedule list */
-    void updateTruncatedScheduleList(int days);
-
     /**
      * Adds the given reminder.
      */
     void addReminder(Reminder reminder);
+
+    /**
+     *  Returns the list of reminders and events in the next n days
+     */
+    ObservableList<Reminder> getTruncatedSchedule(int n);
 
     /**
      * Returns the full list of reminders and events.
