@@ -30,7 +30,7 @@ public class ReminderListPanel extends UiPart<Region> {
     }
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code Person} using a {@code PersonCard}.
+     * Custom {@code ListCell} that displays the graphics of a {@code Reminder} using a {@code ReminderCard}.
      */
     class ReminderListViewCell extends ListCell<Reminder> {
         @Override

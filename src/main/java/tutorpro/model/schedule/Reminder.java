@@ -19,24 +19,24 @@ import tutorpro.ui.UiPart;
 public class Reminder {
     private final Set<Person> people = new HashSet<>();
     private final Set<Tag> tags = new HashSet<>();
-    private final String name;
+    private final String description;
     private final LocalDateTime time;
     private final String notes;
 
     /**
      * Every field must be present and not null.
      */
-    public Reminder(String name, LocalDateTime time, String notes, Set<Person> people, Set<Tag> tags) {
-        CollectionUtil.requireAllNonNull(name, time, people, notes, tags);
-        this.name = name;
+    public Reminder(String description, LocalDateTime time, String notes, Set<Person> people, Set<Tag> tags) {
+        CollectionUtil.requireAllNonNull(description, time, people, notes, tags);
+        this.description = description;
         this.time = time;
         this.notes = notes;
         this.people.addAll(people);
         this.tags.addAll(tags);
     }
 
-    public String getName() {
-        return name;
+    public String getDescription() {
+        return description;
     }
 
     public LocalDateTime getTime() {
@@ -65,7 +65,7 @@ public class Reminder {
             return false;
         }
         Reminder rmd = (Reminder) obj;
-        return this.name == rmd.name
+        return this.description == rmd.description
                 && this.time.equals(rmd.time)
                 && this.people.equals(rmd.people)
                 && this.tags.equals(rmd.tags)
@@ -73,8 +73,9 @@ public class Reminder {
     }
 
     public int hashCode() {
-        return Objects.hash(name, time, notes, people, tags);
+        return Objects.hash(description, time, notes, people, tags);
     }
+
     public UiPart<Region> getCard(int displayIndex) {
         return new ReminderCard(this, displayIndex);
     }

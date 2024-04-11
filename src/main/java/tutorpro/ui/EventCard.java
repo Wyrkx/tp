@@ -7,12 +7,12 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import tutorpro.model.schedule.Reminder;
+import tutorpro.model.schedule.Event;
 
 /**
- * A UI component that displays information of a {@code Reminder}.
+ * A UI component that displays information of a {@code Event}.
  */
-public class ReminderCard extends UiPart<Region> {
+public class EventCard extends UiPart<Region> {
 
     private static final String FXML = "ReminderCard.fxml";
 
@@ -24,7 +24,7 @@ public class ReminderCard extends UiPart<Region> {
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
 
-    public final Reminder reminder;
+    public final Event event;
 
     @FXML
     private HBox cardPane;
@@ -35,30 +35,21 @@ public class ReminderCard extends UiPart<Region> {
     @FXML
     private Label time;
     @FXML
-    private Label notes;
-    @FXML
-    private Label people;
+    private Label duration;
     @FXML
     private FlowPane tags;
 
     /**
      * Creates a {@code ReminderCode} with the given {@code Reminder} and index to display.
      */
-    public ReminderCard(Reminder reminder, int displayedIndex) {
+    public EventCard(Event event, int displayedIndex) {
         super(FXML);
-        this.reminder = reminder;
+        this.event = event;
         id.setText(displayedIndex + ". ");
-        description.setText(reminder.getDescription());
-        time.setText(reminder.getTime().toString());
-        notes.setText(reminder.getNotes());
-
-        String listOfPeople = " ";
-        for (int i = 0; i < reminder.getPeople().size(); i++) {
-            listOfPeople = i + 1 + ". " + reminder.getPeople().toArray()[i].toString() + "\n";
-        }
-        people.setText(listOfPeople);
-
-        reminder.getTags().stream()
+        description.setText(event.getDescription());
+        time.setText(event.getTime().toString());
+        duration.setText(event.getDuration() + "");
+        event.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }

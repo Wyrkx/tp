@@ -4,9 +4,12 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Set;
 
+import javafx.scene.layout.Region;
 import tutorpro.commons.util.CollectionUtil;
 import tutorpro.model.person.Person;
 import tutorpro.model.tag.Tag;
+import tutorpro.ui.EventCard;
+import tutorpro.ui.UiPart;
 
 /**
  * Represents an Event, a Reminder that also has an ending time and a duration (in hours).
@@ -55,5 +58,10 @@ public class Event extends Reminder {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), duration);
+    }
+
+    @Override
+    public UiPart<Region> getCard(int displayIndex) {
+        return new EventCard(this, displayIndex);
     }
 }

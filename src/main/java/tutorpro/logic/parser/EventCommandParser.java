@@ -1,8 +1,8 @@
 package tutorpro.logic.parser;
 
 import static tutorpro.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static tutorpro.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static tutorpro.logic.parser.CliSyntax.PREFIX_HOURS;
-import static tutorpro.logic.parser.CliSyntax.PREFIX_NAME;
 import static tutorpro.logic.parser.CliSyntax.PREFIX_TAG;
 import static tutorpro.logic.parser.CliSyntax.PREFIX_TIME;
 
@@ -27,20 +27,20 @@ public class EventCommandParser implements Parser<EventCommand> {
      */
     public EventCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_TIME, PREFIX_TAG, PREFIX_HOURS);
+                ArgumentTokenizer.tokenize(args, PREFIX_DESCRIPTION, PREFIX_TIME, PREFIX_TAG, PREFIX_HOURS);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_TIME, PREFIX_HOURS)
+        if (!arePrefixesPresent(argMultimap, PREFIX_DESCRIPTION, PREFIX_TIME, PREFIX_HOURS)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EventCommand.MESSAGE_USAGE));
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_TIME, PREFIX_HOURS);
-        String name = argMultimap.getValue(PREFIX_NAME).get();
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_DESCRIPTION, PREFIX_TIME, PREFIX_HOURS);
+        String description = argMultimap.getValue(PREFIX_DESCRIPTION).get();
         LocalDateTime time = ParserUtil.parseTime(argMultimap.getValue(PREFIX_TIME).get());
         double hours = ParserUtil.parseHours(argMultimap.getValue(PREFIX_HOURS).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        Event event = new Event(name, time, hours, "", new HashSet<>(), tagList);
+        Event event = new Event(description, time, hours, "", new HashSet<>(), tagList);
 
         return new EventCommand(event);
     }

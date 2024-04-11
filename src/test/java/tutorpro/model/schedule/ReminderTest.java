@@ -58,8 +58,8 @@ public class ReminderTest {
         // correct values returned -> return true
         String expected1 = "sample1";
         String expected2 = "sample2";
-        Assertions.assertEquals(expected1, sample1.getName());
-        Assertions.assertEquals(expected2, sample2.getName());
+        Assertions.assertEquals(expected1, sample1.getDescription());
+        Assertions.assertEquals(expected2, sample2.getDescription());
     }
 
     @Test
@@ -101,7 +101,7 @@ public class ReminderTest {
         Assertions.assertFalse(sample1.equals(differentNameReminder));
 
         // Same name -> returns true
-        Reminder sameNameReminder = new Reminder(sample1.getName(), sample1.getTime(), sample1.getNotes(),
+        Reminder sameNameReminder = new Reminder(sample1.getDescription(), sample1.getTime(), sample1.getNotes(),
                 sample1.getPeople(), sample1.getTags());
         Assertions.assertTrue(sample1.equals(sameNameReminder));
 
