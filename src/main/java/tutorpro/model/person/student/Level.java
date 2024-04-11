@@ -11,8 +11,7 @@ import tutorpro.commons.util.AppUtil;
 public class Level {
 
     public static final String MESSAGE_CONSTRAINTS = "Levels should only consist of a letter and a number, or be NA";
-    public static final String VALIDATION_REGEX = "K[12]|P[123456]|S[1234]|J[12]|UNI|OTHER";
-
+    public static final String VALIDATION_REGEX = "(?i)[A-Z]([1-9]|1[0-2])|UNI|OTHER";
     private String value;
 
     /**
