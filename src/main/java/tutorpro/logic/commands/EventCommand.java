@@ -1,8 +1,8 @@
 package tutorpro.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static tutorpro.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static tutorpro.logic.parser.CliSyntax.PREFIX_HOURS;
+import static tutorpro.logic.parser.CliSyntax.PREFIX_NAME;
 import static tutorpro.logic.parser.CliSyntax.PREFIX_TAG;
 import static tutorpro.logic.parser.CliSyntax.PREFIX_TIME;
 
@@ -20,12 +20,12 @@ public class EventCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an event to your schedule. "
             + "Parameters: "
-            + PREFIX_DESCRIPTION + "DESCRIPTION "
-            + PREFIX_TIME + "DATE&TIME "
-            + PREFIX_HOURS + "DURATION "
+            + PREFIX_NAME + "NAME "
+            + PREFIX_TIME + "TIME "
+            + PREFIX_HOURS + "HOURS "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_DESCRIPTION + "Bob math tutoring "
+            + PREFIX_NAME + "Bob math tutoring "
             + PREFIX_TIME + "2024-03-04 12:00 "
             + PREFIX_HOURS + "2 "
             + PREFIX_TAG + "math "

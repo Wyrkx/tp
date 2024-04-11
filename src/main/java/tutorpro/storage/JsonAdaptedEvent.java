@@ -23,17 +23,17 @@ import tutorpro.model.tag.Tag;
  */
 public class JsonAdaptedEvent extends JsonAdaptedReminder {
 
-    private String duration;
+    private final double duration;
 
     /**
      * Constructs a {@code JsonAdaptedEvent} with the given person details.
      */
-    public JsonAdaptedEvent(@JsonProperty("description") String description, @JsonProperty("time") LocalDateTime time,
+    public JsonAdaptedEvent(@JsonProperty("name") String name, @JsonProperty("time") LocalDateTime time,
                             @JsonProperty("notes") String notes, @JsonProperty("people") List<String> people,
                             @JsonProperty("tags") List<JsonAdaptedTag> tags,
-                            @JsonProperty("duration") String duration) {
-        super(description, time, notes, people, tags);
-        this.duration = duration + "";
+                            @JsonProperty("duration") double duration) {
+        super(name, time, notes, people, tags);
+        this.duration = duration;
     }
 
     /**
@@ -41,7 +41,7 @@ public class JsonAdaptedEvent extends JsonAdaptedReminder {
      */
     public JsonAdaptedEvent(Event event) {
         super(event);
-        duration = event.getDuration() + ""; // Convert double to string
+        duration = event.getDuration();
     }
 
     /**
@@ -61,13 +61,13 @@ public class JsonAdaptedEvent extends JsonAdaptedReminder {
             reminderTags.add(tag.toModelType());
         }
 
-        if (description == null) {
+        if (name == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
         }
-        if (!Name.isValidName(description)) {
+        if (!Name.isValidName(name)) {
             throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
         }
-        final String modelName = description;
+        final String modelName = name;
 
         if (time == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
@@ -81,8 +81,7 @@ public class JsonAdaptedEvent extends JsonAdaptedReminder {
 
         final String modelNotes = notes;
 
-        duration += "d"; // convert back to Double
-        final double modelDuration = Double.parseDouble(duration);
+        final double modelDuration = duration;
 
         final Set<Person> modelPeople = new HashSet<>(reminderPeople);
 

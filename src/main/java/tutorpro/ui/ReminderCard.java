@@ -10,7 +10,7 @@ import javafx.scene.layout.Region;
 import tutorpro.model.schedule.Reminder;
 
 /**
- * A UI component that displays information of a {@code Reminder}.
+ * An UI component that displays information of a {@code Person}.
  */
 public class ReminderCard extends UiPart<Region> {
 
@@ -29,7 +29,7 @@ public class ReminderCard extends UiPart<Region> {
     @FXML
     private HBox cardPane;
     @FXML
-    private Label description;
+    private Label name;
     @FXML
     private Label id;
     @FXML
@@ -42,13 +42,13 @@ public class ReminderCard extends UiPart<Region> {
     private FlowPane tags;
 
     /**
-     * Creates a {@code ReminderCode} with the given {@code Reminder} and index to display.
+     * Creates a {@code PersonCode} with the given {@code Person} and index to display.
      */
     public ReminderCard(Reminder reminder, int displayedIndex) {
         super(FXML);
         this.reminder = reminder;
         id.setText(displayedIndex + ". ");
-        description.setText(reminder.getDescription());
+        name.setText(reminder.getName());
         time.setText(reminder.getTime().toString());
         notes.setText(reminder.getNotes());
 
