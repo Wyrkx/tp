@@ -30,9 +30,9 @@ public class LevelTest {
         Assert.assertThrows(NullPointerException.class, () -> Level.isValidLevel(null));
 
         // invalid addresses
-        assertFalse(Level.isValidLevel("S5"));
-        assertFalse(Level.isValidLevel("J3"));
-        assertFalse(Level.isValidLevel("P9"));
+        assertFalse(Level.isValidLevel("S13"));
+        assertFalse(Level.isValidLevel("43"));
+        assertFalse(Level.isValidLevel("S-1"));
 
         // valid addresses
         assertTrue(Level.isValidLevel("P6"));
