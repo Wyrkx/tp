@@ -109,7 +109,6 @@ Below are some constraints to follow when inputting parameters.
 <br>* For `SUBJECT-GRADE`, the input must not contain special characters.
 <br>  * Note: `SUBJECT` refers to the subject the student is receiving tuition for, while `GRADE` refers to the grade the student obtained for their most recent test on that subject.
 <br>  * E.g. `math-B` indicates that the student is receiving tuition for Mathematics, and obtained a B grade for their most recent test for Mathematics.
-<br>* If any parameter is invalid, its respective error message will be printed.
 </div>
 
 ### Adding new Parents : `addp`
@@ -127,7 +126,6 @@ Below are some constraints to follow when inputting parameters.
 **Constraints:**
 <br>* For `PARENT_NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
 <br>* For `PHONE_NUMBER`, the input must be an 8-digit number
-<br>* If any parameter is invalid, its respective error message will be printed.
 </div>
 
 ### Editing a Student's details : `edit`
@@ -173,7 +171,6 @@ Also, below are some constraints to follow when inputting parameters.
 <br>    * Format: `username@domain.com`
 <br>  * For `level`, the input must not contain special characters (e.g. `#`, `@`, `!` etc).
 <br>  * For `subject`, the input must follow the format `SUBJECT-GRADE`, as explained in the add command above.
-<br>* If any parameter is invalid, its respective error message will be printed.
 </div>
 
 ### Deleting existing Students : `delete`
@@ -196,7 +193,6 @@ Below are some constraints to follow when inputting parameters.
 **Constraints:**
 <br>* For `LIST_NUMBER`, the input **must be a positive integer** 1, 2, 3, …​, and the input must be a number not greater than the size of the list.
 <br>  * E.g. if the list contains 3 people, inputting `4` will print an error message.
-<br>* If any parameter is invalid, its respective error message will be printed.
 </div>
 
 ### Finding certain Students : `find`
@@ -217,7 +213,6 @@ Below are some constraints to follow when inputting parameters.
 <br>
 **Constraints:**
 <br>* For `NAME`, capitalization (e.g. `jOhN DoE`) or extra/leading/trailing spaces does not affect the value (e.g. `John     Doe`). The NAME should not have special characters (e.g. `#`, `@`, `!` etc.).
-<br>* If any parameter is invalid, its respective error message will be printed.
 </div>
 
 ### Adding events : `event`
@@ -236,7 +231,6 @@ Below are some constraints to follow when inputting parameters.
 <br>
 **Constraints:**
 <br>* For `TIME`, the input should follow the format of `YYYY-MM-DD HH:mm`.
-<br>* If any parameter is invalid, its respective error message will be printed.
 </div>
 
 ### Setting reminders : `remind`
@@ -254,7 +248,6 @@ Below are some constraints to follow when inputting parameters.
 <br>
 **Constraints:**
 <br>* For `TIME`, the input should follow the format of `YYYY-MM-DD HH:mm`.
-<br>* If any parameter is invalid, its respective error message will be printed.
 </div>
 
 ### Displaying your schedule : `schedule`
@@ -276,7 +269,6 @@ Below are some constraints to follow when inputting parameters.
 <br>
 **Constraints:**
 <br>* For `NUMBER_OF_DAYS`, the input (if any) should be a positive whole number.
-<br>* If any parameter is invalid, its respective error message will be printed.
 </div>
 
 ### Clearing all entries : `clear`
