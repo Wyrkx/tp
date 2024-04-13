@@ -93,7 +93,7 @@ A student can have 1 or more subjects.
 
 
 **Examples:**
-* `add n/John Doe p/98765432 e/johndoe@gmail.com a/Clementi Ave 123, Blk 321, #12-345 lvl/P5 sub/math-B sub/science-C`
+* `add n/John Doe p/98765432 e/johndoe@gmail.com a/Clementi Ave 123, Blk 321, #12-345 lvl/P5 sub/math-B sub/science-C+`
 * `add n/Jany Doh p/97862354 e/janydoh@email.com a/Changi St 79, Blk 12, #03-456 lvl/S5 t/Seafood allergy`
 
 <div markdown="span" class="alert alert-primary">
@@ -106,7 +106,8 @@ Below are some constraints to follow when inputting parameters.
 <br>* For `EMAIL`, the input must consist of the username and the domain name of the email service provider. Must be unique as well.
 <br>  * Format: `username@domain.com`
 <br>* For `EDUCATION_LEVEL`, the input must not contain special characters.
-<br>* For `SUBJECT-GRADE`, the input must not contain special characters.
+<br>* For `SUBJECT-GRADE`, the input must follow the following format: `<1 or more words>-<1 or more non-space characters>`
+<br>  * This allows you to input subject-grade such as `Math-A*`, `Higher Chinese-B3` or `Software Engineering-A-`, where the subject is more than one word and the grade has numbers or special characters.
 <br>  * Note: `SUBJECT` refers to the subject the student is receiving tuition for, while `GRADE` refers to the grade the student obtained for their most recent test on that subject.
 <br>  * E.g. `math-B` indicates that the student is receiving tuition for Mathematics, and obtained a B grade for their most recent test for Mathematics.
 </div>
@@ -326,8 +327,8 @@ Furthermore, certain edits can cause TutorPro to behave in unexpected ways (e.g.
 | **Add**      | `add STUDENT_NAME p/PHONE_NUMBER a/ADDRESS lvl/EDUCATION_LEVEL [sub/SUBJECT-GRADE]… [t/TAG]…​` <br> e.g. `add John Doe p/98765432 e/johndoe@gmail.com a/Clementi Ave 123, Blk 321 #10-234 lvl/p5 sub/Math-B sub/Science-B` |
 | **Add parent**      | `add PARENT_NAME p/PHONE_NUMBER a/ADDRESS [t/TAG]…​` <br> e.g. `addp n/Jonny Doe p/98765432 e/jonnyd@gmail.com a/Clementi Ave 123, Blk 321, #12-345` |
 | **Clear**    | `clear`                                                                                                                                                                                                                    |
-| **Delete**   | Step 1) `delete STUDENT_NAME` <br> e.g. `delete John` (Outputs list of students with matching names) <br> Step 2) `LIST_NUMBER` <br> e.g. `3` (Deletes 3rd person in the list)                                             |
-| **Edit**     | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] lvl/EDUCATION_LEVEL [sub/SUBJECT-GRADE]… [t/TAG]…​`<br> e.g.`edit 2 n/James Lee e/jameslee@example.com`<br> e.g.`edit 5 sub/math-b sub/biology-c`              |
+| **Delete**   | `delete LIST_NUMBER` <br> e.g. `delete 3`                                             |
+| **Edit**     | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [lvl/EDUCATION_LEVEL] [sub/SUBJECT-GRADE]… [t/TAG]…​`<br> e.g.`edit 2 n/James Lee e/jameslee@example.com`<br> e.g.`edit 5 sub/math-b sub/biology-c+`              |
 | **Find**     | `find KEYWORD [MORE_KEYWORDS]`<br> e.g. `find James Jake`                                                                                                                                                                  |
 | **List**     | `list`                                                                                                                                                                                                                     |
 | **Help**     | `help`                                                                                                                                                                                                                     |
