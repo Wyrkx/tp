@@ -311,6 +311,9 @@ Furthermore, certain edits can cause TutorPro to behave in unexpected ways (e.g.
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+**Q**: Error message says input cannot be blank but my input is not blank! What's wrong with my input?<br>
+![image](https://github.com/agreatdayy/tp/assets/104555494/9da46b39-4942-414d-b9f1-4c9845555575)
+**A**: Currently, TutorPro only takes in commands with ASCII characters. Please ensure that your input command only contains ASCII characters.
 
 ---
 
