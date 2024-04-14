@@ -16,10 +16,10 @@ Hi Tutors! A warm welcome to our user guide, your companion for navigating and f
   - [Find certain student: `find`](#finding-certain-students--find)
   - [Add events: `event`](#adding-events--event)
   - [Set reminders: `remind`](#setting-reminders--remind)
-  - [Display schedule: `schedule`](#displaying-your-schedule--schedule)
   - [Clear all entries: `clear`](#clearing-all-entries--clear)
   - [List all persons](#listing-all-persons--list)
   - [Exit: `exit`](#exiting-the-program--exit)
+  - [Comming Soon in next update: `schedule`](#comming-soon--schedule)
 - [FAQ](#faq)
 - [Known Issues](#known-issues)
 - [Command Summay](#command-summary)
@@ -251,27 +251,6 @@ Below are some constraints to follow when inputting parameters.
 <br>* For `TIME`, the input should follow the format of `YYYY-MM-DD HH:mm`.
 </div>
 
-### Displaying your schedule : `schedule`
-
-Lists out events and reminders that occur in the incoming specified number of days.
-If no number of days is specified, events and reminders that occur in the next 14 days will be listed.
-
-Format: `schedule [NUMBER_OF_DAYS]`
-
-**Example:**
-* `schedule 10`
-  Displays your schedule (consisting of all your events and reminders) for the next 10 days.
-* `schedule`
-  Displays your schedule for the next 14 days.
-
-<div markdown="span" class="alert alert-primary">
-**:bulb: Caution:**
-Below are some constraints to follow when inputting parameters.
-<br>
-**Constraints:**
-<br>* For `NUMBER_OF_DAYS`, the input (if any) should be a positive whole number.
-</div>
-
 ### Clearing all entries : `clear`
 
 Clears all entries from your TutorPro list.
@@ -304,6 +283,18 @@ If your changes to the data file makes its format invalid, TutorPro will discard
 Furthermore, certain edits can cause TutorPro to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </div>
 
+### Comming Soon in next update : `schedule`
+
+Lists out events and reminders that occur in the incoming specified number of days.
+If no number of days is specified, events and reminders that occur in the next 14 days will be listed.
+
+Format: `schedule [NUMBER_OF_DAYS]`
+
+**Example:**
+* `schedule 10`
+  Displays your schedule (consisting of all your events and reminders) for the next 10 days.
+* `schedule`
+  Displays your schedule for the next 14 days.
 
 ---
 
@@ -337,4 +328,3 @@ Furthermore, certain edits can cause TutorPro to behave in unexpected ways (e.g.
 | **Help**     | `help`                                                                                                                                                                                                                     |
 | **Event**    | `event n/NAME at/TIME h/HOURS [t/TAG]...` <br> e.g. `event n/John Doe science tutoring at/2024-10-10 h/1`                                                                                                                  |
 | **Remind**   | `remind n/DESCRIPTION at/TIME t/TAG` <br> e.g. `remind n/Bob uni app deadline at/2024-03-04 12:00 t/urgent`                                                                                                                |
-| **Schedule** | `schedule [NUMBER_OF_DAYS]` <br> e.g. `schedule 10`                                                                                                                                                                        |
