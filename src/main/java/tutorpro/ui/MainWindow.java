@@ -34,16 +34,12 @@ public class MainWindow extends UiPart<Stage> {
     private PersonListPanel personListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
-    private ScheduleWindow scheduleWindow;
 
     @FXML
     private StackPane commandBoxPlaceholder;
 
     @FXML
     private MenuItem helpMenuItem;
-
-    @FXML
-    private MenuItem scheduleMenuItem;
 
     @FXML
     private StackPane personListPanelPlaceholder;
@@ -70,7 +66,6 @@ public class MainWindow extends UiPart<Stage> {
         setAccelerators();
 
         helpWindow = new HelpWindow();
-        scheduleWindow = new ScheduleWindow();
     }
 
     public Stage getPrimaryStage() {
@@ -79,7 +74,6 @@ public class MainWindow extends UiPart<Stage> {
 
     private void setAccelerators() {
         setAccelerator(helpMenuItem, KeyCombination.valueOf("F1"));
-        setAccelerator(scheduleMenuItem, KeyCombination.valueOf("F2"));
     }
 
     /**
@@ -153,19 +147,6 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
-    /**
-     * Opens the schedule window or focuses on it if it's already opened.
-     */
-    @FXML
-    public void handleSchedule() {
-        if (!scheduleWindow.isShowing()) {
-            scheduleWindow.show();
-            scheduleWindow.fillInnerParts();
-        } else {
-            scheduleWindow.focus();
-        }
-    }
-
     void show() {
         primaryStage.show();
     }
@@ -179,7 +160,6 @@ public class MainWindow extends UiPart<Stage> {
                 (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
-        scheduleWindow.hide();
         primaryStage.hide();
     }
 
@@ -200,10 +180,6 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isShowHelp()) {
                 handleHelp();
-            }
-
-            if (commandResult.isShowSchedule()) {
-                handleSchedule();
             }
 
             if (commandResult.isExit()) {
