@@ -71,24 +71,29 @@ The sections below give more details of each component.
 
 ### UI component
 
-The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+The **API** of this component is specified in [`Ui.java`](https://github.com/AY2324S2-CS2103T-F12-3/tp/tree/master/src/main/java/tutorpro/ui/Ui.java)
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, 
+`StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures 
+the commonalities between classes that represent parts of the visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files 
+that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2324S2-CS2103T-F12-3/tp/tree/master/src/main/java/tutorpro/ui/MainWindow.java) is specified in 
+[`MainWindow.fxml`](https://github.com/AY2324S2-CS2103T-F12-3/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
 
 - executes user commands using the `Logic` component.
 - listens for changes to `Model` data so that the UI can be updated with the modified data.
 - keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
-- depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
+- depends on some classes in the `Model` component, as it displays `Person`, `Student` and `Parent` objects residing in 
+- the `Model`.
 
 ### Logic component
 
-**API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`Logic.java`](https://github.com/AY2324S2-CS2103T-F12-3/tp/tree/master/src/main/java/tutorpro/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
@@ -120,14 +125,18 @@ How the parsing works:
 
 ### Model component
 
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`Model.java`](https://github.com/AY2324S2-CS2103T-F12-3/tp/blob/master/src/main/java/tutorpro/model/Model.java)
 
 <img src="images/ModelClassDiagram.png" width="450" />
 
 The `Model` component,
 
-- stores the address book data i.e., all `Person` objects (which are contained in a `UniquePersonList` object).
-- stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+- stores the address book data i.e., all `Person` objects (which are contained in a `UniquePersonList` object), and all 
+`Reminder` objects.
+- stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which 
+is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this 
+list so that the UI automatically updates when the data in the list change.
+- `Student` and `Parent` objects both inherit from `Person` class.
 - stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
 - does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
@@ -139,7 +148,7 @@ The `Model` component,
 
 ### Storage component
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2324S2-CS2103T-F12-3/tp/blob/master/src/main/java/tutorpro/storage/Storage.java)
 
 <img src="images/StorageClassDiagram.png" width="550" />
 
@@ -151,7 +160,7 @@ The `Storage` component,
 
 ### Common classes
 
-Classes used by multiple components are in the `seedu.addressbook.commons` package.
+Classes used by multiple components are in the `tutorpro.commons` package.
 
 ---
 
@@ -270,25 +279,25 @@ _{Explain here how the data archiving feature will be implemented}_
 - Private tutors who go to tutees' houses and teach one-to-one
 - Private tutors who teach multiple subjects
 - Private tutors who teach multiple levels or a specific level, e.g. primary school students
-- Private tutors who need to track the progress of each student
+- Private tutors who need to track the progress of each student e.g. grades
 - Private tutors who need to keep track of lesson plans
-- Private tutors who need to manage their schedule and appointments
+- Private tutors who need to manage their schedule
 - Private tutors who need to manage a list of student contacts
 - Private tutors who need to manage a list of parent contacts
 
-**Value proposition**: Allows for easy track and management of tutees, e.g. grades, addresses, deadlines
+**Value proposition**: Allows for easy track and management of tutees, e.g. grades, addresses, contacts
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​       | I want to …​                                            | So that I can…​                                    |
-| -------- | ------------- | ------------------------------------------------------- | -------------------------------------------------- |
-| `* * *`  | private tutor | track my tutee's grades, addresses and deadlines easily | efficiently manage my tutoring sessions            |
-| `* * *`  | private tutor | input new tutees' progress seamlessly                   | add new tutees' information                        |
-| `* * *`  | private tutor | delete previously created inputs                        | remove information that I no longer need           |
-| `* * *`  | private tutor | track my project tasks and timelines seamlessly         | effectively manage my workflow and deliver on time |
-| `* *`    | private tutor | set reminders for important deadlines and milestones    | never miss a crucial event                         |
+| Priority | As a …​       | I want to …​                                           | So that I can…​                                    |
+| -------- | ------------- |--------------------------------------------------------| -------------------------------------------------- |
+| `* * *`  | private tutor | track my tutee's grades, addresses and contacts easily | efficiently manage my tutoring sessions            |
+| `* * *`  | private tutor | input new tutees' progress seamlessly                  | add new tutees' information                        |
+| `* * *`  | private tutor | delete previously created inputs                       | remove information that I no longer need           |
+| `* * *`  | private tutor | track my project tasks and timelines seamlessly        | effectively manage my workflow and deliver on time |
+| `* *`    | private tutor | set reminders for important deadlines and milestones   | never miss a crucial event                         |
 
 ### Use cases
 
@@ -573,7 +582,6 @@ testers are expected to do more *exploratory* testing.
    1. Re-launch the app by double-clicking the jar file.<br>
       Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
 
 ### Deleting a person
 
@@ -589,8 +597,6 @@ testers are expected to do more *exploratory* testing.
 
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
-
-1. _{ more test cases …​ }_
 
 ### Saving data
 

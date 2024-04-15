@@ -1,6 +1,7 @@
 package tutorpro.logic;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static tutorpro.logic.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
 import static tutorpro.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static tutorpro.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
@@ -20,6 +21,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
+import javafx.collections.ObservableList;
 import tutorpro.logic.commands.AddCommand;
 import tutorpro.logic.commands.CommandResult;
 import tutorpro.logic.commands.ListCommand;
@@ -30,6 +32,7 @@ import tutorpro.model.ModelManager;
 import tutorpro.model.ReadOnlyAddressBook;
 import tutorpro.model.UserPrefs;
 import tutorpro.model.person.student.Student;
+import tutorpro.model.schedule.Reminder;
 import tutorpro.storage.JsonAddressBookStorage;
 import tutorpro.storage.JsonUserPrefsStorage;
 import tutorpro.storage.StorageManager;
@@ -174,5 +177,18 @@ public class LogicManagerTest {
         ModelManager expectedModel = new ModelManager();
         expectedModel.addPerson(expectedPerson);
         assertCommandFailure(addCommand, CommandException.class, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void getTruncatedSchedule_emptySchedule_success() {
+        // Set up
+        ModelManager model = new ModelManager();
+        LogicManager logicManager = new LogicManager(model, null);
+
+        // Execute
+        ObservableList<Reminder> truncatedSchedule = logicManager.getTruncatedSchedule();
+
+        // Verify
+        assertTrue(truncatedSchedule.isEmpty());
     }
 }

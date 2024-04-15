@@ -9,7 +9,6 @@ import tutorpro.commons.util.ToStringBuilder;
 import tutorpro.model.person.student.Parent;
 import tutorpro.testutil.Assert;
 import tutorpro.testutil.ParentBuilder;
-import tutorpro.testutil.StudentBuilder;
 import tutorpro.testutil.TypicalParents;
 import tutorpro.testutil.TypicalStudents;
 
@@ -52,6 +51,7 @@ public class ParentTest {
 
     }
 
+
     @Test
     public void toString_checkCorrectFormat() {
         Parent parent = new ParentBuilder().withName("John").withPhone("12345678").withEmail("john@example.com")
@@ -70,7 +70,7 @@ public class ParentTest {
     @Test
     public void getCard() {
         try {
-            new StudentBuilder().build().getCard(1);
+            new ParentBuilder().build().getCard(1);
             fail();
         } catch (ExceptionInInitializerError e) {
             return;
