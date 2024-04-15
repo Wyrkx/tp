@@ -175,6 +175,19 @@ public class UniquePersonListTest {
     }
 
     @Test
+    public void equals_sameObject_returnsTrue() {
+
+        // same object -> returns true
+        assertTrue(uniquePersonList.equals(uniquePersonList));
+
+        // null -> returns false
+        assertFalse(uniquePersonList.equals(null));
+
+        // different types -> returns false
+        assertFalse(uniquePersonList.equals(5.0f));
+    }
+
+    @Test
     public void toStringMethod() {
         assertEquals(uniquePersonList.asUnmodifiableObservableList().toString(), uniquePersonList.toString());
     }
