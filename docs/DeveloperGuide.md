@@ -168,6 +168,37 @@ Classes used by multiple components are in the `tutorpro.commons` package.
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Add feature
+
+#### Current implementation
+
+The revised add mechanism is facilitated by `Student`. It extends `Person` and contains the following additional fields
+compared to the original version from AB3. 
+- `Level` - Representing the education level
+- `Subject` - Representing a subject, as well as its corresponding grade
+
+As compared to `Person`, instances of `Student` will automatically have a "Student" `Tag` added on construction.
+
+Otherwise, all other implementation details are the same as AB3.
+
+### Save feature
+
+#### Current implementation
+
+The revised save mechanism is facilitated by `JsonSerializableAddressBook`, that directly or indirectly contains
+various other classes that convert objects to be saved to Jackson-friendly versions, heavily inspired by the original AB3 code.
+- `JsonAdaptedStudent` for the `Student` class
+- `JsonAdaptedSubject` for the `Subject` class
+- `JsonAdaptedParent` for the `Parent` class
+- `JsonAdaptedReminder` for the `Reminder` class
+- `JsonAdaptedEvent` for the `Event` class
+
+When saving, a new `JsonSerializableAddressBook` object is created, with a `ReadOnlyAddressBook` as a parameter.
+All `Person`s and child classes are retrieved from the `ReadOnlyAddressBook` as a stream, 
+then split using filter to create their respective Jackson-friendly versions. The same as done for all `Reminder`s and child classes.   
+
+Loading is implemented in the same way as AB3.
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
@@ -251,11 +282,6 @@ The following activity diagram summarizes what happens when a user executes a ne
   - Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
   - Cons: We must ensure that the implementation of each individual command are correct.
 
-_{more aspects and alternatives to be added}_
-
-### \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
 
 ---
 
