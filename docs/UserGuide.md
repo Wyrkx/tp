@@ -218,7 +218,7 @@ Below are some constraints to follow when inputting parameters.
 
 ### Adding events : `event`
 
-Add events to your schedule.
+Add events to your schedule.<br>
 **NOTE:** For the current version of TutorPro, you will not be able to view your events as we are still working on the [`schedule` command](#comming-soon-in-next-update--schedule) for the next update, which will be coming really soon!
 
 Format: `event n/NAME at/TIME h/HOURS [t/TAG]...`
@@ -237,7 +237,7 @@ Below are some constraints to follow when inputting parameters.
 
 ### Setting reminders : `remind`
 
-Set reminders for important deadlines or milestones(e.g. O-Levels, A-Levels).
+Set reminders for important deadlines or milestones(e.g. O-Levels, A-Levels).<br>
 **NOTE:** For the current version of TutorPro, you will not be able to view your reminders as we are still working on the [`schedule` command](#comming-soon-in-next-update--schedule) for the next update, which will be coming really soon!
 
 Format: `remind n/DESCRIPTION at/TIME t/TAG`
