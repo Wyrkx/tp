@@ -18,6 +18,8 @@ import tutorpro.model.person.Address;
 import tutorpro.model.person.Email;
 import tutorpro.model.person.Name;
 import tutorpro.model.person.Phone;
+import tutorpro.model.person.student.Level;
+import tutorpro.model.person.student.Subject;
 import tutorpro.model.tag.Tag;
 
 public class ParserUtilTest {
@@ -33,6 +35,9 @@ public class ParserUtilTest {
     private static final String VALID_EMAIL = "rachel@example.com";
     private static final String VALID_TAG_1 = "friend";
     private static final String VALID_TAG_2 = "neighbour";
+    private static final String VALID_LEVEL = "P6";
+    private static final String INVALID_LEVEL_1 = "3*";
+    private static final String INVALID_LEVEL_2 = "A90";
 
     private static final String WHITESPACE = " \t\r\n";
 
@@ -192,5 +197,46 @@ public class ParserUtilTest {
         Set<Tag> expectedTagSet = new HashSet<Tag>(Arrays.asList(new Tag(VALID_TAG_1), new Tag(VALID_TAG_2)));
 
         assertEquals(expectedTagSet, actualTagSet);
+    }
+
+    @Test
+    public void parseSubject_validSubject_returnsSubject() throws Exception {
+        String validSubject = "Mathematics-A+";
+        Subject expectedSubject = new Subject(validSubject);
+        assertEquals(expectedSubject, ParserUtil.parseSubject(validSubject));
+    }
+
+    @Test
+    public void parseSubject_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseSubject(null));
+    }
+
+    @Test
+    public void parseSubject_invalidSubject_throwsParseException() {
+        String invalidSubject = "Invalid Subject!";
+        assertThrows(ParseException.class, () -> ParserUtil.parseSubject(invalidSubject));
+    }
+    @Test
+    public void parseLevel_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseLevel(null));
+    }
+
+    @Test
+    public void parseLevel_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseLevel(INVALID_LEVEL_1));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLevel(INVALID_LEVEL_2));
+    }
+
+    @Test
+    public void parseLevel_validValueWithoutWhitespace_returnsLevel() throws Exception {
+        Level expectedLevel = new Level(VALID_LEVEL);
+        assertEquals(expectedLevel, ParserUtil.parseLevel(VALID_LEVEL));
+    }
+
+    @Test
+    public void parseLevel_validValueWithWhitespace_returnsTrimmedLevel() throws Exception {
+        String levelWithWhitespace = WHITESPACE + VALID_LEVEL + WHITESPACE;
+        Level expectedLevel = new Level(VALID_LEVEL);
+        assertEquals(expectedLevel, ParserUtil.parseLevel(levelWithWhitespace));
     }
 }

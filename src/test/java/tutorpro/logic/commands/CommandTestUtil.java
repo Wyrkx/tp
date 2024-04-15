@@ -33,6 +33,7 @@ public class CommandTestUtil {
     public static final String VALID_ADDRESS_BOB = "Block 123, Bobby Street 3";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
+    public static final String VALID_TAG_FATHER = "father";
     public static final String VALID_SUBJECT_MATH = "Math-B";
     public static final String VALID_SUBJECT_SCIENCE = "Science-A";
     public static final String VALID_SUBJECT_ENGLISH = "English-C";
@@ -54,6 +55,7 @@ public class CommandTestUtil {
     public static final String ADDRESS_DESC_BOB = " " + CliSyntax.PREFIX_ADDRESS + VALID_ADDRESS_BOB;
     public static final String TAG_DESC_FRIEND = " " + CliSyntax.PREFIX_TAG + VALID_TAG_FRIEND;
     public static final String TAG_DESC_HUSBAND = " " + CliSyntax.PREFIX_TAG + VALID_TAG_HUSBAND;
+    public static final String TAG_DESC_FATHER = " " + CliSyntax.PREFIX_TAG + VALID_TAG_FATHER;
 
     public static final String INVALID_NAME_DESC = " " + CliSyntax.PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + CliSyntax.PREFIX_PHONE + "911a"; // 'a' not allowed in phones

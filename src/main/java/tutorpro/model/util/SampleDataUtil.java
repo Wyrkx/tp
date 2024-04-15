@@ -23,10 +23,6 @@ import tutorpro.model.tag.Tag;
  * Contains utility methods for populating {@code AddressBook} with sample data.
  */
 public class SampleDataUtil {
-    private static final Level[] LEVELS = {new Level("P1"), new Level("S4"), new Level("J1"),
-        new Level("UNI")};
-    private static final Subject subject = new Subject("Math-C");
-    private static final Set<Subject> SUBJECTS = new HashSet<>();
     public static Person[] getSamplePersons() {
         ArrayList<Student> students = new ArrayList<>(Arrays.asList(getSampleStudents()));
         Set<Student> children = new HashSet<>();

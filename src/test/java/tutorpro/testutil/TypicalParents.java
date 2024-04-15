@@ -1,11 +1,17 @@
 package tutorpro.testutil;
 
+import static tutorpro.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+import static tutorpro.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static tutorpro.logic.commands.CommandTestUtil.VALID_NAME_BOB;
+import static tutorpro.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import tutorpro.model.person.student.Parent;
 import tutorpro.model.util.SampleDataUtil;
+
 
 /**
  * A utility class to help with building Parent objects.
@@ -32,12 +38,8 @@ public class TypicalParents {
             .withStudents(SampleDataUtil.getSampleStudents())
             .build();
 
-    public static final Parent ZHENGWEI = new ParentBuilder().withName("Zheng Wei")
-            .withAddress("123, Jurong West Ave 6, #08-111").withEmail("zw@example.com")
-            .withPhone("94351253")
-            .withTags("friends")
-            .withStudents(SampleDataUtil.getSampleStudents())
-            .build();
+    public static final Parent BOB = new ParentBuilder().withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
+            .withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB).build();
 
     public static final Parent PARIN = new ParentBuilder().withName("Parin")
             .withAddress("123, Jurong West Ave 6, #08-111").withEmail("p@example.com")
@@ -55,3 +57,4 @@ public class TypicalParents {
         return new ArrayList<>(Arrays.asList(JUCHIE, STARCEN, YINXUAN));
     }
 }
+
