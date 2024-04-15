@@ -25,13 +25,13 @@ import tutorpro.model.tag.Tag;
 public class SampleDataUtil {
     public static Person[] getSamplePersons() {
         ArrayList<Student> students = new ArrayList<>(Arrays.asList(getSampleStudents()));
-        Set<Student> children = new HashSet<>();
-        children.add(students.get(2));
-        children.add(students.get(3));
+        Set<Tag> children = new HashSet<>();
+        children.add(new Tag(students.get(2).getName().toString().replace(" ", "")));
+        children.add(new Tag(students.get(3).getName().toString().replace(" ", "")));
         ArrayList<Person> people = new ArrayList<>(students);
         people.add(new Parent(new Name("Donovan Li"), new Phone("98758712"), new Email("donovan@example.com"),
                 new Address("Blk 11 Ang Mo Kio Street 74, #11-04"),
-                getTagSet(), children));
+                children, new HashSet<>()));
         return people.toArray(new Person[]{});
     }
 
