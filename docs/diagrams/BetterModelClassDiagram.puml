@@ -24,6 +24,4 @@ Student *--> "*" Subject
 Person <|-right- Parent
 
 Reminder <|-down- Event
-Schedule -left-> Reminder
-Schedule *--> "*" Event
 @enduml
