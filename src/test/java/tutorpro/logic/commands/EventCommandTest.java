@@ -1,5 +1,6 @@
 package tutorpro.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -9,6 +10,7 @@ import java.util.HashSet;
 
 import org.junit.jupiter.api.Test;
 
+import tutorpro.commons.util.ToStringBuilder;
 import tutorpro.model.schedule.Event;
 
 /**
@@ -43,5 +45,13 @@ public class EventCommandTest {
         assertFalse(eventFirstCommand.equals(eventSecondCommand));
     }
 
-
+    @Test
+    public void toString_validEventCommand_returnsStringRepresentation() {
+        EventCommand eventCommand = new EventCommand(sampleEvent1);
+        String expectedString = new ToStringBuilder(eventCommand)
+                .add("toAdd", sampleEvent1)
+                .toString();
+        assertEquals(expectedString, eventCommand.toString());
+    }
 }
+
