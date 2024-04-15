@@ -2,10 +2,12 @@ package tutorpro.logic.parser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static tutorpro.logic.parser.ParserUtil.DATE_TIME_FORMATTER;
 import static tutorpro.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static tutorpro.testutil.Assert.assertThrows;
 import static tutorpro.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
@@ -59,6 +61,20 @@ public class ParserUtilTest {
 
         // Leading and trailing whitespaces
         assertEquals(INDEX_FIRST_PERSON, ParserUtil.parseIndex("  1  "));
+    }
+    @Test
+    public void parseIndexes_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseIndexes(null));
+    }
+
+    @Test
+    public void parseIndexes_collectionWithInvalidIndexes_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseIndexes(Arrays.asList("10 a", "20 b")));
+    }
+
+    @Test
+    public void parseIndexes_emptyCollection_returnsEmptySet() throws Exception {
+        assertTrue(ParserUtil.parseIndexes(Collections.emptyList()).isEmpty());
     }
 
     @Test
@@ -238,5 +254,37 @@ public class ParserUtilTest {
         String levelWithWhitespace = WHITESPACE + VALID_LEVEL + WHITESPACE;
         Level expectedLevel = new Level(VALID_LEVEL);
         assertEquals(expectedLevel, ParserUtil.parseLevel(levelWithWhitespace));
+    }
+
+    @Test
+    public void parseTime_validTime_returnsLocalDateTime() throws Exception {
+        String validTime = "2022-12-31 23:59";
+        LocalDateTime expectedDateTime = LocalDateTime.parse(validTime, DATE_TIME_FORMATTER);
+        assertEquals(expectedDateTime, ParserUtil.parseTime(validTime));
+    }
+
+    @Test
+    public void parseTime_invalidDate_throwsParseException() {
+        String invalidDate = "2022-02-30 12:00";
+        assertThrows(ParseException.class, () -> ParserUtil.parseTime(invalidDate));
+    }
+
+    @Test
+    public void parseTime_invalidFormat_throwsParseException() {
+        String invalidFormat = "2022/12/31 23:59";
+        assertThrows(ParseException.class, () -> ParserUtil.parseTime(invalidFormat));
+    }
+
+    @Test
+    public void parseHours_validInput_returnsDouble() throws Exception {
+        String validHours = "10";
+        double expectedHours = 10.0;
+        assertEquals(expectedHours, ParserUtil.parseHours(validHours));
+    }
+
+    @Test
+    public void parseHours_invalidInput_throwsParseException() {
+        String invalidHours = "abc";
+        assertThrows(NumberFormatException.class, () -> ParserUtil.parseHours(invalidHours));
     }
 }
